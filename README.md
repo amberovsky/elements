@@ -9,8 +9,8 @@
 <br>
 
 ## <a name="primitive-types"></a>1. Primitive Types
-**Class**: [BitOperations](src/main/java/pro/amberovsky/elements/BitOperations.java)  
-**Factory**: [BitOperationsFactory](src/main/java/pro/amberovsky/elements/BitOperationsFactory.java)
+**Class**: [BitOperations](src/main/java/pro/amberovsky/elements/PrimitiveTypes.java)  
+**Factory**: [BitOperationsFactory](src/main/java/pro/amberovsky/elements/PrimitiveTypesFactory.java)
 
 * [Erase lowest set bit](#primitive-types-erase-lowest-set-bit)
 * [Is power of two](#primitive-types-is-power-of-two)
@@ -32,7 +32,7 @@
 
 <br>
 
-#### <a name="primitive-types-erase-lowest-set-bit"></a>Erase lowest set bit
+### <a name="primitive-types-erase-lowest-set-bit"></a>Erase lowest set bit
 **Task**: Erase lowest set bit for a given number.  
 **Example**: 5 (=0110) -> 4 (=0100)
 
@@ -41,7 +41,7 @@
 | eraseLowestSetBit | Bit/arithmetic operations | O(1) |
 <br>
 
-#### <a name="primitive-types-is-power-of-two"></a>Is power of two
+### <a name="primitive-types-is-power-of-two"></a>Is power of two
 **Task**: Return true if given number is a power of two  
 **Example**: 512 -> true  
 **Example**: 511 -> false
@@ -51,7 +51,7 @@
 | isPowerOfTwo | Bit/arithmetic operations | O(1) |
 <br>
 
-#### <a name="primitive-types-count-number-of-set-bits"></a>Count number of set bits
+### <a name="primitive-types-count-number-of-set-bits"></a>Count number of set bits
 **Task**: Return the number of 1 in the binary representation of a given number  
 **Example**: 256 (=10000000) -> 1  
 **Example**: -1 (=111...1) -> Long.SIZE
@@ -61,7 +61,7 @@
 | countBitsByShifting | Shift number to the right | O(k), k is the number of set bits |
 <br>
 
-#### <a name="primitive-types-calculate-parity"></a>Calculate parity
+### <a name="primitive-types-calculate-parity"></a>Calculate parity
 **Task**: Return parity of a given number, parity is 1 if amount of set bits is odd, 0 otherwise  
 **Example**: 3 (=11) -> 0  
 **Example**: -1 (=111...1) -> 0  
@@ -75,7 +75,7 @@
 | getParityByXOR | XOR | O(log(n)), n is the number of bits |
 <br>
 
-#### <a name="primitive-types-swap-bits"></a>Swap bits
+### <a name="primitive-types-swap-bits"></a>Swap bits
 **Task**: Swap two bits on given positions for a given number  
 **Example**: 584455544 (=100010110101100001010101111000) swap at 8 & 23 -> 584455544 (=100010110101100001010101111000)
 
@@ -84,7 +84,7 @@
 | swapByBruteforce | Bit/arithmetic operations | O(1) |
 <br>
 
-#### <a name="primitive-types-reverse-bits"></a>Reverse bits
+### <a name="primitive-types-reverse-bits"></a>Reverse bits
 **Task**: Reverse bits in a given number  
 **Example**: 0 -> 0  
 **Example**: Long.MIN_VALUE -> 1
@@ -97,7 +97,7 @@
 | reverseBitsByLookup | Lookup/hash table | O(n/p), n is number of bits, p is number of bits in the LOOKUP_BIT_MASK |
 <br>
 
-#### <a name="primitive-types-get-closest-number-with-same-weight"></a>Get closest number with same weight
+### <a name="primitive-types-get-closest-number-with-same-weight"></a>Get closest number with same weight
 **Task**: Given a number, find a closest one (by absolute difference) with same weight. Weight is the number of set bits  
 **Example**: 100 (=01100100)-> 98 (01100010)
 
@@ -107,7 +107,7 @@
 | getClosestLongWithSameWeightByFast | Change only 2 bits | O(1) |
 <br>
 
-#### <a name="primitive-types-sum-of-two-non-negative-numbers"></a>Sum of two non-negative numbers
+### <a name="primitive-types-sum-of-two-non-negative-numbers"></a>Sum of two non-negative numbers
 **Task**: Given two numbers, calculate their sum without using arithmetical operations
 
 | Method | Algorithm | Complexity |
@@ -116,7 +116,7 @@
 | getSumOfTwoNonNegativeLongsByMask | Using carry mask | O(k), n is number of set bits in the second number |
 <br>
 
-#### <a name="primitive-types-product-of-two-non-negative-numbers"></a>Product of two non-negative numbers
+### <a name="primitive-types-product-of-two-non-negative-numbers"></a>Product of two non-negative numbers
 **Task**: Given two numbers, calculate their product without using arithmetical operations
 
 | Method | Algorithm | Complexity |
@@ -126,7 +126,7 @@
 | getProductOfTwoNonNegativeLongsBySchoolMethod | Using school method | O(n) * Complexity of addition, n is the number of bits |
 <br>
 
-#### <a name="primitive-types-quotient-of-two-positive-numbers"></a>Quotient of two positive numbers
+### <a name="primitive-types-quotient-of-two-positive-numbers"></a>Quotient of two positive numbers
 **Task**: Given two numbers, calculate their quotient
 
 | Method | Algorithm | Complexity |
@@ -135,7 +135,7 @@
 | getQuotientOfTwoPositiveLongsBySchoolMethod | Using school method | O(n), n is the number of bits |
 <br>
 
-#### <a name="primitive-types-calculate-power"></a>Calculate power
+### <a name="primitive-types-calculate-power"></a>Calculate power
 **Task**: Given two numbers x and y, calculate x^y
 
 | Method | Algorithm | Complexity |
@@ -144,7 +144,7 @@
 | getPowerByFast | Calculate x^(y/2) * x^(y/2) | O(k), k is number if bits in y |
 <br>
 
-#### <a name="primitive-types-reverse-digits"></a>Reverse digits
+### <a name="primitive-types-reverse-digits"></a>Reverse digits
 **Task**: Reverse digits in given number  
 **Example**: 10 -> 1  
 **Example**: 719371291739 -> 937192173917
@@ -154,7 +154,7 @@
 | reverseDigits | Iterate all digits | O(p), p is number of digits |
 <br>
 
-#### <a name="primitive-types-is-palindrome"></a>Is palindrome
+### <a name="primitive-types-is-palindrome"></a>Is palindrome
 **Task**: Return true if given number is a palindrome, false otherwise  
 **Example**: 10 -> false  
 **Example**: 121 -> true
@@ -165,7 +165,7 @@
 | isPalindromeByDigits | In-place, iterating to the middle | O(p), p is number of digits; O(1) space |
 <br>
 
-#### <a name="primitive-types-uniform-random-number"></a>Uniform random number
+### <a name="primitive-types-uniform-random-number"></a>Uniform random number
 **Task**: Generate a uniform random number in \[from; to\] range using given 0/1 uniform generator
 
 | Method | Algorithm | Complexity |
@@ -173,7 +173,7 @@
 | generateUniformRandomNumber | Using lowest M such as M = 2^k - 1 and M >= to - from | O(lg(to - from  + 1)) |
 <br>
 
-#### <a name="primitive-types-rectangle-intersection"></a>Rectangle intersection
+### <a name="primitive-types-rectangle-intersection"></a>Rectangle intersection
 **Task**: Determine if given 2 aligned with X-axis and Y-axis rectangles have intersection, return it in such case
 
 | Method | Algorithm | Complexity |
@@ -181,7 +181,7 @@
 | checkTwoRectanglesHaveIntersection | Check when 2 rectangles do not have intersection | O(1) |
 <br>
 
-#### <a name="primitive-types-do-four-points-form-a-rectangle"></a>Do four points form a rectangle
+### <a name="primitive-types-do-four-points-form-a-rectangle"></a>Do four points form a rectangle
 **Task**: Give 4 points on a plane determine do they form a rectangle
 
 | Method | Algorithm | Complexity |
