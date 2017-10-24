@@ -1,4 +1,4 @@
-# Elements of programming interviews in Java
+# Elements of programming interviews in Java [![Build Status](https://travis-ci.org/amberovsky/elements.svg?branch=master)](https://travis-ci.org/amberovsky/elements) [![codecov](https://codecov.io/gh/amberovsky/elements/branch/master/graph/badge.svg)](https://codecov.io/gh/amberovsky/elements)
 
 ## <a name="TOC"></a>Table of content
 

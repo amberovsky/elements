@@ -2,8 +2,10 @@ group 'pro.amberovsky.elements'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -14,5 +16,14 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.tngtech.java/junit-dataprovider
     testCompile group: 'com.tngtech.java', name: 'junit-dataprovider', version: '1.13.1'
-
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
+
+check.dependsOn jacocoTestReport
