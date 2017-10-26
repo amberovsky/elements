@@ -11,7 +11,6 @@ import java.util.function.*;
 
 import static org.junit.Assert.*;
 
-
 @RunWith(DataProviderRunner.class)
 public class PrimitiveTypesTest {
     /*
