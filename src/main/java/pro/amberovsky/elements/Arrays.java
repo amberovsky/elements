@@ -1,5 +1,9 @@
 package pro.amberovsky.elements;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Arrays {
     /**
      * Swap 2 elements in an array
@@ -195,5 +199,69 @@ public class Arrays {
         }
 
         return array;
+    }
+
+    /*
+    INCREMENT AN ARBITRARY-PRECISION INTEGER
+
+    The task is add 1 to given array of digits representing a number of any length
+     */
+
+    /**
+     * @Complexity O(n), n is the number of digits
+     * @Algorithm One iteration
+     *
+     * @param number digit-representation of a number
+     *
+     * @return number + 1
+     */
+    public static List<Integer> addOne(List<Integer> number) {
+        int carry = 1;
+        for (int i = number.size() - 1; (i >= 0) && (carry == 1); i--) {
+            int newValue = number.get(i) + carry;
+            carry = newValue / 10;
+            newValue %= 10;
+            number.set(i, newValue);
+        }
+
+        if (carry > 0) number.add(0, 1);
+        return number;
+    }
+
+    /**
+     * @Complexity O(n), O(n) space, where n is max(len(number1), len(number2))
+     * @Algorithm
+     *
+     * Add two numbers in binary representations
+     *
+     * @param number1 first number
+     * @param number2 second number
+     *
+     * @return sum in binary representation
+     */
+    public static String addOne_TwoBinaryNumbers(String number1, String number2) {
+        StringBuilder result = new StringBuilder();
+
+        int carry = 0;
+        for (int i = 0; i < Math.max(number1.length(), number2.length()); i++) {
+            int value1 = (i < number1.length()) ? number1.charAt(number1.length() - i - 1) - '0' : 0;
+            int value2 = (i < number2.length()) ? number2.charAt(number2.length() - i - 1) - '0' : 0;
+
+            int sum;
+
+            if (value1 == value2) {
+                sum = carry;
+                carry = value1;
+            } else {
+                sum = value1 ^ value2 ^ carry;
+                carry = 1 - ((value1 | value2) ^ carry);
+            }
+
+            result.append(sum);
+        }
+
+        if (carry == 1) result.append(1);
+
+        return result.reverse().toString();
     }
 }

@@ -6,6 +6,9 @@ import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(DataProviderRunner.class)
@@ -253,5 +256,59 @@ public class ArraysTest {
                     break;
             }
         }
+    }
+
+
+
+    /*
+    INCREMENT AN ARBITRARY-PRECISION INTEGER
+     */
+    @DataProvider
+    public static Object[] dataProviderForAddOne() {
+        return new Object[] {
+                new Object[] { new Integer[] { 1, 2, 9 }, new Integer[] { 1, 3, 0 } },
+                new Object[] { new Integer[] { 0 }, new Integer[] { 1 } },
+                new Object[] { new Integer[] { -1 }, new Integer[] { 0 } },
+                new Object[] { new Integer[] { 9, 9, 9 }, new Integer[] { 1, 0, 0, 0 } }
+        };
+    }
+
+    @Test
+    @UseDataProvider("dataProviderForAddOne")
+    public void testAddOne(Object[] data) {
+        List<Integer> array = new ArrayList<>(java.util.Arrays.asList((Integer[]) data[0]));
+        Arrays.addOne(array);
+        List<Integer> result = java.util.Arrays.asList((Integer[]) data[1]);
+
+        assertEquals(array.size(), result.size());
+        for (int i = 0; i < array.size(); i++) assertEquals(array.get(i), result.get(i));
+    }
+
+    /*
+    Add two numbers in binary representation
+     */
+    @DataProvider
+    public static Object[] dataProviderForAddOne_TwoBinaryNumbers() {
+        return new Object[] {
+                new Object[] { "00", "00", "00" },
+                new Object[] { "0", "1", "1" },
+                new Object[] { "11", "00", "11" },
+                new Object[] { "11", "10", "101" },
+                new Object[] { "11", "11", "110"},
+                new Object[] { "11", "1", "100"}
+        };
+    }
+
+    @Test
+    @UseDataProvider("dataProviderForAddOne_TwoBinaryNumbers")
+    public void testAddOne_TwoBinaryNumbers(Object[] data) {
+        String number1 = (String) data[0];
+        String number2 = (String) data[1];
+        String result = Arrays.addOne_TwoBinaryNumbers(number1, number2);
+        String shouldBe = (String) data[2];
+
+        assertEquals(shouldBe.length(), result.length());
+
+        for (int i = 0; i < result.length(); i++) assertEquals(shouldBe.charAt(i), result.charAt(i));
     }
 }

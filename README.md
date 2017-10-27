@@ -201,6 +201,8 @@
    * [Variant: only four values](#arrays-dutch-flag-only-four-values)
    * [Variant: only two (boolean) values](#arrays-dutch-flag-only-boolean-values)
    * [Variant: only two (boolean) values, keep order of true values](#arrays-dutch-flag-only-boolean-values-keep-order-of-true)
+3. [Increment an arbitrary-precision integer](#arrays-increment-an-arbitrary-precision-integer)
+   * [Variant: add two numbers in binary representation](#arrays-increment-an-arbitrary-precision-integer-add-two-numbers-in-binary-representation)
 
 <br>
 
@@ -217,7 +219,7 @@
 **Task**: With given "pivot" value rearrange elements so first goes less than pivot, than equal, then greater  
 **Example**: [9, 8, 7, 6, 5, 4, 3, 2, 1], pivot: 8 -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-| Method | Algorithm | Time | Space |
+| Method | Algorithm | Time | Additional space |
 | :--- | :---: | :---: | :-- |
 | DutchFlag | One iteration | O(n) | O(1) |
 <br>
@@ -226,7 +228,7 @@
       **Task**: Assuming that elements take one of three values, reorder the array so that all objects with the same key appear together  
       **Example**: [0, 1, 2, 0, 2, 1, 1] -> [0, 0, 1, 1, 2, 2]
 
-      | Method | Algorithm | Time | Space |
+      | Method | Algorithm | Time | Additional space |
       | :--- | :---: | :---: | :-- |
       | DutchFlag_OnlyThreeValues | One iteration | O(n) | O(1) |
 <br>
@@ -235,7 +237,7 @@
       **Task**: Assuming that elements take one of four values, reorder the array so that all objects with the same key appear together  
       **Example**: [0, 1, 2, 0, 2, 1, 1, 5 ] -> [0, 0, 1, 1, 1, 2, 2, 5]
 
-      | Method | Algorithm | Time | Space |
+      | Method | Algorithm | Time | Additional space |
       | :--- | :---: | :---: | :-- |
       | DutchFlag_OnlyFourValues | One iteration | O(n) | O(1) |
 <br>
@@ -243,7 +245,7 @@
    * ### <a name="arrays-dutch-flag-only-boolean-values"></a>Variant: only two (boolean) values
       **Task**: Assuming that elements take only 0/1 (false/true), reorder the array so that false comes first  
 
-      | Method | Algorithm | Time | Space |
+      | Method | Algorithm | Time | Additional space |
       | :--- | :---: | :---: | :-- |
       | DutchFlag_OnlyTwoValues | One iteration | O(n) | O(1) |
 <br>
@@ -251,10 +253,29 @@
    * ### <a name="arrays-dutch-flag-only-boolean-values-keep-order-of-true"></a>Variant: only two (boolean) values, keep order of true values
       **Task**: Assuming that elements take only 0/1 (false/true), reorder the array so that false comes first and maintain the relative order of true  
 
-      | Method | Algorithm | Time | Space |
+      | Method | Algorithm | Time | Additional space |
       | :--- | :---: | :---: | :-- |
       | DutchFlag_OnlyTwoValuesKeepOrderOfOneValue | One iteration | O(n) | O(1) |
 <br>
+
+### 3. <a name="aarrays-increment-an-arbitrary-precision-integer"></a>Increment an arbitrary-precision integer
+**Task**:  add 1 to given array of digits representing a number of any length  
+**Example**: [3, 4, 2, 1] -> [3, 4, 2, 2]
+
+| Method | Algorithm | Time | Additional space |
+| :--- | :---: | :---: | :-- |
+| addOne | One iteration | O(n) | O(1) |
+<br>
+
+   * ### <a name="arrays-increment-an-arbitrary-precision-integer-add-two-numbers-in-binary-representation"></a>Variant: two numbers in binary representation
+      **Task**: Add two numbers in binary representations  
+      **Example**: "011", "1" -> "100"
+
+      | Method | Algorithm | Time | Additional space |
+      | :--- | :---: | :---: | :-- |
+      | addOne_TwoBinaryNumbers | One iteration | O(n) | O(n) |
+<br>
+
 [Go back to Arrays TOC](#arrays)  
 [Go back to TOC](#TOC)
 <br>
