@@ -1,8 +1,8 @@
 ## <a name="primitive-types"></a>1. Primitive Types
 #### Basic tasks with numbers & bits 
 
-**Class**: [BitOperations](/src/main/java/pro/amberovsky/elements/PrimitiveTypes.java)  
-**Factory**: [BitOperationsFactory](/src/main/java/pro/amberovsky/elements/PrimitiveTypesFactory.java)
+**Class**: [PrimitiveTypes](/src/main/java/pro/amberovsky/elements/PrimitiveTypes.java)  
+**Factory**: [PrimitiveTypesFactory](/src/main/java/pro/amberovsky/elements/PrimitiveTypesFactory.java)
 
 1. [Erase lowest set bit](#erase-lowest-set-bit)
 2. [Is power of two](#is-power-of-two)
