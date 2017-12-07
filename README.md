@@ -5,6 +5,7 @@
 1. [Utilities](/docs/Utilities.md)
 1. [Primitive types](/docs/PrimitiveTypes.md)
 2. [Arrays](/docs/Arrays.md)
+2. [Strings](/docs/Strings.md)
 <br>
 
 ## Disclaimer
