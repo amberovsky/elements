@@ -4,6 +4,9 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Various tasks on strings
+ */
 public class Strings {
     /*
     REVERSE

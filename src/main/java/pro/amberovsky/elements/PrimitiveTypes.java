@@ -3,6 +3,9 @@ package pro.amberovsky.elements;
 import java.util.function.BooleanSupplier;
 import java.util.function.LongBinaryOperator;
 
+/**
+ * Basic tasks with numbers & bits
+ */
 public class PrimitiveTypes {
 
     /**
