@@ -4,6 +4,9 @@ import pro.amberovsky.elements.util.Function.RandomSupplier;
 
 import java.util.*;
 
+/**
+ * Various tasks on arrays
+ */
 public class Arrays {
     /**
      * Swap 2 elements in an array

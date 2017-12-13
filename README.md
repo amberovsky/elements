@@ -2,10 +2,15 @@
 
 ## <a name="TOC"></a>Table of content
 
-1. [Utilities](/docs/Utilities.md)
+### Additional classes
+1. [Utilities](/docs/Utilities.md)  
+2. [Data Structures](/docs/DataStructures.md)
+
+### Solutions
 1. [Primitive types](/docs/PrimitiveTypes.md)
 2. [Arrays](/docs/Arrays.md)
-2. [Strings](/docs/Strings.md)
+3. [Strings](/docs/Strings.md)
+4. [Linked Lists](/docs/LinkedLists.md)
 <br>
 
 ## Disclaimer
