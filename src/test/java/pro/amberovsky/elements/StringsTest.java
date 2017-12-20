@@ -1,15 +1,15 @@
 package pro.amberovsky.elements;
 
-import com.tngtech.java.junit.dataprovider.DataProvider;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@RunWith(DataProviderRunner.class)
 public class StringsTest {
     /*
     REVERSE
@@ -140,84 +140,77 @@ public class StringsTest {
     /*
     REVERSE ALL THE WORDS IN A SENTENCE
      */
-    @DataProvider
-    public static Object[] dataProviderForReverseAllTheWordsInASentence() {
-        return new Object[] {
-                new Object[] { "Alice likes Bob", "Bob likes Alice" },
-                new Object[] { "Bob", "Bob" },
-        };
+    private static Stream<Arguments> sourceForReverseAllTheWordsInASentence() {
+        return Stream.of(
+                Arguments.of("Alice likes Bob", "Bob likes Alice"),
+                Arguments.of("Bob", "Bob")
+        );
     }
 
-//    @Test
-//    @UseDataProvider("dataProviderForReverseAllTheWordsInASentence")
-//    public void testReverseAllTheWordsInASentence(Object[] data) {
-//        String parameter = (String) data[0];
-//        String expected = (String) data[1];
-//
-//        Character parameterChar[] = new Character[parameter.length()];
-//        for (int i = 0; i < parameter.length(); i++) parameterChar[i] = parameter.charAt(i);
-//
-//        Character expectedChar[] = new Character[expected.length()];
-//        for (int i = 0; i < expected.length(); i++) expectedChar[i] = expected.charAt(i);
-//
-//
-//        assertArrayEquals(expectedChar, Strings.reverseAllTheWordsInASentence(parameterChar));
-//    }
+    @ParameterizedTest
+    @MethodSource("sourceForReverseAllTheWordsInASentence")
+    public void testReverseAllTheWordsInASentence(String parameter, String expected) {
+        Character parameterChar[] = new Character[parameter.length()];
+        for (int i = 0; i < parameter.length(); i++) parameterChar[i] = parameter.charAt(i);
+
+        Character expectedChar[] = new Character[expected.length()];
+        for (int i = 0; i < expected.length(); i++) expectedChar[i] = expected.charAt(i);
+
+        assertArrayEquals(expectedChar, Strings.reverseAllTheWordsInASentence(parameterChar));
+    }
 
 
 
     /*
     COMPUTE ALL MNEMONICS FOR A PHONE NUMBER
      */
-    @DataProvider
-    public static Object[] dataProviderForComputeAllMnemonicsForAPhoneNumber() {
-        return new Object[] {
-                new Object[] {
+    private static Stream<Arguments> sourceForComputeAllMnemonicsForAPhoneNumber() {
+        return Stream.of(
+                Arguments.of(
                         new String[] {
                             "0"
                         },
                         "0"
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new String[] {
                                 "0A", "0B", "0C"
                         },
                         "02"
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new String[] {
                                 "A0", "B0", "C0"
                         },
                         "20"
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new String[] {
                                 "AD", "AE", "AF", "BD", "BE", "BF", "CD", "CE", "CF"
                         },
                         "23"
-                },
-
-        };
+                )
+        );
     }
 
-//    @Test
-//    @UseDataProvider("dataProviderForComputeAllMnemonicsForAPhoneNumber")
-//    public void testComputeAllMnemonicsForAPhoneNumber(Object[] data) {
-//        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber((String) data[1]);
-//
-//        assertArrayEquals((String[]) data[0], result.toArray(new String[0]));
-//    }
+    @ParameterizedTest
+    @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
+    public void testComputeAllMnemonicsForAPhoneNumber(String[] mnemonics, String number) {
+        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
 
-//    @Test
-//    @UseDataProvider("dataProviderForComputeAllMnemonicsForAPhoneNumber")
-//    public void testComputeAllMnemonicsForAPhoneNumber_NonRecursive(Object[] data) {
-//        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber((String) data[1]);
-//
-//        assertArrayEquals((String[]) data[0], result.toArray(new String[0]));
-//    }
+        assertArrayEquals(mnemonics, result.toArray(new String[0]));
+    }
+
+    @ParameterizedTest
+    @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
+    public void testComputeAllMnemonicsForAPhoneNumber_NonRecursive(String[] mnemonics, String number) {
+        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
+
+        assertArrayEquals(mnemonics, result.toArray(new String[0]));
+    }
 
 
 
@@ -315,29 +308,28 @@ public class StringsTest {
     /*
     IMPLEMENT RUN-LENGTH ENCODING
      */
-    @DataProvider
-    public static Object[] dataProviderForImplementRunLengthEncoding() {
-        return new Object[] {
-                new Object[] { "e", "1e" },
-                new Object[] { "ee", "2e" },
-                new Object[] { "eeeeeeeeeeea", "11e1a" },
-                new Object[] { "eb", "1e1b" },
-                new Object[] { "aaaabcccaa", "4a1b3c2a" },
-                new Object[] { "eeeffffee", "3e4f2e" },
-        };
+    private static Stream<Arguments> sourceForImplementRunLengthEncoding() {
+        return Stream.of(
+                Arguments.of("e", "1e"),
+                Arguments.of("ee", "2e"),
+                Arguments.of("eeeeeeeeeeea", "11e1a"),
+                Arguments.of("eb", "1e1b"),
+                Arguments.of("aaaabcccaa", "4a1b3c2a"),
+                Arguments.of("eeeffffee", "3e4f2e")
+        );
     }
 
-//    @Test
-//    @UseDataProvider("dataProviderForImplementRunLengthEncoding")
-//    public void testEncodeRunLength(Object[] data) {
-//        assertEquals((String) data[1], Strings.encodeRunLength((String) data[0]));
-//    }
+    @ParameterizedTest
+    @MethodSource("sourceForImplementRunLengthEncoding")
+    public void testEncodeRunLength(String source, String encoded) {
+        assertEquals(encoded, Strings.encodeRunLength(source));
+    }
 
-//    @Test
-//    @UseDataProvider("dataProviderForImplementRunLengthEncoding")
-//    public void testDecodeRunLength(Object[] data) {
-//        assertEquals((String) data[0], Strings.decodeRunLength(Strings.encodeRunLength((String) data[0])));
-//    }
+    @ParameterizedTest
+    @MethodSource("sourceForImplementRunLengthEncoding")
+    public void testDecodeRunLength(String source, String _) {
+        assertEquals(source, Strings.decodeRunLength(Strings.encodeRunLength(source)));
+    }
 
 
 
@@ -345,7 +337,7 @@ public class StringsTest {
     FIND THE FIRST OCCURRENCE OF A SUBSTRING
      */
     @Test
-    public void testFindTheFirstOccurenceOfASubstring() {
+    public void testFindTheFirstOccurrenceOfASubstring() {
         assertEquals(-1, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "p"));
         assertEquals(0, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "the"));
         assertEquals(7, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "test"));

@@ -29,7 +29,7 @@
 
 ### 2. <a name="evaluate-rpn-expression"></a>Evaluate RPN expression
 **Task**: Evaluate RPN expression  
-**Example**: "1,2,3,4,5,*,*,*,-" -> -119
+**Example**: "1,2,3,4,5,\*,\*,\*,-" -> -119
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |

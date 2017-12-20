@@ -25,6 +25,18 @@ public class Arrays {
         return array;
     }
 
+    /**
+     * Swap 2 elements in a 2D-array
+     *
+     * @param array array
+     * @param r1 row-coordinate of first element
+     * @param c1 column-coordinate of first element
+     * @param r2 row-coordinate of second element
+     * @param c2 column-coordinate of second element
+     * @param <T> type
+     *
+     * @return array with swapped elements
+     */
     public static <T> T[][] swap2D(T[][] array, final int r1, final int c1, final int r2, final int c2) {
         T t = array[r2][c2];
         array[r2][c2] = array[r1][c1];
@@ -94,7 +106,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static int[] DutchFlag(int[] array, final int pivotIndex) {
+    public static Integer[] DutchFlag(Integer[] array, final int pivotIndex) {
         int equal = 0;
         int greater = array.length - 1;
 
@@ -128,7 +140,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static int[] DutchFlag_OnlyThreeValues(int[] array, final int value1, final int value2, final int value3) {
+    public static Integer[] DutchFlag_OnlyThreeValues(Integer[] array, final int value1, final int value2, final int value3) {
         int equalToValue2 = 0;
         int equalToValue3 = array.length - 1;
 
@@ -158,8 +170,8 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static int[] DutchFlag_OnlyFourValues(
-            int[] array,
+    public static Integer[] DutchFlag_OnlyFourValues(
+            Integer[] array,
             final int value1,
             final int value2,
             final int value3,
@@ -196,7 +208,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static int[] DutchFlag_OnlyTwoValues(int[] array) {
+    public static Integer[] DutchFlag_OnlyTwoValues(Integer[] array) {
         int trueIndex = 0;
 
         for (int i = 0; i < array.length; i++) {
@@ -218,7 +230,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static int[] DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(int[] array) {
+    public static Integer[] DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer[] array) {
         int trueIndex = array.length - 1;
         int falseIndex = array.length - 1;
 
@@ -360,7 +372,7 @@ public class Arrays {
      *
      * @return can you win the game
      */
-    public static boolean boardGame(int[] array) {
+    public static boolean boardGame(Integer[] array) {
         int maximum = 0;
 
         for (int i = 0; (i <= maximum) && (maximum < array.length); i++) {
