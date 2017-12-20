@@ -1,17 +1,15 @@
 package pro.amberovsky.elements;
 
-import com.tngtech.java.junit.dataprovider.DataProvider;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import pro.amberovsky.elements.util.Function.TriFunction;
 
 import java.util.function.*;
+import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(DataProviderRunner.class)
 public class PrimitiveTypesTest {
     /*
     ERASE LOWEST SET BIT
@@ -30,6 +28,7 @@ public class PrimitiveTypesTest {
         assertEquals(-4, PrimitiveTypes.eraseLowestSetBit(-2));
         assertEquals(-8, PrimitiveTypes.eraseLowestSetBit(-7));
     }
+
 
 
     /*
@@ -62,6 +61,7 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     COUNT BITS
      */
@@ -87,6 +87,7 @@ public class PrimitiveTypesTest {
         assertEquals(Long.SIZE - 8, PrimitiveTypes.countBitsByShifting(-256));
         assertEquals(Long.SIZE - 1, PrimitiveTypes.countBitsByShifting(-257));
     }
+
 
 
     /*
@@ -132,6 +133,7 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     SWAP
      */
@@ -156,6 +158,7 @@ public class PrimitiveTypesTest {
         runSwap_PositiveNumbers(PrimitiveTypesFactory.getSwap(PrimitiveTypesFactory.SWAP.BRUTEFORCE));
         runSwap_NegativeNumbers(PrimitiveTypesFactory.getSwap(PrimitiveTypesFactory.SWAP.BRUTEFORCE));
     }
+
 
 
     /*
@@ -198,31 +201,31 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     CLOSEST NUMBER WITH SAME WEIGHT
      */
-    @DataProvider
-    public static Object[] dataProviderForClosestLongWithSameWeight() {
-        return new Object[]{
+    private static Stream<LongUnaryOperator> sourceForClosestLongWithSameWeight() {
+        return Stream.of(
                 PrimitiveTypesFactory.getClosestWithSameWeight(PrimitiveTypesFactory.CLOSEST_WITH_SAME_WEIGHT.ITERATION),
                 PrimitiveTypesFactory.getClosestWithSameWeight(PrimitiveTypesFactory.CLOSEST_WITH_SAME_WEIGHT.FAST)
-        };
+        );
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    @UseDataProvider("dataProviderForClosestLongWithSameWeight")
+    @ParameterizedTest
+    @MethodSource("sourceForClosestLongWithSameWeight")
     public void testGetClosestLongWithSameWeight_throwsExceptionOnAllZero(LongUnaryOperator algorithm) {
-        algorithm.applyAsLong(0L);
+        assertThrows(IllegalArgumentException.class, () -> algorithm.applyAsLong(0L));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    @UseDataProvider("dataProviderForClosestLongWithSameWeight")
+    @ParameterizedTest
+    @MethodSource("sourceForClosestLongWithSameWeight")
     public void testGetClosestLongWithSameWeight_throwsExceptionOnAllOne(LongUnaryOperator algorithm) {
-        algorithm.applyAsLong(-1L);
+        assertThrows(IllegalArgumentException.class, () -> algorithm.applyAsLong(-1L));
     }
 
-    @Test
-    @UseDataProvider("dataProviderForClosestLongWithSameWeight")
+    @ParameterizedTest
+    @MethodSource("sourceForClosestLongWithSameWeight")
     public void testGetClosestLongWithSameWeight(LongUnaryOperator algorithm) {
         long[][] numbers = new long[][]{
                 {1, 2},
@@ -237,33 +240,33 @@ public class PrimitiveTypesTest {
             long result = algorithm.applyAsLong(number[0]);
 
             assertEquals(
-                    "Wrong difference on number " + number[0] + ", got the closest " + result +
-                            " but expected is " + number[1],
                     Math.abs(result - number[0]),
-                    Math.abs(number[0] - number[1])
+                    Math.abs(number[0] - number[1]),
+                    "Wrong difference on number " + number[0] + ", got the closest " + result +
+                            " but expected is " + number[1]
             );
             assertEquals(
-                    "Wrong bits count on number " + number[0] + ", got the closest " + result,
                     PrimitiveTypes.countBitsByShifting(result),
-                    PrimitiveTypes.countBitsByShifting(number[0])
+                    PrimitiveTypes.countBitsByShifting(number[0]),
+                    "Wrong bits count on number " + number[0] + ", got the closest " + result
             );
         }
     }
 
 
+
     /*
     SUM OF TWO NON-NEGATIVE NUMBERS
      */
-    @DataProvider
-    public static Object[] dataProviderForGetSumOfTwoNonNegativeLongs() {
-        return new Object[]{
+    private static Stream<LongBinaryOperator> sourceForGetSumOfTwoNonNegativeLongs() {
+        return Stream.of(
                 PrimitiveTypesFactory.getSum(PrimitiveTypesFactory.SUM.ITERATION),
                 PrimitiveTypesFactory.getSum(PrimitiveTypesFactory.SUM.MASK)
-        };
+        );
     }
 
-    @Test
-    @UseDataProvider("dataProviderForGetSumOfTwoNonNegativeLongs")
+    @ParameterizedTest
+    @MethodSource("sourceForGetSumOfTwoNonNegativeLongs")
     public void testGetSumOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
         assertEquals(2, algorithm.applyAsLong(1, 1));
         assertEquals(1, algorithm.applyAsLong(1, 0));
@@ -274,19 +277,19 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     PRODUCT OF TWO NON-NEGATIVE NUMBERS
      */
-    @DataProvider
-    public static Object[] dataProviderForGetProductOfTwoNonNegativeLongs() {
-        return new Object[]{
+    private static Stream<LongBinaryOperator> sourceForGetProductOfTwoNonNegativeLongs() {
+        return Stream.of(
                 PrimitiveTypesFactory.getProduct(PrimitiveTypesFactory.PRODUCT.BRUTEFORCE, PrimitiveTypesFactory.SUM.MASK),
-                PrimitiveTypesFactory.getProduct(PrimitiveTypesFactory.PRODUCT.SCHOOL_METHOD, PrimitiveTypesFactory.SUM.MASK),
-        };
+                PrimitiveTypesFactory.getProduct(PrimitiveTypesFactory.PRODUCT.SCHOOL_METHOD, PrimitiveTypesFactory.SUM.MASK)
+        );
     }
 
-    @Test
-    @UseDataProvider("dataProviderForGetProductOfTwoNonNegativeLongs")
+    @ParameterizedTest
+    @MethodSource("sourceForGetProductOfTwoNonNegativeLongs")
     public void testGetProductOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
         assertEquals(1, algorithm.applyAsLong(1, 1));
         assertEquals(0, algorithm.applyAsLong(1, 0));
@@ -297,19 +300,20 @@ public class PrimitiveTypesTest {
         assertEquals(1024 * 1024, algorithm.applyAsLong(1024, 1024));
     }
 
+
+
     /*
     QUOTIENT OF TWO POSITIVE NUMBERS
      */
-    @DataProvider
-    public static Object[] dataProviderForGetQuotientOfTwoPositiveLongs() {
-        return new Object[]{
+    private static Stream<LongBinaryOperator> sourceForGetQuotientOfTwoPositiveLongs() {
+        return Stream.of(
                 PrimitiveTypesFactory.getQuotient(PrimitiveTypesFactory.QUOTIENT.BRUTEFORCE),
-                PrimitiveTypesFactory.getQuotient(PrimitiveTypesFactory.QUOTIENT.SCHOOL_METHOD),
-        };
+                PrimitiveTypesFactory.getQuotient(PrimitiveTypesFactory.QUOTIENT.SCHOOL_METHOD)
+        );
     }
 
-    @Test
-    @UseDataProvider("dataProviderForGetQuotientOfTwoPositiveLongs")
+    @ParameterizedTest
+    @MethodSource("sourceForGetQuotientOfTwoPositiveLongs")
     public void testGetQuotientOfTwoPositiveLongs(LongBinaryOperator algorithm) {
         assertEquals(2, algorithm.applyAsLong(10, 5));
         assertEquals(1, algorithm.applyAsLong(10, 10));
@@ -318,19 +322,20 @@ public class PrimitiveTypesTest {
         assertEquals(0, algorithm.applyAsLong(10, 100));
     }
 
+
+
     /*
     POWER
      */
-    @DataProvider
-    public static Object[] dataProviderForGetPower() {
-        return new Object[]{
+    private static Stream<ToDoubleBiFunction<Double, Integer>> sourceForGetPower() {
+        return Stream.of(
                 PrimitiveTypesFactory.getPower(PrimitiveTypesFactory.POWER.BRUTEFORCE),
-                PrimitiveTypesFactory.getPower(PrimitiveTypesFactory.POWER.FAST),
-        };
+                PrimitiveTypesFactory.getPower(PrimitiveTypesFactory.POWER.FAST)
+        );
     }
 
-    @Test
-    @UseDataProvider("dataProviderForGetPower")
+    @ParameterizedTest
+    @MethodSource("sourceForGetPower")
     public void testGetPower(ToDoubleBiFunction<Double, Integer> algorithm) {
         assertEquals(1.0, algorithm.applyAsDouble(10.0, 0), 1.e-10);
         assertEquals(10.0, algorithm.applyAsDouble(10.0, 1), 1.e-10);
@@ -339,6 +344,7 @@ public class PrimitiveTypesTest {
         assertEquals(4747561509943.0, algorithm.applyAsDouble(7.0, 15), 1.e-10);
         assertEquals(833577583.1236198, algorithm.applyAsDouble(7.8, 10), 1.e-6);
     }
+
 
 
     /*
@@ -355,19 +361,19 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     IS PALINDROME
      */
-    @DataProvider
-    public static Object[] dataProviderForIsPalindrome() {
-        return new Object[]{
+    private static Stream<LongPredicate> sourceForIsPalindrome() {
+        return Stream.of(
                 PrimitiveTypesFactory.getIsPalindrome(PrimitiveTypesFactory.IS_PALINDROME.BRUTEFORCE),
-                PrimitiveTypesFactory.getIsPalindrome(PrimitiveTypesFactory.IS_PALINDROME.DIGITS),
-        };
+                PrimitiveTypesFactory.getIsPalindrome(PrimitiveTypesFactory.IS_PALINDROME.DIGITS)
+        );
     }
 
-    @Test
-    @UseDataProvider("dataProviderForIsPalindrome")
+    @ParameterizedTest
+    @MethodSource("sourceForIsPalindrome")
     public void testIsPalindrome(LongPredicate algorithm) {
         assertFalse(algorithm.test(-10));
         assertTrue(algorithm.test(0));
@@ -380,6 +386,7 @@ public class PrimitiveTypesTest {
     }
 
 
+
     /*
     UNIFORM RANDOM NUMBER
      */
@@ -387,6 +394,7 @@ public class PrimitiveTypesTest {
     public void testGenerateUniformRandomNumber() {
         // Damn, randomness tests are quite complex, maybe later when I'll have more time
     }
+
 
 
     /*

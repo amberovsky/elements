@@ -63,7 +63,7 @@ public class Arrays {
      *
      * @return array with elements reordered so that the even entries appear first
      */
-    public static int[] reorderEven(int[] array) {
+    public static Integer[] reorderEven(Integer[] array) {
         int nextEven = 0;
         int nextOdd = array.length - 1;
 

@@ -1,8 +1,8 @@
 package pro.amberovsky.elements.util.data;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static pro.amberovsky.elements.util.data.DoubleListNode.*;
 
 public class DoubleListNodeTest {
