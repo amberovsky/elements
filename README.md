@@ -11,6 +11,7 @@
 2. [Arrays](/docs/Arrays.md)
 3. [Strings](/docs/Strings.md)
 4. [Linked Lists](/docs/LinkedLists.md)
+4. [Stacks and Queues](/docs/StacksAndQueues.md)
 <br>
 
 ## Disclaimer
