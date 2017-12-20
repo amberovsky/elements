@@ -80,7 +80,7 @@
 
 ### 5. <a name="replace-and-remove"></a>Replace and remove
 **Task**: Replace each 'a' by 'dd', delete each 'd'  
-**Example**: ['a', 'c', 'd', 'b', 'b', 'c', 'a'], 7 -> ['d', 'd', 'c', 'd', 'c', 'd', 'd']  
+**Example**: \['a', 'c', 'd', 'b', 'b', 'c', 'a'\], 7 -> \['d', 'd', 'c', 'd', 'c', 'd', 'd'\]  
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
@@ -115,7 +115,7 @@
    
 ### 8. <a name="compute-all-mnemonics-for-a-phone-number"></a>Compute all mnemonics for a phone number
 **Task**: Generate all possible mnemonics by given phone number  
-**Example**: "02"-> ["0A", "0B", "0C"]
+**Example**: "02"-> \["0A", "0B", "0C"\]
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |

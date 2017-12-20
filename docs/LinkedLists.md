@@ -31,7 +31,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | mergeTwoSortedLists | | O(n + m) | O(1) |
-<br>
 
    * ### <a name="merge-two-sorted-lists-double"></a>Variant: double
       **Task**: Merge two double linked lists  
@@ -47,7 +46,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | reverseASingleSublist | One iteration | O(n) | O(1) |
-<br>
 
    * ### <a name="reverse-a-single-sublist-list"></a>Variant: list
       **Task**: Reverse single linked list  
@@ -103,7 +101,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | removeDuplicatesFormASortedList | One iteration | O(n) | O(1) |
-<br>
 
    * ### <a name="remove-duplicates-from-a-sorted-single-linked-list-m"></a>Variant: M
       **Task**: Remove only if a numbers appears more than m times 
@@ -134,7 +131,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | testWhetherASingleLinkedListIsPalindromic | Reverse the second half of the list | O(n) | O(1) |
-<br>
 
    * ### <a name="test-whether-a-single-linked-list-is-palindromic-double"></a>Variant: double
       **Task**: Same as above but with double linked list  
@@ -158,7 +154,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | addListBasedIntegers | | O(n + m) | O(max(n, m)) |
-<br>
 
    * ### <a name="add-list-based-integers-most-significant-digit-comes-first"></a>Variant: most significant digit comes first  
 
