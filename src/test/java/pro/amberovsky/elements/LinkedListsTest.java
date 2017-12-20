@@ -1,81 +1,83 @@
 package pro.amberovsky.elements;
 
-import com.tngtech.java.junit.dataprovider.DataProvider;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import pro.amberovsky.elements.util.data.DoubleListNode;
 import pro.amberovsky.elements.util.data.ListNode;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-//@RunWith(DataProviderRunner.class)
 public class LinkedListsTest {
-
-    @DataProvider
-    public static Object[] dataProviderForTestMergeTwoSortedLists() {
-        return new Object[] {
-                new Object[] {
+    /*
+    MERGE TWO SORTED LISTS
+     */
+    private static Stream<Arguments> sourceForTestMergeTwoSortedLists() {
+        return Stream.of(
+                Arguments.of(
                         new Integer[] { 1 },
                         new Integer[] { 1 },
                         new Integer[] { }
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new Integer[] { },
                         new Integer[] { },
                         new Integer[] { }
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new Integer[] { 1 },
                         new Integer[] { },
                         new Integer[] { 1 }
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new Integer[] { 1, 2, 3, 4, 5, 6 },
                         new Integer[] { 1, 2, 3 },
                         new Integer[] { 4, 5, 6 }
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new Integer[] { 1, 2, 3, 4, 5, 6 },
                         new Integer[] { 4, 5, 6 },
                         new Integer[] { 1, 2, 3 }
-                },
+                ),
 
-                new Object[] {
+                Arguments.of(
                         new Integer[] { 1, 2, 3, 4, 5, 6 },
                         new Integer[] { 1, 3, 5 },
                         new Integer[] { 2, 4, 6 }
-                },
-        };
+            )
+        );
     }
-//
-//    @Test
-//    @UseDataProvider("dataProviderForTestMergeTwoSortedLists")
-//    public void testMergeTwoSortedLists(Object[] data) {
-//        assertEquals(
-//                ListNode.toListNode((Integer[]) data[0]),
-//                LinkedLists.mergeTwoSortedLists(
-//                        ListNode.toListNode((Integer[]) data[1]),
-//                        ListNode.toListNode((Integer[]) data[2])
-//                )
-//        );
-//    }
 
-//    @Test
-//    @UseDataProvider("dataProviderForTestMergeTwoSortedLists")
-//    public void testMergeTwoSortedLists_Double(Object[] data) {
-//        assertEquals(
-//                DoubleListNode.toListNode((Integer[]) data[0]),
-//                LinkedLists.mergeTwoSortedLists_Double(
-//                        DoubleListNode.toListNode((Integer[]) data[1]),
-//                        DoubleListNode.toListNode((Integer[]) data[2])
-//                )
-//        );
-//    }
+    @ParameterizedTest
+    @MethodSource("sourceForTestMergeTwoSortedLists")
+    public void testMergeTwoSortedLists(Integer expected[], Integer firstList[], Integer secondList[]) {
+        assertEquals(
+                ListNode.toListNode(expected),
+                LinkedLists.mergeTwoSortedLists(
+                        ListNode.toListNode(firstList),
+                        ListNode.toListNode(secondList)
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("sourceForTestMergeTwoSortedLists")
+    public void testMergeTwoSortedLists_Double(Integer expected[], Integer firstList[], Integer secondList[]) {
+        assertEquals(
+                DoubleListNode.toListNode(expected),
+                LinkedLists.mergeTwoSortedLists_Double(
+                        DoubleListNode.toListNode(firstList),
+                        DoubleListNode.toListNode(secondList)
+                )
+        );
+    }
 
 
 
