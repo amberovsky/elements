@@ -34,11 +34,10 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | evaluateRPNExpression | Stack | O(n) | O(n) |
-<br>
 
    * ### <a name="evaluate-rpn-expression-polish-notation"></a>Variant: Polish notation
       **Task**: Evaluate expression in the Polish notation  
-      **Example**: "-,*,*,*,5,4,3,2,1" -> -119
+      **Example**: "-,\*,\*,\*,5,4,3,2,1" -> -119
 
       | Method | Algorithm | Time | Space |
       | :--- | :---: | :---: | :-- |
@@ -47,7 +46,7 @@
 
 ### 3. <a name="test-a-string-over-for-well-formedness"></a>Test a string over for well-formedness
 **Task**:  Check for parentheses (),{},[] parity  
-**Example**: "({}[()]){}" -> true
+**Example**: "({}\[()\]){}" -> true
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
@@ -74,12 +73,11 @@
 
 ### 6. <a name="compute-buildings-with-a-sunset-view"></a>Compute buildings with a sunset view
 **Task**: Compute buildings with a sunset view  
-**Example**: [10, 1] -> [10]
+**Example**: \[10, 1\] -> \[10\]
  
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | computeBuildingsWithASunsetView | Stack | O(n) | O(n) |
-<br>
 
    * ### <a name="compute-buildings-with-a-sunset-view-west-to-east"></a>Variant: west to east
       **Task**: Compute in the west to east direction  
@@ -95,7 +93,6 @@
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | computeBinaryTreeNodesInOrderOfIncreasingDepth | Breadth-first search | O(n) | O(n) |
-<br>
 
    * ### <a name="compute-binary-tree-nodes-in-order-of-increasing-depth-alternate-direction-on-each-level"></a>Variant: alternate direction on each level
       **Task**: Remove only if a numbers appears more than m times 
@@ -103,7 +100,6 @@
       | Method | Algorithm | Time | Space |
       | :--- | :---: | :---: | :-- |
       | computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection | Breadth-first search | O(n) | O(n) |
-<br>
 
    * ### <a name="compute-binary-tree-nodes-in-order-of-increasing-depth-bottom-up-left-right-direction"></a>Variant: bottom-up left-right direction
       **Task**: Remove only if a numbers appears more than m times 
@@ -111,7 +107,6 @@
       | Method | Algorithm | Time | Space |
       | :--- | :---: | :---: | :-- |
       | computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight | Breadth-first searchn | O(n) | O(n) |
-<br>
 
    * ### <a name="compute-binary-tree-nodes-in-order-of-increasing-depth-average-at-each-level"></a>Variant: average at each level
       **Task**: Remove only if a numbers appears more than m times 
