@@ -18,33 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ArraysTest {
-    /*
-    SWAP
-     */
-    @Test
-    public void testSwap() {
-        assertArrayEquals(new int[] { 1 }, Arrays.swap(new int[] { 1 }, 0, 0));
-        assertArrayEquals(new int[] { 2, 1 }, Arrays.swap(new int[] { 1, 2 }, 0, 1));
-        assertArrayEquals(new int[] { 1, 3, 2, 4 }, Arrays.swap(new int[] { 1, 2, 3, 4 }, 1, 2));
-    }
-
-    @Test
-    public void testSwap2D() {
-        assertArrayEquals(new Integer[][] { { 1 } }, Arrays.swap2D(new Integer[][] { { 1 } }, 0, 0, 0, 0));
-        assertArrayEquals(new Integer[][] { { 2 } , { 1 } }, Arrays.swap2D(new Integer[][] { { 1 }, { 2 } }, 0, 0, 1, 0));
-        assertArrayEquals(new Integer[][] { { 1, 3 }, { 2, 4 } }, Arrays.swap2D(new Integer[][] { { 1, 2 }, { 3, 4 } }, 0, 1, 1, 0));
-    }
-
-    @Test
-    public void testGenericSwap() {
-        assertArrayEquals(new Integer[] { 1 }, Arrays.swap(new Integer[] { 1 }, 0, 0));
-        assertArrayEquals(new Integer[] { 2, 1 }, Arrays.swap(new Integer[] { 1, 2 }, 0, 1));
-        assertArrayEquals(new Integer[] { 1, 3, 2, 4 }, Arrays.swap(new Integer[] { 1, 2, 3, 4 }, 1, 2));
-    }
-
-
-
+class ArraysTest {
     /*
     REORDER ARRAY
      */
@@ -56,7 +30,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testReorderEven() {
+    void testReorderEven() {
         runTestReorderEven(new Integer[] { 1 });
         runTestReorderEven(new Integer[] { 1, 2 });
         runTestReorderEven(new Integer[] { 1, 2, 3 });
@@ -81,7 +55,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDutchFlag")
-    public void testDutchFlag(Integer array[], int pivotIndex) {
+    void testDutchFlag(Integer array[], int pivotIndex) {
         int pivot = array[pivotIndex];
         DUTCH_FLAG_CHECKING_STATUS status = DUTCH_FLAG_CHECKING_STATUS.LESS;
 
@@ -123,7 +97,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDutchFlag_OnlyThreeValues")
-    public void testDutchFlag_OnlyThreeValues(Integer array[], int value1, int value2, int value3) {
+    void testDutchFlag_OnlyThreeValues(Integer array[], int value1, int value2, int value3) {
         DUTCH_FLAG_ONLY_THREE_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_THREE_VALUES_CHECKING_STATUS.VALUE1;
 
         Arrays.DutchFlag_OnlyThreeValues(array, value1, value2, value3);
@@ -161,7 +135,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDutchFlag_OnlyFourValues")
-    public void testDutchFlag_OnlyFourValues(Integer array[], int value1, int value2, int value3, int value4) {
+    void testDutchFlag_OnlyFourValues(Integer array[], int value1, int value2, int value3, int value4) {
         DUTCH_FLAG_ONLY_FOUR_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_FOUR_VALUES_CHECKING_STATUS.VALUE1;
 
         Arrays.DutchFlag_OnlyFourValues(array, value1, value2, value3, value4);
@@ -204,7 +178,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDutchFlag_OnlyTwoValues")
-    public void testDutchFlag_OnlyTwoValues(Integer[] array) {
+    void testDutchFlag_OnlyTwoValues(Integer[] array) {
         DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS.FALSE;
 
         Arrays.DutchFlag_OnlyTwoValues(array);
@@ -237,7 +211,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDutchFlag_OnlyTwoValuesKeepOrderOfOneValue")
-    public void testDutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer array[]) {
+    void testDutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer array[]) {
         DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS.FALSE;
 
         Arrays.DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(array);
@@ -272,7 +246,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForAddOne")
-    public void testAddOne(Integer source[], Integer expected[]) {
+    void testAddOne(Integer source[], Integer expected[]) {
         List<Integer> array = new ArrayList<>(java.util.Arrays.asList(source));
         Arrays.addOne(array);
         List<Integer> result = java.util.Arrays.asList(expected);
@@ -297,7 +271,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForAddOne_TwoBinaryNumbers")
-    public void testAddOne_TwoBinaryNumbers(String number1, String number2, String shouldBe) {
+    void testAddOne_TwoBinaryNumbers(String number1, String number2, String shouldBe) {
         String result = Arrays.addOne_TwoBinaryNumbers(number1, number2);
 
         assertEquals(shouldBe.length(), result.length());
@@ -311,7 +285,7 @@ public class ArraysTest {
     MULTIPLY TWO ARBITRARY-PRECISION INTEGERS
      */
     @Test
-    public void testMultiply() {
+    void testMultiply() {
         assertEquals(java.util.Arrays.asList(0), Arrays.multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(0)));
         assertEquals(java.util.Arrays.asList(0), Arrays.multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(1)));
 
@@ -350,13 +324,13 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForBoardGame")
-    public void testBoardGame(Integer array[], boolean result) {
+    void testBoardGame(Integer array[], boolean result) {
         assertEquals(result, Arrays.boardGame(array));
     }
 
 
     @Test
-    public void testBoardGame_MinimumSteps() {
+    void testBoardGame_MinimumSteps() {
         assertEquals(Integer.MAX_VALUE, Arrays.boardGame_MinimumSteps(new int[] { 0, 1 }));
         assertEquals(1, Arrays.boardGame_MinimumSteps(new int[] { 3, 2, 2, 0 }));
     }
@@ -391,7 +365,7 @@ public class ArraysTest {
         );
     }
 
-    public void runDeleteDuplicates(Integer array[], Integer shouldBe[], UnaryOperator<Integer[]> operator) {
+    void runDeleteDuplicates(Integer array[], Integer shouldBe[], UnaryOperator<Integer[]> operator) {
         operator.apply(array);
 
         assertArrayEquals(shouldBe, array);
@@ -399,13 +373,13 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates")
-    public void testDeleteDuplicates_Bruteforce(Integer array[], Integer shouldBe[]) {
+    void testDeleteDuplicates_Bruteforce(Integer array[], Integer shouldBe[]) {
         runDeleteDuplicates(array, shouldBe, ArraysFactory.getDeleteDuplicates(ArraysFactory.DELETE_DUPLICATES.BRUTEFORCE));
     }
 
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates")
-    public void testDeleteDuplicates_Fast(Integer array[], Integer shouldBe[]) {
+    void testDeleteDuplicates_Fast(Integer array[], Integer shouldBe[]) {
         runDeleteDuplicates(array, shouldBe, ArraysFactory.getDeleteDuplicates(ArraysFactory.DELETE_DUPLICATES.FAST));
     }
 
@@ -452,7 +426,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates_OneKey")
-    public void testDeleteDuplicates_OneKey(Integer array[], Integer expected[], int key) {
+    void testDeleteDuplicates_OneKey(Integer array[], Integer expected[], int key) {
         Arrays.deleteDuplicates_OneKey(array, key);
 
         assertArrayEquals(expected, array);
@@ -506,7 +480,7 @@ public class ArraysTest {
 
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates_Min2m")
-    public void testDeleteDuplicates_Min2m(Integer array[], Integer expected[], int m) {
+    void testDeleteDuplicates_Min2m(Integer array[], Integer expected[], int m) {
         Arrays.deleteDuplicates_Min2m(array, m);
 
         assertArrayEquals(expected, array);
@@ -518,7 +492,7 @@ public class ArraysTest {
     BUY AND SELL A STOCK ONCE
      */
     @Test
-    public void testBuyAndSellAStockOnce() {
+    void testBuyAndSellAStockOnce() {
         assertEquals(30, Arrays.buyAndSellAStockOnce(new int[] { 310, 315, 275, 295, 260, 270, 290, 230, 255, 250 }));
     }
 
@@ -529,7 +503,7 @@ public class ArraysTest {
     */
     @ParameterizedTest
     @EnumSource(ArraysFactory.BUY_AND_SELL_A_STOCK_TWICE.class)
-    public void testBuyAndSellAStockTwice(ArraysFactory.BUY_AND_SELL_A_STOCK_TWICE algorithm) {
+    void testBuyAndSellAStockTwice(ArraysFactory.BUY_AND_SELL_A_STOCK_TWICE algorithm) {
         Function<Integer[], Integer> function = ArraysFactory.getBuyAndSellAStockTwice(algorithm);
         assertEquals(10, function.apply(new Integer[] { 12, 11, 13, 9, 12, 8, 14, 13, 15 }).intValue());
     }
@@ -540,7 +514,7 @@ public class ArraysTest {
     ENUMERATE ALL PRIMES TO n
      */
     @Test
-    public void testEnumerateAllPrimesToN() {
+    void testEnumerateAllPrimesToN() {
         assertEquals(java.util.Arrays.asList(), Arrays.enumerateAllPrimes(0));
         assertEquals(java.util.Arrays.asList(1), Arrays.enumerateAllPrimes(1));
         assertEquals(java.util.Arrays.asList(1, 2, 3, 5), Arrays.enumerateAllPrimes(5));
@@ -554,7 +528,7 @@ public class ArraysTest {
      */
     @ParameterizedTest
     @EnumSource(ArraysFactory.PERMUTE_THE_ELEMENTS_OF_AN_ARRAY.class)
-    public void testPermuteTheElementsOfAnArray(ArraysFactory.PERMUTE_THE_ELEMENTS_OF_AN_ARRAY algorithm) {
+    void testPermuteTheElementsOfAnArray(ArraysFactory.PERMUTE_THE_ELEMENTS_OF_AN_ARRAY algorithm) {
         BinaryOperator<Integer[]> operator = ArraysFactory.getPermuteTheElementsOfAnArray(algorithm);
         assertArrayEquals(new Integer[] { 9 }, operator.apply(new Integer[] { 9 }, new Integer[] { 0 }));
         assertArrayEquals(new Integer[] { 2, 1 }, operator.apply(new Integer[] { 1, 2 }, new Integer[] { 1, 0 }));
@@ -564,7 +538,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testInversePermutation() {
+    void testInversePermutation() {
         BinaryOperator<Integer[]> algorithm = ArraysFactory.getPermuteTheElementsOfAnArray(ArraysFactory.PERMUTE_THE_ELEMENTS_OF_AN_ARRAY.SPACE);
         Integer array[];
         Integer permutation[];
@@ -590,7 +564,7 @@ public class ArraysTest {
     COMPUTE THE NEXT PERMUTATION
      */
     @Test
-    public void testComputeTheNextPermutation() {
+    void testComputeTheNextPermutation() {
         assertArrayEquals(new int[] { }, Arrays.computeTheNextPermutation(new int[] { 1 }));
         assertArrayEquals(new int[] { }, Arrays.computeTheNextPermutation(new int[] { 3, 2, 1 }));
         assertArrayEquals(new int[] { 3, 2 }, Arrays.computeTheNextPermutation(new int[] { 2, 3 }));
@@ -600,13 +574,13 @@ public class ArraysTest {
     }
 
     @Test
-    public void testComputeKthPermutation() {
+    void testComputeKthPermutation() {
         assertArrayEquals(new int[] { 0, 2, 1 }, Arrays.computeKthPermutation(3, 1));
         assertArrayEquals(new int[] { 4, 0, 3, 1, 2 }, Arrays.computeKthPermutation(5, 100));
     }
 
     @Test
-    public void testComputeThePreviousPermutation() {
+    void testComputeThePreviousPermutation() {
         assertArrayEquals(new int[] { }, Arrays.computeThePreviousPermutation(new int[] { 1 }));
         assertArrayEquals(new int[] { 2, 3 }, Arrays.computeThePreviousPermutation(Arrays.computeTheNextPermutation(new int[] { 2, 3 })));
         assertArrayEquals(new int[] { 2, 0, 1 }, Arrays.computeThePreviousPermutation(Arrays.computeTheNextPermutation(new int[] { 2, 0, 1 })));
@@ -620,7 +594,7 @@ public class ArraysTest {
     SAMPLE OFFLINE DATA
      */
     @Test
-    public void testSampleOfflineData() {
+    void testSampleOfflineData() {
         // Really hard to test random stuff
     }
 
@@ -630,7 +604,7 @@ public class ArraysTest {
     SAMPLE ONLINE DATA
     */
     @Test
-    public void testSampleOnlineData() {
+    void testSampleOnlineData() {
         // Really hard to test random stuff
     }
 
@@ -640,7 +614,7 @@ public class ArraysTest {
     COMPUTE A RANDOM PERMUTATION
     */
     @Test
-    public void testComputeARandomPermutation() {
+    void testComputeARandomPermutation() {
         // Really hard to test random stuff
     }
 
@@ -652,7 +626,7 @@ public class ArraysTest {
     Assuming that k << n
      */
     @Test
-    public void testComputeARandomSubset() {
+    void testComputeARandomSubset() {
         int[] result = Arrays.computeARandomSubset(5, 4, new RandomSupplier<Integer>() {
             int[] data = new int[] { 4, 3, 3, 4 };
             int pointer = 0;
@@ -672,7 +646,7 @@ public class ArraysTest {
     GENERATE NONUNIFORM RANDOM NUMBERS
      */
     @Test
-    public void testGenerateNonuniformRandomNumbers() {
+    void testGenerateNonuniformRandomNumbers() {
         RandomSupplier<Double> random = new RandomSupplier<Double>() {
             double data[] = new double[] { 0.1, 0.0, 0.3, 0.4, 0.6, 0.7 };
             int pointer = 0;
@@ -699,7 +673,7 @@ public class ArraysTest {
     THE SUDOKU CHECKER PROBLEM
      */
     @Test
-    public void testCheckPartialSudoku() {
+    void testCheckPartialSudoku() {
         assertTrue(Arrays.checkPartialSudoku(new int[][] {
                 { 5, 3, 0, 0, 7, 0, 0, 0, 0 },
                 { 6, 0, 0, 1, 9, 5, 0, 0, 0 },
@@ -735,7 +709,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testComputeTheSpiralOrderingOfA2DArray() {
+    void testComputeTheSpiralOrderingOfA2DArray() {
         assertArrayEquals(
                 new Integer[] { 1 },
                 Arrays.computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(1), 1).toArray(new Integer[0])
@@ -759,7 +733,7 @@ public class ArraysTest {
 
 
     @Test
-    public void testGenerateArrayInTheSpiralOrdering() {
+    void testGenerateArrayInTheSpiralOrdering() {
 
         for (int i = 0; i < 10; i++) {
             Integer array[] = new Integer[i * i];
@@ -775,7 +749,7 @@ public class ArraysTest {
 
 
     @Test
-    public void testEnumerateFirstPairsOfIntegersInSpiralOrder() {
+    void testEnumerateFirstPairsOfIntegersInSpiralOrder() {
         assertArrayEquals(new String[] { "(0,0)"}, Arrays.enumerateFirstPairsOfIntegersInSpiralOrder(1).toArray(new String[0]));
         assertArrayEquals(new String[] { "(0,0)", "(1,0)" }, Arrays.enumerateFirstPairsOfIntegersInSpiralOrder(2).toArray(new String[0]));
         assertArrayEquals(
@@ -802,7 +776,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testComputeTheSpiralOrderOfMNArray() {
+    void testComputeTheSpiralOrderOfMNArray() {
         assertArrayEquals(new Integer[] { 1 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
         assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 5), 1, 5));
         assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(5, 1), 5, 1));
@@ -812,7 +786,7 @@ public class ArraysTest {
 
 
     @Test
-    public void testComputeTheLastElementInSpiralOrderMNArray() {
+    void testComputeTheLastElementInSpiralOrderMNArray() {
         assertEquals(1, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
         assertEquals(4, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(2, 3), 2, 3));
         assertEquals(5, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(3, 3), 3, 3));
@@ -826,7 +800,7 @@ public class ArraysTest {
     Rotate the 2D array by 90 degrees clockwise.
      */
     @Test
-    public void testRotate2DArray() {
+    void testRotate2DArray() {
         assertArrayEquals(
                 new Integer[][] {
                         { 3, 1 },
@@ -856,7 +830,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testReflect2DArrayHorizontal() {
+    void testReflect2DArrayHorizontal() {
         assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayHorizontal(generateArrayForSpiral(1)));
 
         assertArrayEquals(
@@ -872,7 +846,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testReflect2DArrayVertical() {
+    void testReflect2DArrayVertical() {
         assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayVertical(generateArrayForSpiral(1)));
 
         assertArrayEquals(
@@ -888,7 +862,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testReflect2DArrayDiagonalTopLeft() {
+    void testReflect2DArrayDiagonalTopLeft() {
         assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayDiagonalTopLeft(generateArrayForSpiral(1)));
 
         assertArrayEquals(
@@ -904,7 +878,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testReflect2DArrayDiagonalTopRight() {
+    void testReflect2DArrayDiagonalTopRight() {
         assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayDiagonalTopRight(generateArrayForSpiral(1)));
 
         assertArrayEquals(
@@ -925,7 +899,7 @@ public class ArraysTest {
     COMPUTE ROWS IN PASCAL'S TRIANGLE
      */
     @Test
-    public void testComputeRowsInPascalTriangle() {
+    void testComputeRowsInPascalTriangle() {
         assertArrayEquals(new int[][] { { 1 } }, Arrays.computeRowsInPascalTriangle(1));
 
         assertArrayEquals(
@@ -942,7 +916,7 @@ public class ArraysTest {
 
 
     @Test
-    public void testComputeNthRowOfPascalTriangle() {
+    void testComputeNthRowOfPascalTriangle() {
         assertArrayEquals(new int[] { 1 }, Arrays.computeNthRowOfPascalTriangle(1));
         assertArrayEquals(new int[] { 1, 1 }, Arrays.computeNthRowOfPascalTriangle(2));
         assertArrayEquals(new int[] { 1, 2, 1 }, Arrays.computeNthRowOfPascalTriangle(3));

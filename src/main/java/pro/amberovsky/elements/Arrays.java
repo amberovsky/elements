@@ -1,81 +1,25 @@
 package pro.amberovsky.elements;
 
 import pro.amberovsky.elements.util.Function.RandomSupplier;
+import static pro.amberovsky.elements.util.Utilities.*;
 
 import java.util.*;
 
 /**
  * Various tasks on arrays
  */
-public class Arrays {
-    /**
-     * Swap 2 elements in an array
-     *
-     * @param array array
-     * @param from from index
-     * @param to to index
-     *
-     * @return array with swapped elements
-     */
-    public static int[] swap(int[] array, final int from, final int to) {
-        int t = array[to];
-        array[to] = array[from];
-        array[from] = t;
-
-        return array;
-    }
-
-    /**
-     * Swap 2 elements in a 2D-array
-     *
-     * @param array array
-     * @param r1 row-coordinate of first element
-     * @param c1 column-coordinate of first element
-     * @param r2 row-coordinate of second element
-     * @param c2 column-coordinate of second element
-     * @param <T> type
-     *
-     * @return array with swapped elements
-     */
-    public static <T> T[][] swap2D(T[][] array, final int r1, final int c1, final int r2, final int c2) {
-        T t = array[r2][c2];
-        array[r2][c2] = array[r1][c1];
-        array[r1][c1] = t;
-
-        return array;
-    }
-
-
-    /**
-     * Swap 2 elements in a generic array
-     *
-     * @param array array
-     * @param from from index
-     * @param to to index
-     *
-     * @return array with swapped elements
-     */
-    public static <T> T[]swap(T[] array, final int from, final int to) {
-        T t = array[to];
-        array[to] = array[from];
-        array[from] = t;
-
-        return array;
-    }
-
-
-
+class Arrays {
     /*
     REORDER EVEN
      */
     /**
      * @Complexity O(n), O(1) space
      *
-     * @param array
+     * @param array array
      *
      * @return array with elements reordered so that the even entries appear first
      */
-    public static Integer[] reorderEven(Integer[] array) {
+    static Integer[] reorderEven(Integer[] array) {
         int nextEven = 0;
         int nextOdd = array.length - 1;
 
@@ -106,7 +50,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static Integer[] DutchFlag(Integer[] array, final int pivotIndex) {
+    static Integer[] DutchFlag(Integer[] array, final int pivotIndex) {
         int equal = 0;
         int greater = array.length - 1;
 
@@ -140,7 +84,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static Integer[] DutchFlag_OnlyThreeValues(Integer[] array, final int value1, final int value2, final int value3) {
+    static Integer[] DutchFlag_OnlyThreeValues(Integer[] array, final int value1, final int value2, final int value3) {
         int equalToValue2 = 0;
         int equalToValue3 = array.length - 1;
 
@@ -170,7 +114,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static Integer[] DutchFlag_OnlyFourValues(
+    static Integer[] DutchFlag_OnlyFourValues(
             Integer[] array,
             final int value1,
             final int value2,
@@ -208,7 +152,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static Integer[] DutchFlag_OnlyTwoValues(Integer[] array) {
+    static Integer[] DutchFlag_OnlyTwoValues(Integer[] array) {
         int trueIndex = 0;
 
         for (int i = 0; i < array.length; i++) {
@@ -230,7 +174,7 @@ public class Arrays {
      *
      * @return reordered array
      */
-    public static Integer[] DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer[] array) {
+    static Integer[] DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer[] array) {
         int trueIndex = array.length - 1;
         int falseIndex = array.length - 1;
 
@@ -258,7 +202,7 @@ public class Arrays {
      *
      * @return number + 1
      */
-    public static List<Integer> addOne(List<Integer> number) {
+    static List<Integer> addOne(List<Integer> number) {
         int carry = 1;
         for (int i = number.size() - 1; (i >= 0) && (carry == 1); i--) {
             int newValue = number.get(i) + carry;
@@ -282,7 +226,7 @@ public class Arrays {
      *
      * @return sum in binary representation
      */
-    public static String addOne_TwoBinaryNumbers(String number1, String number2) {
+    static String addOne_TwoBinaryNumbers(String number1, String number2) {
         StringBuilder result = new StringBuilder();
 
         int carry = 0;
@@ -323,7 +267,7 @@ public class Arrays {
      *
      * @return product
      */
-    public static List<Integer> multiply(List<Integer> number1, List<Integer> number2) {
+    static List<Integer> multiply(List<Integer> number1, List<Integer> number2) {
         List<Integer> result = new ArrayList<>(Collections.nCopies(number1.size() + number2.size(), 0));
 
         int sign = Integer.signum(number1.get(0)) * Integer.signum(number2.get(0));
@@ -372,7 +316,7 @@ public class Arrays {
      *
      * @return can you win the game
      */
-    public static boolean boardGame(Integer[] array) {
+    static boolean boardGame(Integer[] array) {
         int maximum = 0;
 
         for (int i = 0; (i <= maximum) && (maximum < array.length); i++) {
@@ -391,7 +335,7 @@ public class Arrays {
      *
      * @return minimum steps to reach the end
      */
-    public static int boardGame_MinimumSteps(int[] array) {
+    static int boardGame_MinimumSteps(int[] array) {
         int[] steps = new int[array.length];
 
         steps[0] = 0;
@@ -421,7 +365,7 @@ public class Arrays {
      *
      * @return array with removed duplicates
      */
-    public static Integer[] deleteDuplicates_Bruteforce(Integer[] array) {
+    static Integer[] deleteDuplicates_Bruteforce(Integer[] array) {
         for (int i = 0; i < array.length; i++) {
             int k = i + 1;
 
@@ -444,7 +388,7 @@ public class Arrays {
      *
      * @return array with removed duplicates
      */
-    public static Integer[] deleteDuplicates_Fast(Integer[] array) {
+    static Integer[] deleteDuplicates_Fast(Integer[] array) {
         int index = 0;
 
         for (int i = 1; i < array.length; i++) {
@@ -469,7 +413,7 @@ public class Arrays {
      *
      * @return array with removed duplicates
      */
-    public static Integer[] deleteDuplicates_OneKey(Integer[] array, int key) {
+    static Integer[] deleteDuplicates_OneKey(Integer[] array, int key) {
         int diff = 0;
 
         for (int i = 0; i < array.length; i++) {
@@ -494,7 +438,7 @@ public class Arrays {
      *
      * @return array with removed duplicates
      */
-    public static Integer[] deleteDuplicates_Min2m(Integer[] array, int m) {
+    static Integer[] deleteDuplicates_Min2m(Integer[] array, int m) {
         int lastIndex = 0;
         int count = 1;
 
@@ -531,7 +475,7 @@ public class Arrays {
      *
      * @return maximum profit
      */
-    public static int buyAndSellAStockOnce(int[] stocks) {
+    static int buyAndSellAStockOnce(int[] stocks) {
         int profit = 0;
         int lowestMin = Integer.MAX_VALUE;
 
@@ -560,7 +504,7 @@ public class Arrays {
      *
      * @return maximum profit
      */
-    public static int buyAndSellAStockTwice(Integer[] stocks) {
+    static int buyAndSellAStockTwice(Integer[] stocks) {
         int profit1[] = new int[stocks.length];
         int profit2[] = new int[stocks.length];
 
@@ -600,7 +544,7 @@ public class Arrays {
      *
      * @return max profit
      */
-    public static int buyAndSellAStockTwice_Space(Integer[] stocks) {
+    static int buyAndSellAStockTwice_Space(Integer[] stocks) {
         int buy1 = Integer.MIN_VALUE;
         int buy2 = Integer.MIN_VALUE;
         int sell1 = 0;
@@ -630,7 +574,7 @@ public class Arrays {
      *
      * @return list of prime numbers
      */
-    public static List<Integer> enumerateAllPrimes(int n) {
+    static List<Integer> enumerateAllPrimes(int n) {
         List<Integer> list = new ArrayList<>();
 
         boolean numbers[] = new boolean[n + 1];
@@ -667,7 +611,7 @@ public class Arrays {
      *
      * @return permutated array
      */
-    public static Integer[] permuteTheElementsOfAnArray(Integer array[], Integer[] p) {
+    static Integer[] permuteTheElementsOfAnArray(Integer array[], Integer[] p) {
         Integer copy[] = array.clone();
 
         for (int i = 0; i < p.length; i++) {
@@ -686,7 +630,7 @@ public class Arrays {
      *
      * @return permutated array
      */
-    public static Integer[] permuteTheElementsOfAnArray_Space(Integer array[], Integer[] p) {
+    static Integer[] permuteTheElementsOfAnArray_Space(Integer array[], Integer[] p) {
         for (int i = 0; i < array.length; i++) {
                 int j = i;
                 while (p[j] >= 0) {
@@ -711,7 +655,7 @@ public class Arrays {
      *
      * @return inversed permutation
      */
-    public static Integer[] inversePermutation(Integer[] p) {
+    static Integer[] inversePermutation(Integer[] p) {
         for (int i = 0; i < p.length/2; i++) swap(p, i, p.length - i - 1);
 
         return p;
@@ -730,7 +674,7 @@ public class Arrays {
      *
      * @return next permutation
      */
-    public static int[] computeTheNextPermutation(int[] p) {
+    static int[] computeTheNextPermutation(int[] p) {
         int index = p.length - 2;
 
         while ((index >= 0) && (p[index] >= p[index + 1])) index--;
@@ -763,7 +707,7 @@ public class Arrays {
      *
      * @return permutation
      */
-    public static int[] computeKthPermutation(int length, int k) {
+    static int[] computeKthPermutation(int length, int k) {
         int indices[] = new int[length];
         int numbers[] = new int[length];
 
@@ -801,7 +745,7 @@ public class Arrays {
      *
      * @return previous permutation
      */
-    public static int[] computeThePreviousPermutation(int p[]) {
+    static int[] computeThePreviousPermutation(int p[]) {
         int index = p.length - 2;
 
         while ((index >= 0) && (p[index] <= p[index + 1])) index--;
@@ -836,7 +780,7 @@ public class Arrays {
      *
      * @return array where first size elements are uniformly selected
      */
-    public static int[] sampleOfflineData(int[] array, int size) {
+    static int[] sampleOfflineData(int[] array, int size) {
         Random random = new Random();
 
         for (int i = 0; i < size; i++) {
@@ -860,7 +804,7 @@ public class Arrays {
      *
      * @return uniform random subset of size k
      */
-    public static int[] sampleOnlineData(int k, Iterator<Integer> iterator) {
+    static int[] sampleOnlineData(int k, Iterator<Integer> iterator) {
         int array[] = new int[k];
 
         for (int i = 0; i < k; i++) array[i] = iterator.next();
@@ -892,7 +836,7 @@ public class Arrays {
      *
      * @return permutation
      */
-    public static int[] computeARandomPermutation(int size) {
+    static int[] computeARandomPermutation(int size) {
         int permutation[] = new int[size];
         for (int i = 0; i < size; i++) permutation[i] = i;
 
@@ -921,7 +865,7 @@ public class Arrays {
      *
      * @return randomly unformed subset size of k
      */
-    public static int[] computeARandomSubset(int n, int k, RandomSupplier<Integer> random) {
+    static int[] computeARandomSubset(int n, int k, RandomSupplier<Integer> random) {
         HashMap<Integer, Integer> hashMap = new HashMap<>(k * 2);
         int array[] = new int[k];
 
@@ -958,7 +902,7 @@ public class Arrays {
      *
      * @return selected number
      */
-    public static int generateNonuniformRandomNumbers(int numbers[], double probabilities[], RandomSupplier<Double> random) {
+    static int generateNonuniformRandomNumbers(int numbers[], double probabilities[], RandomSupplier<Double> random) {
         int n = probabilities.length;
         List<Double> intervals = new ArrayList<>(n);
         intervals.add(0.0);
@@ -988,7 +932,7 @@ public class Arrays {
      *
      * @return is it valid or not
      */
-    public static boolean checkPartialSudoku(int [][]board) {
+    static boolean checkPartialSudoku(int [][]board) {
         for (int i = 0; i < 9; i++) {
             int row[] = new int[9];
             int column[] = new int[9];
@@ -1037,7 +981,7 @@ public class Arrays {
      *
      * @return elements of array in the spiral ordering
      */
-    public static List<Integer> computeTheSpiralOrderingOfA2DArray(Integer array[][], int n) {
+    static List<Integer> computeTheSpiralOrderingOfA2DArray(Integer array[][], int n) {
         ArrayList<Integer> list = new ArrayList<>(n * n);
 
         for (int i = 0; i <= (n - 1) / 2; i++) {
@@ -1071,7 +1015,7 @@ public class Arrays {
      *
      * @return array in the spiral order
      */
-    public static Integer[][] generateArrayInTheSpiralOrdering(int n) {
+    static Integer[][] generateArrayInTheSpiralOrdering(int n) {
         Integer array[][] = new Integer[n][n];
 
         int row = 0;
@@ -1132,7 +1076,7 @@ public class Arrays {
      *
      * @return List of first n pairs
      */
-    public static List<String> enumerateFirstPairsOfIntegersInSpiralOrder(int n) {
+    static List<String> enumerateFirstPairsOfIntegersInSpiralOrder(int n) {
         List<String> list = new ArrayList<>(n);
 
         int iteration = 0;
@@ -1198,7 +1142,7 @@ public class Arrays {
      *
      * @return spiral order
      */
-    public static Integer[] computeTheSpiralOrderOfMNArray(Integer array[][], int m, int n) {
+    static Integer[] computeTheSpiralOrderOfMNArray(Integer array[][], int m, int n) {
         Integer order[] = new Integer[m * n];
 
         final int DIRECTION_RIGHT = 0;
@@ -1265,7 +1209,7 @@ public class Arrays {
      *
      * @return last element in the spiral order
      */
-    public static int computeTheLastElementInSpiralOrderMNArray(Integer[][] array, int m, int n) {
+    static int computeTheLastElementInSpiralOrderMNArray(Integer[][] array, int m, int n) {
         boolean rotated = false;
 
         if (m > n) {
@@ -1294,7 +1238,7 @@ public class Arrays {
      *
      * @return rotated array
      */
-    public static Integer[][] rotate2DArray(Integer array[][]) {
+    static Integer[][] rotate2DArray(Integer array[][]) {
         for (int i = 0; i < array.length / 2; i++) {
             for (int k = i; k < array.length - i - 1; k++) {
                 swap2D(array, i, k, k, array.length - i - 1);
@@ -1315,7 +1259,7 @@ public class Arrays {
      *
      * @return reflected array
      */
-    public static Integer[][] reflect2DArrayHorizontal(Integer[][] array) {
+    static Integer[][] reflect2DArrayHorizontal(Integer[][] array) {
         for (int i = 0; i < array.length / 2; i++) {
             for (int j = 0; j < array.length; j++) {
                 swap2D(array, i, j, array.length - i - 1, j);
@@ -1334,7 +1278,7 @@ public class Arrays {
      *
      * @return reflected array
      */
-    public static Integer[][] reflect2DArrayVertical(Integer[][] array) {
+    static Integer[][] reflect2DArrayVertical(Integer[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length / 2; j++) {
                 swap2D(array, i, j, i, array.length - j - 1);
@@ -1353,7 +1297,7 @@ public class Arrays {
      *
      * @return reflected array
      */
-    public static Integer[][] reflect2DArrayDiagonalTopLeft(Integer[][] array) {
+    static Integer[][] reflect2DArrayDiagonalTopLeft(Integer[][] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
                 swap2D(array, i, j, array.length - j - 1, array.length - i - 1);
@@ -1372,7 +1316,7 @@ public class Arrays {
      *
      * @return reflected array
      */
-    public static Integer[][] reflect2DArrayDiagonalTopRight(Integer[][] array) {
+    static Integer[][] reflect2DArrayDiagonalTopRight(Integer[][] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 swap2D(array, i, j, j, i);
@@ -1395,7 +1339,7 @@ public class Arrays {
      *
      * @return rows
      */
-    public static int[][] computeRowsInPascalTriangle(int rows) {
+    static int[][] computeRowsInPascalTriangle(int rows) {
         int triangle[][] = new int[rows][];
 
         for (int i = 0; i < rows; i++) {
@@ -1426,7 +1370,7 @@ public class Arrays {
      *
      * @return nth row
      */
-    public static int[] computeNthRowOfPascalTriangle(int n) {
+    static int[] computeNthRowOfPascalTriangle(int n) {
         int row[] = new int[n];
 
         row[0] = 1;

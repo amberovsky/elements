@@ -6,7 +6,7 @@ import java.util.function.LongBinaryOperator;
 /**
  * Basic tasks with numbers & bits
  */
-public class PrimitiveTypes {
+class PrimitiveTypes {
 
     /**
      * @Complexity O(1)
@@ -15,7 +15,7 @@ public class PrimitiveTypes {
      *
      * @return number with lowest set bit erased
      */
-    public static int eraseLowestSetBit(final int value) {
+    static int eraseLowestSetBit(final int value) {
         return value & (value - 1);
     }
 
@@ -26,7 +26,7 @@ public class PrimitiveTypes {
      *
      * @return true if the number is power of two, false otherwise
      */
-    public static boolean isPowerOfTwo(final int value) {
+    static boolean isPowerOfTwo(final int value) {
         return (value > 0) && ((value & (value - 1)) == 0);
     }
 
@@ -38,7 +38,7 @@ public class PrimitiveTypes {
      *
      * @return amount of set bits in the number
      */
-    public static short countBitsByShifting(long value) {
+    static short countBitsByShifting(long value) {
         short count = 0;
 
         while (value != 0) {
@@ -70,7 +70,7 @@ public class PrimitiveTypes {
      *
      * @return parity
      */
-    public static short getParityByBruteforce(int value) {
+    static short getParityByBruteforce(int value) {
         short count = 0;
 
         while (value != 0) {
@@ -89,7 +89,7 @@ public class PrimitiveTypes {
      *
      * @return parity
      */
-    public static short getParityByErasingLowestSetBit(int value) {
+    static short getParityByErasingLowestSetBit(int value) {
         short count = 0;
 
         while (value != 0) {
@@ -132,7 +132,7 @@ public class PrimitiveTypes {
      *
      * @return parity
      */
-    public static short getParityByLookup(int value) {
+    static short getParityByLookup(int value) {
         short[] lookup = getLookupTableForParity();
 
         short result = 0;
@@ -154,7 +154,7 @@ public class PrimitiveTypes {
      *
      * @return parity
      */
-    public static short getParityByXOR(int value) {
+    static short getParityByXOR(int value) {
         value ^= value >>> 16;
         value ^= value >>> 8;
         value ^= value >>> 4;
@@ -181,7 +181,7 @@ public class PrimitiveTypes {
      *
      * @return value with swapped bits
      */
-    public static int swapByBruteforce(int value, final int i, final int j) {
+    static int swapByBruteforce(int value, final int i, final int j) {
         if (((value >>> i) & 1) != ((value >>> j) & 1)) {
             int mask = (1 << i) | (1 << j);
             return value ^ mask;
@@ -206,7 +206,7 @@ public class PrimitiveTypes {
      *
      * @return reversed
      */
-    public static long reverseBitsByIteration(long value) {
+    static long reverseBitsByIteration(long value) {
         long result = value & 1;
 
         for (int i = 1; i < Long.SIZE; i++) {
@@ -227,7 +227,7 @@ public class PrimitiveTypes {
      *
      * @return reversed
      */
-    public static long reverseBitsByMask(final long value) {
+    static long reverseBitsByMask(final long value) {
         long vmask = 1;
         long rmask = Long.MIN_VALUE;
 
@@ -251,7 +251,7 @@ public class PrimitiveTypes {
      *
      * @return reversed
      */
-    public static long reversBitsBySwap(long value) {
+    static long reversBitsBySwap(long value) {
         for (int i = 0; i < 32; i++) {
             long b1 = (value & (1L << i)) >>> i;
             long b2 = ((value & (1L << (63 - i)))) >>> (63 - i);
@@ -297,7 +297,7 @@ public class PrimitiveTypes {
      *
      * @return reversed
      */
-    public static long reverseBitsByLookup(long value) {
+    static long reverseBitsByLookup(long value) {
         int[] lookupTable = getLookupTableForReverseBits();
 
         long w1 = lookupTable[(int) (value >>> Short.SIZE * 3)];
@@ -324,7 +324,7 @@ public class PrimitiveTypes {
      *
      * @return closest number
      */
-    public static long getClosestLongWithSameWeightByIteration(long value) {
+    static long getClosestLongWithSameWeightByIteration(long value) {
         long mask = 1L;
 
         if ((value & mask) == 1) {
@@ -346,7 +346,7 @@ public class PrimitiveTypes {
      *
      * @return closest number
      */
-    public static long getClosestLongWithSameWeightByFast(long value) {
+    static long getClosestLongWithSameWeightByFast(long value) {
         // For Long.MAX_VALUE we can find a suitable constant although
         if ((value == Long.MAX_VALUE) || (value == 0) || (value == -1)) throw new IllegalArgumentException();
 
@@ -377,7 +377,7 @@ public class PrimitiveTypes {
      *
      * @return sum of the numbers
      */
-    public static long getSumOfTwoNonNegativeLongsByIteration(final long x, final long y) {
+    static long getSumOfTwoNonNegativeLongsByIteration(final long x, final long y) {
         long result = y;
         long carry = 0L;
 
@@ -409,7 +409,7 @@ public class PrimitiveTypes {
      *
      * @return sum of the numbers
      */
-    public static long getSumOfTwoNonNegativeLongsByMask(long x, long y) {
+    static long getSumOfTwoNonNegativeLongsByMask(long x, long y) {
         while (y != 0) {
             long t = x & y;
             x ^= y;
@@ -437,7 +437,7 @@ public class PrimitiveTypes {
      *
      * @return product of the numbers
      */
-    public static long getProductOfTwoNonNegativeLongsByBruteforce(
+    static long getProductOfTwoNonNegativeLongsByBruteforce(
             final long x,
             final long y,
             PrimitiveTypesFactory.SUM sum
@@ -465,7 +465,7 @@ public class PrimitiveTypes {
      *
      * @return product of the numbers
      */
-    public static long getProductOfTwoNonNegativeLongsBySchoolMethod(long x, long y, PrimitiveTypesFactory.SUM sum) {
+    static long getProductOfTwoNonNegativeLongsBySchoolMethod(long x, long y, PrimitiveTypesFactory.SUM sum) {
         long result = 0;
 
         LongBinaryOperator sumAlgorithm = PrimitiveTypesFactory.getSum(sum);
@@ -498,7 +498,7 @@ public class PrimitiveTypes {
      *
      * @return quotient
      */
-    public static long getQuotientOfTwoPositiveLongsByBruteforce(long x, long y) {
+    static long getQuotientOfTwoPositiveLongsByBruteforce(long x, long y) {
         long result = 0;
 
         while (x >= y) {
@@ -518,7 +518,7 @@ public class PrimitiveTypes {
      *
      * @return quotient
      */
-    public static long getQuotientOfTwoPositiveLongsBySchoolMethod(long x, long y) {
+    static long getQuotientOfTwoPositiveLongsBySchoolMethod(long x, long y) {
         long result = 0;
         long k = 1L << Integer.SIZE;
 
@@ -549,7 +549,7 @@ public class PrimitiveTypes {
      *
      * @return x^y
      */
-    public static double getPowerByBruteforce(double x, int y) {
+    static double getPowerByBruteforce(double x, int y) {
         if (y < 0) return getPowerByBruteforce(1.0 / x, -y);
 
         if (y == 0) return 1;
@@ -573,7 +573,7 @@ public class PrimitiveTypes {
      *
      * @return x^y
      */
-    public static double getPowerByFast(double x, int y) {
+    static double getPowerByFast(double x, int y) {
 
         if (y < 0) {
             x = 1.0 / x;
@@ -606,7 +606,7 @@ public class PrimitiveTypes {
      *
      * @return reversed
      */
-    public static long reverseDigits(long value) {
+    static long reverseDigits(long value) {
         long result = 0;
 
         while (value != 0) {
@@ -632,7 +632,7 @@ public class PrimitiveTypes {
      *
      * @return is palindrome
      */
-    public static boolean isPalindromeByBruteforce(long value) {
+    static boolean isPalindromeByBruteforce(long value) {
         if (value < 0) return false;
 
         String s = Long.toString(value);
@@ -652,7 +652,7 @@ public class PrimitiveTypes {
      *
      * @return is palindrome
      */
-    public static boolean isPalindromeByDigits(long value) {
+    static boolean isPalindromeByDigits(long value) {
         if (value < 0) return false;
 
         int length = (int) Math.floor(Math.log10(value));
@@ -683,7 +683,7 @@ public class PrimitiveTypes {
      *
      * @return uniform random number
      */
-    public static long generateUniformRandomNumber(final long from, final long to, BooleanSupplier coinGenerator) {
+    static long generateUniformRandomNumber(final long from, final long to, BooleanSupplier coinGenerator) {
         long normalizedTo = to - from + 1;
         long result = 0;
 
@@ -715,7 +715,7 @@ public class PrimitiveTypes {
          * @param width width
          * @param height height
          */
-        public Rectangle(int x, int y, int width, int height) {
+        Rectangle(int x, int y, int width, int height) {
             this.x = x;
             this.y = y;
             this.width = width;
@@ -741,7 +741,7 @@ public class PrimitiveTypes {
      *
      * @return null if rectangles do not intersect, intersection otherwise
      */
-    public static Rectangle checkTwoRectanglesHaveIntersection(Rectangle rec1, Rectangle rec2) {
+    static Rectangle checkTwoRectanglesHaveIntersection(Rectangle rec1, Rectangle rec2) {
         boolean noIntersection =
                 ((rec2.x > rec1.x + rec1.width) || (rec2.x + rec2.width < rec1.x)) &&
                         ((rec2.y > rec1.y + rec1.height) || (rec2.y + rec2.height < rec1.y));
@@ -784,7 +784,7 @@ public class PrimitiveTypes {
      *
      * @return true if 4 points form a rectangle, false otherwise
      */
-    public static boolean DoFourPointsFormRectangle(Point p1, Point p2, Point p3, Point p4) {
+    static boolean DoFourPointsFormRectangle(Point p1, Point p2, Point p3, Point p4) {
         // The center of mass
         double x = (p1.x + p2.x + p3.x + p4.x) / 4.0;
         double y = (p1.y + p2.y + p3.y + p4.y) / 4.0;

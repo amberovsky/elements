@@ -15,6 +15,8 @@
    * [Queue with max API](#queues-queue-with-max-api)
 4. [Trees](#trees)
    * [Binary tree](#trees-binary-tree)
+   * [Binary tree with parent pointers](#trees-binary-tree-with-parent-pointers)
+   * [Binary tree with amount of child nodes](#trees-binary-tree-with-amount-of-child-nodes)
    
       
 <br>
@@ -65,6 +67,12 @@ Trees
 
    * ### <a name="trees-binary-tree"></a>[BinaryTreeNode](/src/main/java/pro/amberovsky/elements/util/data/BinaryTreeNode.java)
       Simple binary tree implementation   
+<br>
+   * ### <a name="trees-binary-tree-with-parent-pointers"></a>[BinaryTreeWithParentNode](/src/main/java/pro/amberovsky/elements/util/data/BinaryTreeWithParentNode.java)
+      Binary tree with pointers to parent nodes and locking
+<br>
+   * ### <a name="trees-binary-tree-with-amount-of-child-nodes"></a>[BinaryTreeWithCounts](/src/main/java/pro/amberovsky/elements/util/data/BinaryTreeWithCounts.java)
+      Binary tree where each node knows amount of children   
 <br>
 
 [Go back to Data Structures TOC](#data-structures)  

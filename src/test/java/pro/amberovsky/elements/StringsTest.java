@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StringsTest {
+class StringsTest {
     /*
     REVERSE
      */
     @Test
-    public void testReverse() {
+    void testReverse() {
         assertArrayEquals(new Character[] { 'A' }, Strings.reverse(new Character[] { 'A' }, 0, 0));
         assertArrayEquals(new Character[] { 'A', 'B', 'C' }, Strings.reverse(new Character[] { 'A', 'B', 'C' }, 0, 0));
         assertArrayEquals(new Character[] { 'A', 'C', 'B' }, Strings.reverse(new Character[] { 'A', 'B', 'C' }, 1, 2));
@@ -29,7 +29,7 @@ public class StringsTest {
     IS PALINDROME
      */
     @Test
-    public void testIsPalindrome() {
+    void testIsPalindrome() {
         assertTrue(Strings.isPalindrome(""));
         assertTrue(Strings.isPalindrome("a"));
         assertFalse(Strings.isPalindrome("ab"));
@@ -42,7 +42,7 @@ public class StringsTest {
     INTERCONVERT STRINGS AND INTEGERS
      */
     @Test
-    public void testAtoi() {
+    void testAtoi() {
         assertEquals(0, Strings.atoi("0"));
         assertEquals(1, Strings.atoi("1"));
         assertEquals(-1, Strings.atoi("-1"));
@@ -50,7 +50,7 @@ public class StringsTest {
     }
 
     @Test
-    public void testItoa() {
+    void testItoa() {
         assertEquals("0", Strings.itoa(0));
         assertEquals("1", Strings.itoa(1));
         assertEquals("-1", Strings.itoa(-1));
@@ -62,7 +62,7 @@ public class StringsTest {
     BASE CONVERSION
      */
     @Test
-    public void testConvert() {
+    void testConvert() {
         assertEquals("-1A7", Strings.convert("-615", 7, 13));
     }
 
@@ -72,17 +72,17 @@ public class StringsTest {
     COMPUTE THE SPREADSHEET COLUMN ENCODING
      */
     @Test
-    public void testComputeTheSpreadsheetColumnEncoding() {
+    void testComputeTheSpreadsheetColumnEncoding() {
         assertEquals(728, Strings.computeTheSpreadsheetColumnEncoding("ZZ"));
     }
 
     @Test
-    public void testComputeTheSpreadsheetColumnEncoding_AEqualsTo0() {
+    void testComputeTheSpreadsheetColumnEncoding_AEqualsTo0() {
         assertEquals(675, Strings.computeTheSpreadsheetColumnEncoding_AEqualsTo0("ZZ"));
     }
 
     @Test
-    public void testComputeTheSpreadsheetColumnEncoding_Decode() {
+    void testComputeTheSpreadsheetColumnEncoding_Decode() {
         assertEquals(
                 "AZZZ",
                 Strings.computeTheSpreadsheetColumnEncoding_Decode(Strings.computeTheSpreadsheetColumnEncoding("AZZZ"))
@@ -95,7 +95,7 @@ public class StringsTest {
     REPLACE AND REMOVE
      */
     @Test
-    public void testReplaceAndRemove() {
+    void testReplaceAndRemove() {
         assertArrayEquals(
                 new char[] { 'd', 'd', 'c', 'd', 'c', 'd', 'd' },
                 Strings.replaceAndRemove(new char[] { 'a', 'c', 'd', 'b', 'b', 'c', 'a' }, 7)
@@ -110,7 +110,7 @@ public class StringsTest {
 
 
     @Test
-    public void testReplaceAmdRemove_MergeSortedArrays() {
+    void testReplaceAmdRemove_MergeSortedArrays() {
         assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 9, 9, 9 }, 0, new int[] { 1, 2, 3 }));
         assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 1, 2, 3 }, 3, new int[] { }));
 
@@ -124,7 +124,7 @@ public class StringsTest {
     TEST PALINDROMICITY
      */
     @Test
-    public void testIsPalindromic() {
+    void testIsPalindromic() {
         assertTrue(Strings.isPalindromic(""));
         assertTrue(Strings.isPalindromic(","));
         assertTrue(Strings.isPalindromic("Aa"));
@@ -149,7 +149,7 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForReverseAllTheWordsInASentence")
-    public void testReverseAllTheWordsInASentence(String parameter, String expected) {
+    void testReverseAllTheWordsInASentence(String parameter, String expected) {
         Character parameterChar[] = new Character[parameter.length()];
         for (int i = 0; i < parameter.length(); i++) parameterChar[i] = parameter.charAt(i);
 
@@ -198,7 +198,7 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
-    public void testComputeAllMnemonicsForAPhoneNumber(String[] mnemonics, String number) {
+    void testComputeAllMnemonicsForAPhoneNumber(String[] mnemonics, String number) {
         List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
 
         assertArrayEquals(mnemonics, result.toArray(new String[0]));
@@ -206,7 +206,7 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
-    public void testComputeAllMnemonicsForAPhoneNumber_NonRecursive(String[] mnemonics, String number) {
+    void testComputeAllMnemonicsForAPhoneNumber_NonRecursive(String[] mnemonics, String number) {
         List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
 
         assertArrayEquals(mnemonics, result.toArray(new String[0]));
@@ -218,7 +218,7 @@ public class StringsTest {
     THE LOOK-AND-SAY PROBLEM
      */
     @Test
-    public void testTheLookAndSay() {
+    void testTheLookAndSay() {
         assertEquals("1", Strings.theLookAndSay(0));
         assertEquals("11", Strings.theLookAndSay(1));
         assertEquals("21", Strings.theLookAndSay(2));
@@ -235,7 +235,7 @@ public class StringsTest {
     COMPUTE ALL VALID IP ADDRESSES
      */
     @Test
-    public void testComputeAllValidIPAddresses() {
+    void testComputeAllValidIPAddresses() {
         assertArrayEquals(
                 new String[] {
                         "1.92.168.11",
@@ -253,7 +253,7 @@ public class StringsTest {
     }
 
     @Test
-    public void testComputeAllValidIPAddresses_Unbounded() {
+    void testComputeAllValidIPAddresses_Unbounded() {
         assertArrayEquals(
                 new String[] { },
                 Strings.computeAllValidIPAddresses_Unbounded("19216811", 1)
@@ -299,7 +299,7 @@ public class StringsTest {
     WRITE A STRING SINUSOIDALLY
     */
     @Test
-    public void testGenerateSnakestring() {
+    void testGenerateSnakestring() {
         assertEquals("e lHloWrdlo!", Strings.generateSnakestring("Hello World!"));
     }
 
@@ -321,13 +321,13 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForImplementRunLengthEncoding")
-    public void testEncodeRunLength(String source, String encoded) {
+    void testEncodeRunLength(String source, String encoded) {
         assertEquals(encoded, Strings.encodeRunLength(source));
     }
 
     @ParameterizedTest
     @MethodSource("sourceForImplementRunLengthEncoding")
-    public void testDecodeRunLength(String source, String _) {
+    void testDecodeRunLength(String source, String _) {
         assertEquals(source, Strings.decodeRunLength(Strings.encodeRunLength(source)));
     }
 
@@ -337,7 +337,7 @@ public class StringsTest {
     FIND THE FIRST OCCURRENCE OF A SUBSTRING
      */
     @Test
-    public void testFindTheFirstOccurrenceOfASubstring() {
+    void testFindTheFirstOccurrenceOfASubstring() {
         assertEquals(-1, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "p"));
         assertEquals(0, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "the"));
         assertEquals(7, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "test"));

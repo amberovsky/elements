@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static pro.amberovsky.elements.util.data.DoubleListNode.*;
 
-public class DoubleListNodeTest {
+class DoubleListNodeTest {
     @Test
-    public void testDoubleListNodeConstructors() {
+    void testDoubleListNodeConstructors() {
         DoubleListNode<Integer> node = new DoubleListNode<>(100);
         assertEquals(100, node.data.intValue());
         assertNull(node.next);
@@ -37,7 +37,7 @@ public class DoubleListNodeTest {
     }
 
     @Test
-    public void testListNodeEquals() {
+    void testListNodeEquals() {
         assertFalse(new DoubleListNode<>(100).equals(null));
         assertFalse(new DoubleListNode<>(100).equals("qwe"));
         assertFalse(new DoubleListNode<>(100).equals(new DoubleListNode<>(200)));
@@ -51,7 +51,7 @@ public class DoubleListNodeTest {
     }
 
     @Test
-    public void testToListNode() {
+    void testToListNode() {
         assertNull(toListNode());
 
         assertEquals(new DoubleListNode<>(100), toListNode(100));

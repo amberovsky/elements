@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LinkedListsTest {
+class LinkedListsTest {
     /*
     MERGE TWO SORTED LISTS
      */
@@ -57,7 +57,7 @@ public class LinkedListsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForTestMergeTwoSortedLists")
-    public void testMergeTwoSortedLists(Integer expected[], Integer firstList[], Integer secondList[]) {
+    void testMergeTwoSortedLists(Integer expected[], Integer firstList[], Integer secondList[]) {
         assertEquals(
                 ListNode.toListNode(expected),
                 LinkedLists.mergeTwoSortedLists(
@@ -69,7 +69,7 @@ public class LinkedListsTest {
 
     @ParameterizedTest
     @MethodSource("sourceForTestMergeTwoSortedLists")
-    public void testMergeTwoSortedLists_Double(Integer expected[], Integer firstList[], Integer secondList[]) {
+    void testMergeTwoSortedLists_Double(Integer expected[], Integer firstList[], Integer secondList[]) {
         assertEquals(
                 DoubleListNode.toListNode(expected),
                 LinkedLists.mergeTwoSortedLists_Double(
@@ -85,7 +85,7 @@ public class LinkedListsTest {
     REVERSE A SINGLE SUBLIST
      */
     @Test
-    public void testReverseASingleSublist() {
+    void testReverseASingleSublist() {
         assertEquals(
                 ListNode.toListNode(1),
                 LinkedLists.reverseASingleSublist(ListNode.toListNode(1), 0, 0)
@@ -118,7 +118,7 @@ public class LinkedListsTest {
     }
 
     @Test
-    public void testReverseASingleSublist_List() {
+    void testReverseASingleSublist_List() {
         assertEquals(ListNode.toListNode(1), LinkedLists.reverseASingleSublist_List(ListNode.toListNode(1)));
 
         assertEquals(ListNode.toListNode(2, 1), LinkedLists.reverseASingleSublist_List(ListNode.toListNode(1, 2)));
@@ -132,7 +132,7 @@ public class LinkedListsTest {
     TEST FOR CYCLICITY
      */
     @Test
-    public void testDetectCycleInASingleLinkedList() {
+    void testDetectCycleInASingleLinkedList() {
         assertNull(LinkedLists.detectCycleInASingleLinkedList(ListNode.toListNode(1)));
 
         ListNode<Integer> list = ListNode.toListNode(1);
@@ -150,7 +150,7 @@ public class LinkedListsTest {
     TEST FOR OVERLAPPING LISTS — LISTS ARE CYCLE-FREE
      */
     @Test
-    public void testIsThereACommonNodeInCycleFreeLists() {
+    void testIsThereACommonNodeInCycleFreeLists() {
         assertNull(LinkedLists.isThereACommonNodeInCycleFreeLists(ListNode.toListNode(1), ListNode.toListNode(1)));
 
         ListNode<Integer> list1 = ListNode.toListNode(1);
@@ -173,7 +173,7 @@ public class LinkedListsTest {
     TEST FOR OVERLAPPING LISTS — LISTS MAY HAVE CYCLES
      */
     @Test
-    public void testIsThereACommonNodeInListsWithCycles() {
+    void testIsThereACommonNodeInListsWithCycles() {
         assertNull(LinkedLists.isThereACommonNodeInListsWithCycles(ListNode.toListNode(1), ListNode.toListNode(1)));
 
         ListNode<Integer> list1 = ListNode.toListNode(1);
@@ -196,7 +196,7 @@ public class LinkedListsTest {
     DELETE A NODE FROM A SINGLE LINKED LIST
      */
     @Test
-    public void testDeleteANodeFromASingleLinkedList() {
+    void testDeleteANodeFromASingleLinkedList() {
         ListNode<Integer> list;
 
         list = ListNode.toListNode(1, 2);
@@ -216,7 +216,7 @@ public class LinkedListsTest {
     REMOVE THE KTH LAST ELEMENT FROM A LIST
      */
     @Test
-    public void testRemoveTheKthLastElementFromAList() {
+    void testRemoveTheKthLastElementFromAList() {
         assertEquals(null, LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1), 1));
         assertEquals(ListNode.toListNode(1), LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 1));
         assertEquals(ListNode.toListNode(2), LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 2));
@@ -228,7 +228,7 @@ public class LinkedListsTest {
     REMOVE DUPLICATES FROM A SORTED LIST
      */
     @Test
-    public void testRemoveDuplicatesFormASortedList() {
+    void testRemoveDuplicatesFormASortedList() {
         assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1)));
         assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 1)));
         assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 1, 1)));
@@ -238,7 +238,7 @@ public class LinkedListsTest {
     }
 
     @Test
-    public void testRemoveDuplicatesFormASortedList_M() {
+    void testRemoveDuplicatesFormASortedList_M() {
         assertEquals(ListNode.toListNode(1, 1, 1), LinkedLists.removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 3));
         assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 2));
 
@@ -251,7 +251,7 @@ public class LinkedListsTest {
     IMPLEMENT CYCLIC RIGHT SHIFT FOR SINGLE LINKED LISTS
      */
     @Test
-    public void testCycleRightShift() {
+    void testCycleRightShift() {
         assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 0));
         assertEquals(ListNode.toListNode(1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 0));
         assertEquals(ListNode.toListNode(1, 2, 3), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 0));
@@ -279,7 +279,7 @@ public class LinkedListsTest {
     IMPLEMENT EVEN-ODD MERGE
      */
     @Test
-    public void testEvenOddMerge() {
+    void testEvenOddMerge() {
         assertEquals(ListNode.toListNode(1), LinkedLists.evenOddMerge(ListNode.toListNode(1)));
         assertEquals(ListNode.toListNode(1, 2), LinkedLists.evenOddMerge(ListNode.toListNode(1, 2)));
         assertEquals(ListNode.toListNode(1), LinkedLists.evenOddMerge(ListNode.toListNode(1)));
@@ -291,7 +291,7 @@ public class LinkedListsTest {
     TEST WHETHER A SINGLE LINKED LIST IS PALINDROMIC
      */
     @Test
-    public void testTestWhetherASingleLinkedListIsPalindromic() {
+    void testTestWhetherASingleLinkedListIsPalindromic() {
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1)));
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1)));
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1, 1)));
@@ -306,7 +306,7 @@ public class LinkedListsTest {
     }
 
     @Test
-    public void testTestWhetherASingleLinkedListIsPalindromic_Double() {
+    void testTestWhetherASingleLinkedListIsPalindromic_Double() {
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1)));
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1)));
         assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1, 1)));
@@ -324,7 +324,7 @@ public class LinkedListsTest {
     IMPLEMENT LIST PIVOTING
      */
     @Test
-    public void testListPivoting() {
+    void testListPivoting() {
         assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), -1));
         assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), 1));
         assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), 10));
@@ -352,13 +352,13 @@ public class LinkedListsTest {
     ADD LIST-BASED INTEGERS
      */
     @Test
-    public void testAddListBasedIntegers() {
+    void testAddListBasedIntegers() {
         assertEquals(ListNode.toListNode(0), LinkedLists.addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
         assertEquals(ListNode.toListNode(9, 7, 3, 0, 1), LinkedLists.addListBasedIntegers(ListNode.toListNode(0, 8, 3), ListNode.toListNode(9, 9, 9, 9)));
     }
 
     @Test
-    public void testAddListBasedIntegers_MostSignificantDigitComesFirst() {
+    void testAddListBasedIntegers_MostSignificantDigitComesFirst() {
         assertEquals(ListNode.toListNode(0), LinkedLists.addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
         assertEquals(ListNode.toListNode(1, 0, 3, 7, 9), LinkedLists.addListBasedIntegers_MostSignificantDigitComesFirst(ListNode.toListNode(3, 8, 0), ListNode.toListNode(9, 9, 9, 9)));
     }
