@@ -3,8 +3,7 @@ package pro.amberovsky.elements;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static pro.amberovsky.elements.util.Utilities.swap;
-import static pro.amberovsky.elements.util.Utilities.swap2D;
+import static pro.amberovsky.elements.util.Utilities.*;
 
 class UtilitiesTest {
     /*

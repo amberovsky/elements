@@ -10,23 +10,25 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static pro.amberovsky.elements.PrimitiveTypes.*;
+
 class PrimitiveTypesTest {
     /*
     ERASE LOWEST SET BIT
      */
     @Test
     void testEraseLowestSetBit_PositiveNumbers() {
-        assertEquals(0, PrimitiveTypes.eraseLowestSetBit(0));
-        assertEquals(0, PrimitiveTypes.eraseLowestSetBit(1));
-        assertEquals(0, PrimitiveTypes.eraseLowestSetBit(2));
-        assertEquals(6, PrimitiveTypes.eraseLowestSetBit(7));
+        assertEquals(0, eraseLowestSetBit(0));
+        assertEquals(0, eraseLowestSetBit(1));
+        assertEquals(0, eraseLowestSetBit(2));
+        assertEquals(6, eraseLowestSetBit(7));
     }
 
     @Test
     void testEraseLowestSetBit_NegativeNumbers() {
-        assertEquals(-2, PrimitiveTypes.eraseLowestSetBit(-1));
-        assertEquals(-4, PrimitiveTypes.eraseLowestSetBit(-2));
-        assertEquals(-8, PrimitiveTypes.eraseLowestSetBit(-7));
+        assertEquals(-2, eraseLowestSetBit(-1));
+        assertEquals(-4, eraseLowestSetBit(-2));
+        assertEquals(-8, eraseLowestSetBit(-7));
     }
 
 
@@ -36,28 +38,28 @@ class PrimitiveTypesTest {
      */
     @Test
     void testIsPowerOfTwoReturnsTrueOnPositivePowersOfTwo() {
-        assertTrue(PrimitiveTypes.isPowerOfTwo(1));
-        assertTrue(PrimitiveTypes.isPowerOfTwo(2));
-        assertTrue(PrimitiveTypes.isPowerOfTwo(4));
-        assertTrue(PrimitiveTypes.isPowerOfTwo(16));
-        assertTrue(PrimitiveTypes.isPowerOfTwo(32));
+        assertTrue(isPowerOfTwo(1));
+        assertTrue(isPowerOfTwo(2));
+        assertTrue(isPowerOfTwo(4));
+        assertTrue(isPowerOfTwo(16));
+        assertTrue(isPowerOfTwo(32));
     }
 
     @Test
     void testIsPowerOfTwoReturnsFalseOnPositiveNonPowersOfTwo() {
-        assertFalse(PrimitiveTypes.isPowerOfTwo(0));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(101));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(500));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(1023));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(9999));
+        assertFalse(isPowerOfTwo(0));
+        assertFalse(isPowerOfTwo(101));
+        assertFalse(isPowerOfTwo(500));
+        assertFalse(isPowerOfTwo(1023));
+        assertFalse(isPowerOfTwo(9999));
     }
 
     @Test
     void testIsPowerOfTwoReturnsFalseOnNegativeNumbers() {
-        assertFalse(PrimitiveTypes.isPowerOfTwo(-1));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(-2));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(-4));
-        assertFalse(PrimitiveTypes.isPowerOfTwo(-1023));
+        assertFalse(isPowerOfTwo(-1));
+        assertFalse(isPowerOfTwo(-2));
+        assertFalse(isPowerOfTwo(-4));
+        assertFalse(isPowerOfTwo(-1023));
     }
 
 
@@ -67,25 +69,25 @@ class PrimitiveTypesTest {
      */
     @Test
     void testCountBitsByShifting_PositiveNumbers() {
-        assertEquals(1, PrimitiveTypes.countBitsByShifting(2));
-        assertEquals(1, PrimitiveTypes.countBitsByShifting(256));
-        assertEquals(2, PrimitiveTypes.countBitsByShifting(257));
-        assertEquals(9, PrimitiveTypes.countBitsByShifting(511));
+        assertEquals(1, countBitsByShifting(2));
+        assertEquals(1, countBitsByShifting(256));
+        assertEquals(2, countBitsByShifting(257));
+        assertEquals(9, countBitsByShifting(511));
     }
 
     @Test
     void testCountBitsByShifting_CornerCases() {
-        assertEquals(0, PrimitiveTypes.countBitsByShifting(0));
-        assertEquals(1, PrimitiveTypes.countBitsByShifting(1));
-        assertEquals(Long.SIZE, PrimitiveTypes.countBitsByShifting(-1));
+        assertEquals(0, countBitsByShifting(0));
+        assertEquals(1, countBitsByShifting(1));
+        assertEquals(Long.SIZE, countBitsByShifting(-1));
     }
 
     @Test
     void testCountBitsByShifting_NegativeNumber() {
-        assertEquals(Long.SIZE - 1, PrimitiveTypes.countBitsByShifting(-2));
-        assertEquals(Long.SIZE - 8 + 1, PrimitiveTypes.countBitsByShifting(-255));
-        assertEquals(Long.SIZE - 8, PrimitiveTypes.countBitsByShifting(-256));
-        assertEquals(Long.SIZE - 1, PrimitiveTypes.countBitsByShifting(-257));
+        assertEquals(Long.SIZE - 1, countBitsByShifting(-2));
+        assertEquals(Long.SIZE - 8 + 1, countBitsByShifting(-255));
+        assertEquals(Long.SIZE - 8, countBitsByShifting(-256));
+        assertEquals(Long.SIZE - 1, countBitsByShifting(-257));
     }
 
 
@@ -246,8 +248,8 @@ class PrimitiveTypesTest {
                             " but expected is " + number[1]
             );
             assertEquals(
-                    PrimitiveTypes.countBitsByShifting(result),
-                    PrimitiveTypes.countBitsByShifting(number[0]),
+                    countBitsByShifting(result),
+                    countBitsByShifting(number[0]),
                     "Wrong bits count on number " + number[0] + ", got the closest " + result
             );
         }
@@ -352,11 +354,11 @@ class PrimitiveTypesTest {
     */
     @Test
     void testGetReverseDigits() {
-        assertEquals(0, PrimitiveTypes.reverseDigits(0));
-        assertEquals(1, PrimitiveTypes.reverseDigits(1));
-        assertEquals(-1, PrimitiveTypes.reverseDigits(-1));
-        assertEquals(1, PrimitiveTypes.reverseDigits(10));
-        assertEquals(937192173917L, PrimitiveTypes.reverseDigits(719371291739L));
+        assertEquals(0, reverseDigits(0));
+        assertEquals(1, reverseDigits(1));
+        assertEquals(-1, reverseDigits(-1));
+        assertEquals(1, reverseDigits(10));
+        assertEquals(937192173917L, reverseDigits(719371291739L));
 
     }
 
@@ -402,7 +404,7 @@ class PrimitiveTypesTest {
      */
     @Test
     void testRectangleClass() {
-        PrimitiveTypes.Rectangle rectangle = new PrimitiveTypes.Rectangle(100, 300, 800, -999);
+        Rectangle rectangle = new Rectangle(100, 300, 800, -999);
 
         assertEquals(100, rectangle.x);
         assertEquals(300, rectangle.y);
@@ -412,19 +414,19 @@ class PrimitiveTypesTest {
 
     @Test
     void testCheckTwoRectanglesHaveIntersectionReturnsNull() {
-        assertNull(PrimitiveTypes.checkTwoRectanglesHaveIntersection(
-                new PrimitiveTypes.Rectangle(0, 0, 10, 20),
-                new PrimitiveTypes.Rectangle(100, 100, 40, 30)
+        assertNull(checkTwoRectanglesHaveIntersection(
+                new Rectangle(0, 0, 10, 20),
+                new Rectangle(100, 100, 40, 30)
         ));
     }
 
     @Test
     void testCheckTwoRectanglesHaveIntersectionReturnsRectangle() {
         assertEquals(
-                new PrimitiveTypes.Rectangle(10, 10, 4, 5),
-                PrimitiveTypes.checkTwoRectanglesHaveIntersection(
-                    new PrimitiveTypes.Rectangle(0, 0, 20, 20),
-                    new PrimitiveTypes.Rectangle(10, 10, 4, 5)
+                new Rectangle(10, 10, 4, 5),
+                checkTwoRectanglesHaveIntersection(
+                    new Rectangle(0, 0, 20, 20),
+                    new Rectangle(10, 10, 4, 5)
                 )
         );
     }
@@ -436,7 +438,7 @@ class PrimitiveTypesTest {
      */
     @Test
     void testPointClass() {
-        PrimitiveTypes.Point point = new PrimitiveTypes.Point(100, 300);
+        Point point = new Point(100, 300);
 
         assertEquals(100, point.x);
         assertEquals(300, point.y);
@@ -444,17 +446,17 @@ class PrimitiveTypesTest {
 
     @Test
     void testAreForPointsFormRectangleReturnsFalse() {
-        assertFalse(PrimitiveTypes.DoFourPointsFormRectangle(
-                new PrimitiveTypes.Point(0, 0), new PrimitiveTypes.Point(1, 10),
-                new PrimitiveTypes.Point(1, 0), new PrimitiveTypes.Point(0, 1)
+        assertFalse(DoFourPointsFormRectangle(
+                new Point(0, 0), new Point(1, 10),
+                new Point(1, 0), new Point(0, 1)
         ));
     }
 
     @Test
     void testDoForPointsFormRectangleReturnsTrue() {
-        assertTrue(PrimitiveTypes.DoFourPointsFormRectangle(
-                new PrimitiveTypes.Point(10, 10), new PrimitiveTypes.Point(0, 10),
-                new PrimitiveTypes.Point(10, 0), new PrimitiveTypes.Point(0, 0)
+        assertTrue(DoFourPointsFormRectangle(
+                new Point(10, 10), new Point(0, 10),
+                new Point(10, 0), new Point(0, 0)
         ));
     }
 }

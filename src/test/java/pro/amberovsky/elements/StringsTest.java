@@ -10,17 +10,19 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static pro.amberovsky.elements.Strings.*;
+
 class StringsTest {
     /*
     REVERSE
      */
     @Test
     void testReverse() {
-        assertArrayEquals(new Character[] { 'A' }, Strings.reverse(new Character[] { 'A' }, 0, 0));
-        assertArrayEquals(new Character[] { 'A', 'B', 'C' }, Strings.reverse(new Character[] { 'A', 'B', 'C' }, 0, 0));
-        assertArrayEquals(new Character[] { 'A', 'C', 'B' }, Strings.reverse(new Character[] { 'A', 'B', 'C' }, 1, 2));
-        assertArrayEquals(new Character[] { 'C', 'B', 'A' }, Strings.reverse(new Character[] { 'A', 'B', 'C' }, 0, 2));
-        assertArrayEquals(new Character[] { 'D', 'C', 'B', 'A' }, Strings.reverse(new Character[] { 'A', 'B', 'C', 'D' }, 0, 3));
+        assertArrayEquals(new Character[] { 'A' }, reverse(new Character[] { 'A' }, 0, 0));
+        assertArrayEquals(new Character[] { 'A', 'B', 'C' }, reverse(new Character[] { 'A', 'B', 'C' }, 0, 0));
+        assertArrayEquals(new Character[] { 'A', 'C', 'B' }, reverse(new Character[] { 'A', 'B', 'C' }, 1, 2));
+        assertArrayEquals(new Character[] { 'C', 'B', 'A' }, reverse(new Character[] { 'A', 'B', 'C' }, 0, 2));
+        assertArrayEquals(new Character[] { 'D', 'C', 'B', 'A' }, reverse(new Character[] { 'A', 'B', 'C', 'D' }, 0, 3));
     }
 
 
@@ -30,10 +32,10 @@ class StringsTest {
      */
     @Test
     void testIsPalindrome() {
-        assertTrue(Strings.isPalindrome(""));
-        assertTrue(Strings.isPalindrome("a"));
-        assertFalse(Strings.isPalindrome("ab"));
-        assertTrue(Strings.isPalindrome("aba"));
+        assertTrue(isPalindrome(""));
+        assertTrue(isPalindrome("a"));
+        assertFalse(isPalindrome("ab"));
+        assertTrue(isPalindrome("aba"));
     }
 
 
@@ -43,18 +45,18 @@ class StringsTest {
      */
     @Test
     void testAtoi() {
-        assertEquals(0, Strings.atoi("0"));
-        assertEquals(1, Strings.atoi("1"));
-        assertEquals(-1, Strings.atoi("-1"));
-        assertEquals(-1999, Strings.atoi("-1999"));
+        assertEquals(0, atoi("0"));
+        assertEquals(1, atoi("1"));
+        assertEquals(-1, atoi("-1"));
+        assertEquals(-1999, atoi("-1999"));
     }
 
     @Test
     void testItoa() {
-        assertEquals("0", Strings.itoa(0));
-        assertEquals("1", Strings.itoa(1));
-        assertEquals("-1", Strings.itoa(-1));
-        assertEquals("1999", Strings.itoa(1999));
+        assertEquals("0", itoa(0));
+        assertEquals("1", itoa(1));
+        assertEquals("-1", itoa(-1));
+        assertEquals("1999", itoa(1999));
     }
 
 
@@ -63,7 +65,7 @@ class StringsTest {
      */
     @Test
     void testConvert() {
-        assertEquals("-1A7", Strings.convert("-615", 7, 13));
+        assertEquals("-1A7", convert("-615", 7, 13));
     }
 
 
@@ -73,19 +75,19 @@ class StringsTest {
      */
     @Test
     void testComputeTheSpreadsheetColumnEncoding() {
-        assertEquals(728, Strings.computeTheSpreadsheetColumnEncoding("ZZ"));
+        assertEquals(728, computeTheSpreadsheetColumnEncoding("ZZ"));
     }
 
     @Test
     void testComputeTheSpreadsheetColumnEncoding_AEqualsTo0() {
-        assertEquals(675, Strings.computeTheSpreadsheetColumnEncoding_AEqualsTo0("ZZ"));
+        assertEquals(675, computeTheSpreadsheetColumnEncoding_AEqualsTo0("ZZ"));
     }
 
     @Test
     void testComputeTheSpreadsheetColumnEncoding_Decode() {
         assertEquals(
                 "AZZZ",
-                Strings.computeTheSpreadsheetColumnEncoding_Decode(Strings.computeTheSpreadsheetColumnEncoding("AZZZ"))
+                computeTheSpreadsheetColumnEncoding_Decode(computeTheSpreadsheetColumnEncoding("AZZZ"))
         );
     }
 
@@ -98,12 +100,12 @@ class StringsTest {
     void testReplaceAndRemove() {
         assertArrayEquals(
                 new char[] { 'd', 'd', 'c', 'd', 'c', 'd', 'd' },
-                Strings.replaceAndRemove(new char[] { 'a', 'c', 'd', 'b', 'b', 'c', 'a' }, 7)
+                replaceAndRemove(new char[] { 'a', 'c', 'd', 'b', 'b', 'c', 'a' }, 7)
         );
 
         assertArrayEquals(
                 new char[] { 'd', 'd', 'c', 'b', 'b', 'c', 'a' },
-                Strings.replaceAndRemove(new char[] { 'a', 'c', 'b', 'b', 'b', 'c', 'a' }, 3)
+                replaceAndRemove(new char[] { 'a', 'c', 'b', 'b', 'b', 'c', 'a' }, 3)
         );
 
     }
@@ -111,11 +113,11 @@ class StringsTest {
 
     @Test
     void testReplaceAmdRemove_MergeSortedArrays() {
-        assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 9, 9, 9 }, 0, new int[] { 1, 2, 3 }));
-        assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 1, 2, 3 }, 3, new int[] { }));
+        assertArrayEquals(new int[] { 1, 2, 3 }, replaceAmdRemove_MergeSortedArrays(new int[] { 9, 9, 9 }, 0, new int[] { 1, 2, 3 }));
+        assertArrayEquals(new int[] { 1, 2, 3 }, replaceAmdRemove_MergeSortedArrays(new int[] { 1, 2, 3 }, 3, new int[] { }));
 
-        assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 1, 9, 9 }, 1, new int[] { 2, 3 }));
-        assertArrayEquals(new int[] { 1, 2, 3 }, Strings.replaceAmdRemove_MergeSortedArrays(new int[] { 3, 9, 9 }, 1, new int[] { 1, 2 }));
+        assertArrayEquals(new int[] { 1, 2, 3 }, replaceAmdRemove_MergeSortedArrays(new int[] { 1, 9, 9 }, 1, new int[] { 2, 3 }));
+        assertArrayEquals(new int[] { 1, 2, 3 }, replaceAmdRemove_MergeSortedArrays(new int[] { 3, 9, 9 }, 1, new int[] { 1, 2 }));
     }
 
 
@@ -125,14 +127,14 @@ class StringsTest {
      */
     @Test
     void testIsPalindromic() {
-        assertTrue(Strings.isPalindromic(""));
-        assertTrue(Strings.isPalindromic(","));
-        assertTrue(Strings.isPalindromic("Aa"));
-        assertTrue(Strings.isPalindromic("A,a"));
-        assertTrue(Strings.isPalindromic("Aa,"));
-        assertTrue(Strings.isPalindromic("A man, a plan, a canal, Panama."));
-        assertTrue(Strings.isPalindromic("Able was I, ere I saw Elba!"));
-        assertFalse(Strings.isPalindromic("Ray a Ray"));
+        assertTrue(isPalindromic(""));
+        assertTrue(isPalindromic(","));
+        assertTrue(isPalindromic("Aa"));
+        assertTrue(isPalindromic("A,a"));
+        assertTrue(isPalindromic("Aa,"));
+        assertTrue(isPalindromic("A man, a plan, a canal, Panama."));
+        assertTrue(isPalindromic("Able was I, ere I saw Elba!"));
+        assertFalse(isPalindromic("Ray a Ray"));
     }
 
 
@@ -156,7 +158,7 @@ class StringsTest {
         Character expectedChar[] = new Character[expected.length()];
         for (int i = 0; i < expected.length(); i++) expectedChar[i] = expected.charAt(i);
 
-        assertArrayEquals(expectedChar, Strings.reverseAllTheWordsInASentence(parameterChar));
+        assertArrayEquals(expectedChar, reverseAllTheWordsInASentence(parameterChar));
     }
 
 
@@ -199,7 +201,7 @@ class StringsTest {
     @ParameterizedTest
     @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
     void testComputeAllMnemonicsForAPhoneNumber(String[] mnemonics, String number) {
-        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
+        List<String> result =  computeAllMnemonicsForAPhoneNumber(number);
 
         assertArrayEquals(mnemonics, result.toArray(new String[0]));
     }
@@ -207,7 +209,7 @@ class StringsTest {
     @ParameterizedTest
     @MethodSource("sourceForComputeAllMnemonicsForAPhoneNumber")
     void testComputeAllMnemonicsForAPhoneNumber_NonRecursive(String[] mnemonics, String number) {
-        List<String> result =  Strings.computeAllMnemonicsForAPhoneNumber(number);
+        List<String> result =  computeAllMnemonicsForAPhoneNumber(number);
 
         assertArrayEquals(mnemonics, result.toArray(new String[0]));
     }
@@ -219,14 +221,14 @@ class StringsTest {
      */
     @Test
     void testTheLookAndSay() {
-        assertEquals("1", Strings.theLookAndSay(0));
-        assertEquals("11", Strings.theLookAndSay(1));
-        assertEquals("21", Strings.theLookAndSay(2));
-        assertEquals("1211", Strings.theLookAndSay(3));
-        assertEquals("111221", Strings.theLookAndSay(4));
-        assertEquals("312211", Strings.theLookAndSay(5));
-        assertEquals("13112221", Strings.theLookAndSay(6));
-        assertEquals("1113213211", Strings.theLookAndSay(7));
+        assertEquals("1", theLookAndSay(0));
+        assertEquals("11", theLookAndSay(1));
+        assertEquals("21", theLookAndSay(2));
+        assertEquals("1211", theLookAndSay(3));
+        assertEquals("111221", theLookAndSay(4));
+        assertEquals("312211", theLookAndSay(5));
+        assertEquals("13112221", theLookAndSay(6));
+        assertEquals("1113213211", theLookAndSay(7));
     }
 
 
@@ -248,7 +250,7 @@ class StringsTest {
                         "192.16.81.1",
                         "192.168.1.1",
                 },
-                Strings.computeAllValidIPAddresses("19216811")
+                computeAllValidIPAddresses("19216811")
         );
     }
 
@@ -256,14 +258,14 @@ class StringsTest {
     void testComputeAllValidIPAddresses_Unbounded() {
         assertArrayEquals(
                 new String[] { },
-                Strings.computeAllValidIPAddresses_Unbounded("19216811", 1)
+                computeAllValidIPAddresses_Unbounded("19216811", 1)
         );
 
         assertArrayEquals(
                 new String[] {
                         "192.168.11"
                 },
-                Strings.computeAllValidIPAddresses_Unbounded("19216811", 2)
+                computeAllValidIPAddresses_Unbounded("19216811", 2)
         );
 
         assertArrayEquals(
@@ -278,19 +280,19 @@ class StringsTest {
                         "192.16.81.1",
                         "192.168.1.1",
                 },
-                Strings.computeAllValidIPAddresses_Unbounded("19216811", 3)
+                computeAllValidIPAddresses_Unbounded("19216811", 3)
         );
 
         assertArrayEquals(
                 new String[] {
                         "1.9.2.1.6.8.1.1",
                 },
-                Strings.computeAllValidIPAddresses_Unbounded("19216811", 7)
+                computeAllValidIPAddresses_Unbounded("19216811", 7)
         );
 
         assertArrayEquals(
                 new String[] { },
-                Strings.computeAllValidIPAddresses_Unbounded("19216811", 8)
+                computeAllValidIPAddresses_Unbounded("19216811", 8)
         );
     }
 
@@ -300,7 +302,7 @@ class StringsTest {
     */
     @Test
     void testGenerateSnakestring() {
-        assertEquals("e lHloWrdlo!", Strings.generateSnakestring("Hello World!"));
+        assertEquals("e lHloWrdlo!", generateSnakestring("Hello World!"));
     }
 
 
@@ -322,13 +324,13 @@ class StringsTest {
     @ParameterizedTest
     @MethodSource("sourceForImplementRunLengthEncoding")
     void testEncodeRunLength(String source, String encoded) {
-        assertEquals(encoded, Strings.encodeRunLength(source));
+        assertEquals(encoded, encodeRunLength(source));
     }
 
     @ParameterizedTest
     @MethodSource("sourceForImplementRunLengthEncoding")
     void testDecodeRunLength(String source, String _) {
-        assertEquals(source, Strings.decodeRunLength(Strings.encodeRunLength(source)));
+        assertEquals(source, decodeRunLength(encodeRunLength(source)));
     }
 
 
@@ -338,9 +340,9 @@ class StringsTest {
      */
     @Test
     void testFindTheFirstOccurrenceOfASubstring() {
-        assertEquals(-1, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "p"));
-        assertEquals(0, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "the"));
-        assertEquals(7, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "test"));
-        assertEquals(16, Strings.findTheFirstOccurrenceOfASubstring("theveryteststringtest", "gtest"));
+        assertEquals(-1, findTheFirstOccurrenceOfASubstring("theveryteststringtest", "p"));
+        assertEquals(0, findTheFirstOccurrenceOfASubstring("theveryteststringtest", "the"));
+        assertEquals(7, findTheFirstOccurrenceOfASubstring("theveryteststringtest", "test"));
+        assertEquals(16, findTheFirstOccurrenceOfASubstring("theveryteststringtest", "gtest"));
     }
 }

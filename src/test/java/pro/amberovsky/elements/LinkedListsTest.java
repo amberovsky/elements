@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static pro.amberovsky.elements.LinkedLists.*;
+
 class LinkedListsTest {
     /*
     MERGE TWO SORTED LISTS
@@ -60,7 +62,7 @@ class LinkedListsTest {
     void testMergeTwoSortedLists(Integer expected[], Integer firstList[], Integer secondList[]) {
         assertEquals(
                 ListNode.toListNode(expected),
-                LinkedLists.mergeTwoSortedLists(
+                mergeTwoSortedLists(
                         ListNode.toListNode(firstList),
                         ListNode.toListNode(secondList)
                 )
@@ -72,7 +74,7 @@ class LinkedListsTest {
     void testMergeTwoSortedLists_Double(Integer expected[], Integer firstList[], Integer secondList[]) {
         assertEquals(
                 DoubleListNode.toListNode(expected),
-                LinkedLists.mergeTwoSortedLists_Double(
+                mergeTwoSortedLists_Double(
                         DoubleListNode.toListNode(firstList),
                         DoubleListNode.toListNode(secondList)
                 )
@@ -88,42 +90,42 @@ class LinkedListsTest {
     void testReverseASingleSublist() {
         assertEquals(
                 ListNode.toListNode(1),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1), 0, 0)
+                reverseASingleSublist(ListNode.toListNode(1), 0, 0)
         );
 
         assertEquals(
                 ListNode.toListNode(2, 1),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1, 2), 0, 1)
+                reverseASingleSublist(ListNode.toListNode(1, 2), 0, 1)
         );
 
         assertEquals(
                 ListNode.toListNode(1, 2, 3),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1, 2, 3), 1, 1)
+                reverseASingleSublist(ListNode.toListNode(1, 2, 3), 1, 1)
         );
 
         assertEquals(
                 ListNode.toListNode(2, 1, 3, 4),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 0, 1)
+                reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 0, 1)
         );
 
         assertEquals(
                 ListNode.toListNode(1, 3, 2, 4),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 1, 2)
+                reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 1, 2)
         );
 
         assertEquals(
                 ListNode.toListNode(1, 2, 4, 3),
-                LinkedLists.reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 2, 3)
+                reverseASingleSublist(ListNode.toListNode(1, 2, 3, 4), 2, 3)
         );
     }
 
     @Test
     void testReverseASingleSublist_List() {
-        assertEquals(ListNode.toListNode(1), LinkedLists.reverseASingleSublist_List(ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(1), reverseASingleSublist_List(ListNode.toListNode(1)));
 
-        assertEquals(ListNode.toListNode(2, 1), LinkedLists.reverseASingleSublist_List(ListNode.toListNode(1, 2)));
+        assertEquals(ListNode.toListNode(2, 1), reverseASingleSublist_List(ListNode.toListNode(1, 2)));
 
-        assertEquals(ListNode.toListNode(3, 2, 1), LinkedLists.reverseASingleSublist_List(ListNode.toListNode(1, 2, 3)));
+        assertEquals(ListNode.toListNode(3, 2, 1), reverseASingleSublist_List(ListNode.toListNode(1, 2, 3)));
     }
 
 
@@ -133,15 +135,15 @@ class LinkedListsTest {
      */
     @Test
     void testDetectCycleInASingleLinkedList() {
-        assertNull(LinkedLists.detectCycleInASingleLinkedList(ListNode.toListNode(1)));
+        assertNull(detectCycleInASingleLinkedList(ListNode.toListNode(1)));
 
         ListNode<Integer> list = ListNode.toListNode(1);
         list.next = list;
-        assertEquals(list, LinkedLists.detectCycleInASingleLinkedList(list));
+        assertEquals(list, detectCycleInASingleLinkedList(list));
 
         list = ListNode.toListNode(1, 2);
         list.next.next = list.next;
-        assertEquals(list.next, LinkedLists.detectCycleInASingleLinkedList(list));
+        assertEquals(list.next, detectCycleInASingleLinkedList(list));
     }
 
 
@@ -151,20 +153,20 @@ class LinkedListsTest {
      */
     @Test
     void testIsThereACommonNodeInCycleFreeLists() {
-        assertNull(LinkedLists.isThereACommonNodeInCycleFreeLists(ListNode.toListNode(1), ListNode.toListNode(1)));
+        assertNull(isThereACommonNodeInCycleFreeLists(ListNode.toListNode(1), ListNode.toListNode(1)));
 
         ListNode<Integer> list1 = ListNode.toListNode(1);
         ListNode<Integer> list2 = list1;
-        assertEquals(list1, LinkedLists.isThereACommonNodeInCycleFreeLists(list1, list2));
+        assertEquals(list1, isThereACommonNodeInCycleFreeLists(list1, list2));
 
         list1 = ListNode.toListNode(1, 2, 3);
         list2 = list1.next;
-        assertEquals(list1.next, LinkedLists.isThereACommonNodeInCycleFreeLists(list1, list2));
+        assertEquals(list1.next, isThereACommonNodeInCycleFreeLists(list1, list2));
 
         list1 = ListNode.toListNode(1);
         list2 = ListNode.toListNode(1, 2);
         list1.next = list2.next;
-        assertEquals(list1.next, LinkedLists.isThereACommonNodeInCycleFreeLists(list1, list2));
+        assertEquals(list1.next, isThereACommonNodeInCycleFreeLists(list1, list2));
     }
 
 
@@ -174,20 +176,20 @@ class LinkedListsTest {
      */
     @Test
     void testIsThereACommonNodeInListsWithCycles() {
-        assertNull(LinkedLists.isThereACommonNodeInListsWithCycles(ListNode.toListNode(1), ListNode.toListNode(1)));
+        assertNull(isThereACommonNodeInListsWithCycles(ListNode.toListNode(1), ListNode.toListNode(1)));
 
         ListNode<Integer> list1 = ListNode.toListNode(1);
         ListNode<Integer> list2 = list1;
-        assertEquals(list2, LinkedLists.isThereACommonNodeInListsWithCycles(list1, list2));
+        assertEquals(list2, isThereACommonNodeInListsWithCycles(list1, list2));
 
         list1 = ListNode.toListNode(1, 2);
         list2 = list1.next;
-        assertEquals(list2, LinkedLists.isThereACommonNodeInListsWithCycles(list1, list2));
+        assertEquals(list2, isThereACommonNodeInListsWithCycles(list1, list2));
 
         list1 = ListNode.toListNode(1, 2, 3);
         list1.next.next = list1.next;
         list2 = list1;
-        assertEquals(list2.next, LinkedLists.isThereACommonNodeInListsWithCycles(list1, list2));
+        assertEquals(list2.next, isThereACommonNodeInListsWithCycles(list1, list2));
     }
 
 
@@ -201,12 +203,12 @@ class LinkedListsTest {
 
         list = ListNode.toListNode(1, 2);
         ListNode<Integer> nextNode = list.next;
-        LinkedLists.deleteANodeFromASingleLinkedList(list);
+        deleteANodeFromASingleLinkedList(list);
         assertEquals(list, nextNode);
 
 
         list = ListNode.toListNode(1, 2, 3);
-        LinkedLists.deleteANodeFromASingleLinkedList(list.next);
+        deleteANodeFromASingleLinkedList(list.next);
         assertEquals(ListNode.toListNode(1, 3), list);
     }
 
@@ -217,9 +219,9 @@ class LinkedListsTest {
      */
     @Test
     void testRemoveTheKthLastElementFromAList() {
-        assertEquals(null, LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1), 1));
-        assertEquals(ListNode.toListNode(1), LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 1));
-        assertEquals(ListNode.toListNode(2), LinkedLists.removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 2));
+        assertEquals(null, removeTheKthLastElementFromAList(ListNode.toListNode(1), 1));
+        assertEquals(ListNode.toListNode(1), removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 1));
+        assertEquals(ListNode.toListNode(2), removeTheKthLastElementFromAList(ListNode.toListNode(1, 2), 2));
     }
 
 
@@ -229,20 +231,20 @@ class LinkedListsTest {
      */
     @Test
     void testRemoveDuplicatesFormASortedList() {
-        assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1)));
-        assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 1)));
-        assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 1, 1)));
+        assertEquals(ListNode.toListNode(1), removeDuplicatesFormASortedList(ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(1), removeDuplicatesFormASortedList(ListNode.toListNode(1, 1)));
+        assertEquals(ListNode.toListNode(1), removeDuplicatesFormASortedList(ListNode.toListNode(1, 1, 1)));
 
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 2)));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.removeDuplicatesFormASortedList(ListNode.toListNode(1, 2, 2)));
+        assertEquals(ListNode.toListNode(1, 2), removeDuplicatesFormASortedList(ListNode.toListNode(1, 2)));
+        assertEquals(ListNode.toListNode(1, 2), removeDuplicatesFormASortedList(ListNode.toListNode(1, 2, 2)));
     }
 
     @Test
     void testRemoveDuplicatesFormASortedList_M() {
-        assertEquals(ListNode.toListNode(1, 1, 1), LinkedLists.removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 3));
-        assertEquals(ListNode.toListNode(1), LinkedLists.removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 2));
+        assertEquals(ListNode.toListNode(1, 1, 1), removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 3));
+        assertEquals(ListNode.toListNode(1), removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1), 2));
 
-        assertEquals(ListNode.toListNode(1, 1, 1, 2), LinkedLists.removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1, 2, 2, 2, 2), 3));
+        assertEquals(ListNode.toListNode(1, 1, 1, 2), removeDuplicatesFormASortedList_M(ListNode.toListNode(1, 1, 1, 2, 2, 2, 2), 3));
     }
 
 
@@ -252,25 +254,25 @@ class LinkedListsTest {
      */
     @Test
     void testCycleRightShift() {
-        assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 0));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 0));
-        assertEquals(ListNode.toListNode(1, 2, 3), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 0));
+        assertEquals(ListNode.toListNode(1), cycleRightShift(ListNode.toListNode(1), 0));
+        assertEquals(ListNode.toListNode(1, 2), cycleRightShift(ListNode.toListNode(1, 2), 0));
+        assertEquals(ListNode.toListNode(1, 2, 3), cycleRightShift(ListNode.toListNode(1, 2, 3), 0));
 
-        assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 1));
-        assertEquals(ListNode.toListNode(2, 1), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 1));
-        assertEquals(ListNode.toListNode(3, 1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 1));
+        assertEquals(ListNode.toListNode(1), cycleRightShift(ListNode.toListNode(1), 1));
+        assertEquals(ListNode.toListNode(2, 1), cycleRightShift(ListNode.toListNode(1, 2), 1));
+        assertEquals(ListNode.toListNode(3, 1, 2), cycleRightShift(ListNode.toListNode(1, 2, 3), 1));
 
-        assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 2));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 2));
-        assertEquals(ListNode.toListNode(2, 3, 1), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 2));
+        assertEquals(ListNode.toListNode(1), cycleRightShift(ListNode.toListNode(1), 2));
+        assertEquals(ListNode.toListNode(1, 2), cycleRightShift(ListNode.toListNode(1, 2), 2));
+        assertEquals(ListNode.toListNode(2, 3, 1), cycleRightShift(ListNode.toListNode(1, 2, 3), 2));
 
-        assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 3));
-        assertEquals(ListNode.toListNode(2, 1), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 3));
-        assertEquals(ListNode.toListNode(1, 2, 3), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 3));
+        assertEquals(ListNode.toListNode(1), cycleRightShift(ListNode.toListNode(1), 3));
+        assertEquals(ListNode.toListNode(2, 1), cycleRightShift(ListNode.toListNode(1, 2), 3));
+        assertEquals(ListNode.toListNode(1, 2, 3), cycleRightShift(ListNode.toListNode(1, 2, 3), 3));
 
-        assertEquals(ListNode.toListNode(1), LinkedLists.cycleRightShift(ListNode.toListNode(1), 4));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2), 4));
-        assertEquals(ListNode.toListNode(3, 1, 2), LinkedLists.cycleRightShift(ListNode.toListNode(1, 2, 3), 4));
+        assertEquals(ListNode.toListNode(1), cycleRightShift(ListNode.toListNode(1), 4));
+        assertEquals(ListNode.toListNode(1, 2), cycleRightShift(ListNode.toListNode(1, 2), 4));
+        assertEquals(ListNode.toListNode(3, 1, 2), cycleRightShift(ListNode.toListNode(1, 2, 3), 4));
     }
 
 
@@ -280,9 +282,9 @@ class LinkedListsTest {
      */
     @Test
     void testEvenOddMerge() {
-        assertEquals(ListNode.toListNode(1), LinkedLists.evenOddMerge(ListNode.toListNode(1)));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.evenOddMerge(ListNode.toListNode(1, 2)));
-        assertEquals(ListNode.toListNode(1), LinkedLists.evenOddMerge(ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(1), evenOddMerge(ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(1, 2), evenOddMerge(ListNode.toListNode(1, 2)));
+        assertEquals(ListNode.toListNode(1), evenOddMerge(ListNode.toListNode(1)));
     }
 
 
@@ -292,30 +294,30 @@ class LinkedListsTest {
      */
     @Test
     void testTestWhetherASingleLinkedListIsPalindromic() {
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1, 1)));
 
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2)));
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2, 2)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2, 2)));
 
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 2, 1)));
 
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1, 2, 2)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(2, 1, 1, 2)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(1, 1, 2, 2)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic(ListNode.toListNode(2, 1, 1, 2)));
     }
 
     @Test
     void testTestWhetherASingleLinkedListIsPalindromic_Double() {
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1, 1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 1)));
-        assertTrue(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 2, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 1, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 1)));
+        assertTrue(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 2, 1)));
 
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2)));
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 2)));
-        assertFalse(LinkedLists.testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 3)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 2)));
+        assertFalse(testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode.toListNode(1, 2, 3)));
     }
 
 
@@ -325,25 +327,25 @@ class LinkedListsTest {
      */
     @Test
     void testListPivoting() {
-        assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), -1));
-        assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), 1));
-        assertEquals(ListNode.toListNode(1), LinkedLists.listPivoting(ListNode.toListNode(1), 10));
+        assertEquals(ListNode.toListNode(1), listPivoting(ListNode.toListNode(1), -1));
+        assertEquals(ListNode.toListNode(1), listPivoting(ListNode.toListNode(1), 1));
+        assertEquals(ListNode.toListNode(1), listPivoting(ListNode.toListNode(1), 10));
 
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.listPivoting(ListNode.toListNode(1, 2), -1));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.listPivoting(ListNode.toListNode(1, 2), 1));
-        assertEquals(ListNode.toListNode(1, 2), LinkedLists.listPivoting(ListNode.toListNode(1, 2), 2));
+        assertEquals(ListNode.toListNode(1, 2), listPivoting(ListNode.toListNode(1, 2), -1));
+        assertEquals(ListNode.toListNode(1, 2), listPivoting(ListNode.toListNode(1, 2), 1));
+        assertEquals(ListNode.toListNode(1, 2), listPivoting(ListNode.toListNode(1, 2), 2));
 
-        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), -1));
-        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 1));
-        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 3));
-        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 5));
-        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 10));
+        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), -1));
+        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 1));
+        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 3));
+        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 5));
+        assertEquals(ListNode.toListNode(1, 2, 3, 3, 4, 5), listPivoting(ListNode.toListNode(1, 2, 3, 3, 4, 5), 10));
 
-        assertEquals(ListNode.toListNode(1, 2, 4, 5), LinkedLists.listPivoting(ListNode.toListNode(1, 2, 4, 5), 3));
+        assertEquals(ListNode.toListNode(1, 2, 4, 5), listPivoting(ListNode.toListNode(1, 2, 4, 5), 3));
 
-        assertEquals(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), LinkedLists.listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), -1));
-        assertEquals(ListNode.toListNode(1, 3, 0, 5, 9, 100, 100, 120), LinkedLists.listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), 5));
-        assertEquals(ListNode.toListNode(5, 1, 9, 3, 0, 100, 100, 120), LinkedLists.listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), 100));
+        assertEquals(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), -1));
+        assertEquals(ListNode.toListNode(1, 3, 0, 5, 9, 100, 100, 120), listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), 5));
+        assertEquals(ListNode.toListNode(5, 1, 9, 3, 0, 100, 100, 120), listPivoting(ListNode.toListNode(5, 1, 9, 3, 100, 100, 120, 0), 100));
     }
 
 
@@ -353,14 +355,14 @@ class LinkedListsTest {
      */
     @Test
     void testAddListBasedIntegers() {
-        assertEquals(ListNode.toListNode(0), LinkedLists.addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
-        assertEquals(ListNode.toListNode(9, 7, 3, 0, 1), LinkedLists.addListBasedIntegers(ListNode.toListNode(0, 8, 3), ListNode.toListNode(9, 9, 9, 9)));
+        assertEquals(ListNode.toListNode(0), addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(9, 7, 3, 0, 1), addListBasedIntegers(ListNode.toListNode(0, 8, 3), ListNode.toListNode(9, 9, 9, 9)));
     }
 
     @Test
     void testAddListBasedIntegers_MostSignificantDigitComesFirst() {
-        assertEquals(ListNode.toListNode(0), LinkedLists.addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
-        assertEquals(ListNode.toListNode(1, 0, 3, 7, 9), LinkedLists.addListBasedIntegers_MostSignificantDigitComesFirst(ListNode.toListNode(3, 8, 0), ListNode.toListNode(9, 9, 9, 9)));
+        assertEquals(ListNode.toListNode(0), addListBasedIntegers(ListNode.toListNode(-1), ListNode.toListNode(1)));
+        assertEquals(ListNode.toListNode(1, 0, 3, 7, 9), addListBasedIntegers_MostSignificantDigitComesFirst(ListNode.toListNode(3, 8, 0), ListNode.toListNode(9, 9, 9, 9)));
     }
 
 }

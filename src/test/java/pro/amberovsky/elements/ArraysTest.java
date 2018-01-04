@@ -18,12 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import static pro.amberovsky.elements.Arrays.*;
+
 class ArraysTest {
     /*
     REORDER ARRAY
      */
     private void runTestReorderEven(Integer array[]) {
-        Integer[] reorderedArray = Arrays.reorderEven(array);
+        Integer[] reorderedArray = reorderEven(array);
 
         for (int i = 0; i < reorderedArray.length / 2; i++) assertEquals(0, reorderedArray[i] % 2);
         for (int i = (reorderedArray.length + 1) / 2; i < reorderedArray.length; i++) assertEquals(1, reorderedArray[i] % 2);
@@ -59,7 +61,7 @@ class ArraysTest {
         int pivot = array[pivotIndex];
         DUTCH_FLAG_CHECKING_STATUS status = DUTCH_FLAG_CHECKING_STATUS.LESS;
 
-        Arrays.DutchFlag(array, pivotIndex);
+        DutchFlag(array, pivotIndex);
 
         for (int elem : array) {
             switch (status) {
@@ -100,7 +102,7 @@ class ArraysTest {
     void testDutchFlag_OnlyThreeValues(Integer array[], int value1, int value2, int value3) {
         DUTCH_FLAG_ONLY_THREE_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_THREE_VALUES_CHECKING_STATUS.VALUE1;
 
-        Arrays.DutchFlag_OnlyThreeValues(array, value1, value2, value3);
+        DutchFlag_OnlyThreeValues(array, value1, value2, value3);
 
         for (int elem : array) {
             switch (status) {
@@ -138,7 +140,7 @@ class ArraysTest {
     void testDutchFlag_OnlyFourValues(Integer array[], int value1, int value2, int value3, int value4) {
         DUTCH_FLAG_ONLY_FOUR_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_FOUR_VALUES_CHECKING_STATUS.VALUE1;
 
-        Arrays.DutchFlag_OnlyFourValues(array, value1, value2, value3, value4);
+        DutchFlag_OnlyFourValues(array, value1, value2, value3, value4);
 
         for (int elem : array) {
             switch (status) {
@@ -181,7 +183,7 @@ class ArraysTest {
     void testDutchFlag_OnlyTwoValues(Integer[] array) {
         DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS.FALSE;
 
-        Arrays.DutchFlag_OnlyTwoValues(array);
+        DutchFlag_OnlyTwoValues(array);
 
         for (int elem : array) {
             switch (status) {
@@ -214,7 +216,7 @@ class ArraysTest {
     void testDutchFlag_OnlyTwoValuesKeepOrderOfOneValue(Integer array[]) {
         DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS status = DUTCH_FLAG_ONLY_TWO_VALUES_CHECKING_STATUS.FALSE;
 
-        Arrays.DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(array);
+        DutchFlag_OnlyTwoValuesKeepOrderOfOneValue(array);
 
         for (int elem : array) {
             switch (status) {
@@ -248,7 +250,7 @@ class ArraysTest {
     @MethodSource("sourceForAddOne")
     void testAddOne(Integer source[], Integer expected[]) {
         List<Integer> array = new ArrayList<>(java.util.Arrays.asList(source));
-        Arrays.addOne(array);
+        addOne(array);
         List<Integer> result = java.util.Arrays.asList(expected);
 
         assertEquals(array.size(), result.size());
@@ -272,7 +274,7 @@ class ArraysTest {
     @ParameterizedTest
     @MethodSource("sourceForAddOne_TwoBinaryNumbers")
     void testAddOne_TwoBinaryNumbers(String number1, String number2, String shouldBe) {
-        String result = Arrays.addOne_TwoBinaryNumbers(number1, number2);
+        String result = addOne_TwoBinaryNumbers(number1, number2);
 
         assertEquals(shouldBe.length(), result.length());
 
@@ -286,12 +288,12 @@ class ArraysTest {
      */
     @Test
     void testMultiply() {
-        assertEquals(java.util.Arrays.asList(0), Arrays.multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(0)));
-        assertEquals(java.util.Arrays.asList(0), Arrays.multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(1)));
+        assertEquals(java.util.Arrays.asList(0), multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(0)));
+        assertEquals(java.util.Arrays.asList(0), multiply(java.util.Arrays.asList(0), java.util.Arrays.asList(1)));
 
         assertEquals(
                 java.util.Arrays.asList(-1, 4, 7, 5, 7, 3, 9, 5, 2, 5, 8, 9, 6, 7, 6, 4, 1, 2, 9, 2, 7),
-                Arrays.multiply(
+                multiply(
                         java.util.Arrays.asList(1, 9, 3, 7, 0, 7, 7, 2, 1),
                         java.util.Arrays.asList(-7, 6, 1, 8, 3, 8, 2, 5, 7, 2, 8, 7)
                 )
@@ -325,14 +327,14 @@ class ArraysTest {
     @ParameterizedTest
     @MethodSource("sourceForBoardGame")
     void testBoardGame(Integer array[], boolean result) {
-        assertEquals(result, Arrays.boardGame(array));
+        assertEquals(result, boardGame(array));
     }
 
 
     @Test
     void testBoardGame_MinimumSteps() {
-        assertEquals(Integer.MAX_VALUE, Arrays.boardGame_MinimumSteps(new int[] { 0, 1 }));
-        assertEquals(1, Arrays.boardGame_MinimumSteps(new int[] { 3, 2, 2, 0 }));
+        assertEquals(Integer.MAX_VALUE, boardGame_MinimumSteps(new int[] { 0, 1 }));
+        assertEquals(1, boardGame_MinimumSteps(new int[] { 3, 2, 2, 0 }));
     }
 
 
@@ -427,7 +429,7 @@ class ArraysTest {
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates_OneKey")
     void testDeleteDuplicates_OneKey(Integer array[], Integer expected[], int key) {
-        Arrays.deleteDuplicates_OneKey(array, key);
+        deleteDuplicates_OneKey(array, key);
 
         assertArrayEquals(expected, array);
     }
@@ -481,7 +483,7 @@ class ArraysTest {
     @ParameterizedTest
     @MethodSource("sourceForDeleteDuplicates_Min2m")
     void testDeleteDuplicates_Min2m(Integer array[], Integer expected[], int m) {
-        Arrays.deleteDuplicates_Min2m(array, m);
+        deleteDuplicates_Min2m(array, m);
 
         assertArrayEquals(expected, array);
     }
@@ -493,7 +495,7 @@ class ArraysTest {
      */
     @Test
     void testBuyAndSellAStockOnce() {
-        assertEquals(30, Arrays.buyAndSellAStockOnce(new int[] { 310, 315, 275, 295, 260, 270, 290, 230, 255, 250 }));
+        assertEquals(30, buyAndSellAStockOnce(new int[] { 310, 315, 275, 295, 260, 270, 290, 230, 255, 250 }));
     }
 
 
@@ -515,10 +517,10 @@ class ArraysTest {
      */
     @Test
     void testEnumerateAllPrimesToN() {
-        assertEquals(java.util.Arrays.asList(), Arrays.enumerateAllPrimes(0));
-        assertEquals(java.util.Arrays.asList(1), Arrays.enumerateAllPrimes(1));
-        assertEquals(java.util.Arrays.asList(1, 2, 3, 5), Arrays.enumerateAllPrimes(5));
-        assertEquals(java.util.Arrays.asList(1, 2, 3, 5, 7, 11, 13, 17, 19), Arrays.enumerateAllPrimes(20));
+        assertEquals(java.util.Arrays.asList(), enumerateAllPrimes(0));
+        assertEquals(java.util.Arrays.asList(1), enumerateAllPrimes(1));
+        assertEquals(java.util.Arrays.asList(1, 2, 3, 5), enumerateAllPrimes(5));
+        assertEquals(java.util.Arrays.asList(1, 2, 3, 5, 7, 11, 13, 17, 19), enumerateAllPrimes(20));
     }
 
 
@@ -547,14 +549,14 @@ class ArraysTest {
         permutation = new Integer[] { 2, 3, 1, 0 };
         assertArrayEquals(
                 array,
-                algorithm.apply(algorithm.apply(array, permutation), Arrays.inversePermutation(permutation))
+                algorithm.apply(algorithm.apply(array, permutation), inversePermutation(permutation))
         );
 
         array = new Integer[] { 2, 3, 1, 4 };
         permutation = new Integer[] { 2, 0, 1, 3 };
         assertArrayEquals(
                 array,
-                algorithm.apply(algorithm.apply(array, permutation), Arrays.inversePermutation(permutation))
+                algorithm.apply(algorithm.apply(array, permutation), inversePermutation(permutation))
         );
     }
 
@@ -565,27 +567,27 @@ class ArraysTest {
      */
     @Test
     void testComputeTheNextPermutation() {
-        assertArrayEquals(new int[] { }, Arrays.computeTheNextPermutation(new int[] { 1 }));
-        assertArrayEquals(new int[] { }, Arrays.computeTheNextPermutation(new int[] { 3, 2, 1 }));
-        assertArrayEquals(new int[] { 3, 2 }, Arrays.computeTheNextPermutation(new int[] { 2, 3 }));
-        assertArrayEquals(new int[] { 2, 1, 0 }, Arrays.computeTheNextPermutation(new int[] { 2, 0, 1 }));
-        assertArrayEquals(new int[] { 1, 2, 0, 3 }, Arrays.computeTheNextPermutation(new int[] { 1, 0, 3, 2 }));
-        assertArrayEquals(new int[] { 6, 2, 3, 0, 1, 4, 5 }, Arrays.computeTheNextPermutation(new int[] { 6, 2, 1, 5, 4, 3, 0 }));
+        assertArrayEquals(new int[] { }, computeTheNextPermutation(new int[] { 1 }));
+        assertArrayEquals(new int[] { }, computeTheNextPermutation(new int[] { 3, 2, 1 }));
+        assertArrayEquals(new int[] { 3, 2 }, computeTheNextPermutation(new int[] { 2, 3 }));
+        assertArrayEquals(new int[] { 2, 1, 0 }, computeTheNextPermutation(new int[] { 2, 0, 1 }));
+        assertArrayEquals(new int[] { 1, 2, 0, 3 }, computeTheNextPermutation(new int[] { 1, 0, 3, 2 }));
+        assertArrayEquals(new int[] { 6, 2, 3, 0, 1, 4, 5 }, computeTheNextPermutation(new int[] { 6, 2, 1, 5, 4, 3, 0 }));
     }
 
     @Test
     void testComputeKthPermutation() {
-        assertArrayEquals(new int[] { 0, 2, 1 }, Arrays.computeKthPermutation(3, 1));
-        assertArrayEquals(new int[] { 4, 0, 3, 1, 2 }, Arrays.computeKthPermutation(5, 100));
+        assertArrayEquals(new int[] { 0, 2, 1 }, computeKthPermutation(3, 1));
+        assertArrayEquals(new int[] { 4, 0, 3, 1, 2 }, computeKthPermutation(5, 100));
     }
 
     @Test
     void testComputeThePreviousPermutation() {
-        assertArrayEquals(new int[] { }, Arrays.computeThePreviousPermutation(new int[] { 1 }));
-        assertArrayEquals(new int[] { 2, 3 }, Arrays.computeThePreviousPermutation(Arrays.computeTheNextPermutation(new int[] { 2, 3 })));
-        assertArrayEquals(new int[] { 2, 0, 1 }, Arrays.computeThePreviousPermutation(Arrays.computeTheNextPermutation(new int[] { 2, 0, 1 })));
-        assertArrayEquals(new int[] { 1, 0, 3, 2 }, Arrays.computeThePreviousPermutation((Arrays.computeTheNextPermutation(new int[] { 1, 0, 3, 2 }))));
-        assertArrayEquals(new int[] { 6, 2, 1, 5, 4, 3, 0 }, Arrays.computeThePreviousPermutation((Arrays.computeTheNextPermutation(new int[] { 6, 2, 1, 5, 4, 3, 0 }))));
+        assertArrayEquals(new int[] { }, computeThePreviousPermutation(new int[] { 1 }));
+        assertArrayEquals(new int[] { 2, 3 }, computeThePreviousPermutation(computeTheNextPermutation(new int[] { 2, 3 })));
+        assertArrayEquals(new int[] { 2, 0, 1 }, computeThePreviousPermutation(computeTheNextPermutation(new int[] { 2, 0, 1 })));
+        assertArrayEquals(new int[] { 1, 0, 3, 2 }, computeThePreviousPermutation((computeTheNextPermutation(new int[] { 1, 0, 3, 2 }))));
+        assertArrayEquals(new int[] { 6, 2, 1, 5, 4, 3, 0 }, computeThePreviousPermutation((computeTheNextPermutation(new int[] { 6, 2, 1, 5, 4, 3, 0 }))));
     }
 
 
@@ -627,7 +629,7 @@ class ArraysTest {
      */
     @Test
     void testComputeARandomSubset() {
-        int[] result = Arrays.computeARandomSubset(5, 4, new RandomSupplier<Integer>() {
+        int[] result = computeARandomSubset(5, 4, new RandomSupplier<Integer>() {
             int[] data = new int[] { 4, 3, 3, 4 };
             int pointer = 0;
 
@@ -659,12 +661,12 @@ class ArraysTest {
 
         int numbers[] = new int[] { 88, -100, 500, 0 };
         double probabilities[] = new double[] { 0.3, 0.3, 0.3, 0.1 };
-        assertEquals(88, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
-        assertEquals(88, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
-        assertEquals(-100, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
-        assertEquals(-100, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
-        assertEquals(500, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
-        assertEquals(500, Arrays.generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(88, generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(88, generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(-100, generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(-100, generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(500, generateNonuniformRandomNumbers(numbers, probabilities, random));
+        assertEquals(500, generateNonuniformRandomNumbers(numbers, probabilities, random));
     }
 
 
@@ -674,7 +676,7 @@ class ArraysTest {
      */
     @Test
     void testCheckPartialSudoku() {
-        assertTrue(Arrays.checkPartialSudoku(new int[][] {
+        assertTrue(checkPartialSudoku(new int[][] {
                 { 5, 3, 0, 0, 7, 0, 0, 0, 0 },
                 { 6, 0, 0, 1, 9, 5, 0, 0, 0 },
                 { 0, 9, 8, 0, 0, 0, 0, 6, 0 },
@@ -712,22 +714,22 @@ class ArraysTest {
     void testComputeTheSpiralOrderingOfA2DArray() {
         assertArrayEquals(
                 new Integer[] { 1 },
-                Arrays.computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(1), 1).toArray(new Integer[0])
+                computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(1), 1).toArray(new Integer[0])
         );
 
         assertArrayEquals(
                 new Integer[] { 1, 2, 4, 3 },
-                Arrays.computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(2), 2).toArray(new Integer[0])
+                computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(2), 2).toArray(new Integer[0])
         );
 
         assertArrayEquals(
                 new Integer[] { 1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10 },
-                Arrays.computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(4), 4).toArray(new Integer[0])
+                computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(4), 4).toArray(new Integer[0])
         );
 
         assertArrayEquals(
                 new Integer[] { 1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13 },
-                Arrays.computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(5), 5).toArray(new Integer[0])
+                computeTheSpiralOrderingOfA2DArray(generateArrayForSpiral(5), 5).toArray(new Integer[0])
         );
     }
 
@@ -741,7 +743,7 @@ class ArraysTest {
 
             assertArrayEquals(
                     array,
-                    Arrays.computeTheSpiralOrderingOfA2DArray(Arrays.generateArrayInTheSpiralOrdering(i), i).toArray(new Integer[0])
+                    computeTheSpiralOrderingOfA2DArray(generateArrayInTheSpiralOrdering(i), i).toArray(new Integer[0])
             );
 
         }
@@ -750,11 +752,11 @@ class ArraysTest {
 
     @Test
     void testEnumerateFirstPairsOfIntegersInSpiralOrder() {
-        assertArrayEquals(new String[] { "(0,0)"}, Arrays.enumerateFirstPairsOfIntegersInSpiralOrder(1).toArray(new String[0]));
-        assertArrayEquals(new String[] { "(0,0)", "(1,0)" }, Arrays.enumerateFirstPairsOfIntegersInSpiralOrder(2).toArray(new String[0]));
+        assertArrayEquals(new String[] { "(0,0)"}, enumerateFirstPairsOfIntegersInSpiralOrder(1).toArray(new String[0]));
+        assertArrayEquals(new String[] { "(0,0)", "(1,0)" }, enumerateFirstPairsOfIntegersInSpiralOrder(2).toArray(new String[0]));
         assertArrayEquals(
                 new String[] { "(0,0)", "(1,0)", "(1,-1)", "(0,-1)", "(-1,-1)", "(-1,0)", "(-1,1)", "(0,1)", "(1,1)", "(2,1)" },
-                Arrays.enumerateFirstPairsOfIntegersInSpiralOrder(10).toArray(new String[0])
+                enumerateFirstPairsOfIntegersInSpiralOrder(10).toArray(new String[0])
         );
     }
 
@@ -777,21 +779,21 @@ class ArraysTest {
 
     @Test
     void testComputeTheSpiralOrderOfMNArray() {
-        assertArrayEquals(new Integer[] { 1 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
-        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 5), 1, 5));
-        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(5, 1), 5, 1));
-        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5, 10, 9, 8, 7, 6 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(2, 5), 2, 5));
-        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5, 10, 15, 14, 13, 12, 11, 6, 7, 8, 9 }, Arrays.computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(3, 5), 3, 5));
+        assertArrayEquals(new Integer[] { 1 }, computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
+        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(1, 5), 1, 5));
+        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5 }, computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(5, 1), 5, 1));
+        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5, 10, 9, 8, 7, 6 }, computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(2, 5), 2, 5));
+        assertArrayEquals(new Integer[] { 1, 2, 3, 4, 5, 10, 15, 14, 13, 12, 11, 6, 7, 8, 9 }, computeTheSpiralOrderOfMNArray(generateArrayForSpiralMN(3, 5), 3, 5));
     }
 
 
     @Test
     void testComputeTheLastElementInSpiralOrderMNArray() {
-        assertEquals(1, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
-        assertEquals(4, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(2, 3), 2, 3));
-        assertEquals(5, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(3, 3), 3, 3));
-        assertEquals(9, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(3, 5), 3, 5));
-        assertEquals(11, Arrays.computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(5, 3), 5, 3));
+        assertEquals(1, computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(1, 1), 1, 1));
+        assertEquals(4, computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(2, 3), 2, 3));
+        assertEquals(5, computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(3, 3), 3, 3));
+        assertEquals(9, computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(3, 5), 3, 5));
+        assertEquals(11, computeTheLastElementInSpiralOrderMNArray(generateArrayForSpiralMN(5, 3), 5, 3));
     }
 
 
@@ -806,7 +808,7 @@ class ArraysTest {
                         { 3, 1 },
                         { 4, 2 },
                 },
-                Arrays.rotate2DArray(generateArrayForSpiral(2))
+                rotate2DArray(generateArrayForSpiral(2))
         );
 
         assertArrayEquals(
@@ -815,7 +817,7 @@ class ArraysTest {
                         { 8, 5, 2 },
                         { 9, 6, 3 }
                 },
-                Arrays.rotate2DArray(generateArrayForSpiral(3))
+                rotate2DArray(generateArrayForSpiral(3))
         );
 
         assertArrayEquals(
@@ -825,13 +827,13 @@ class ArraysTest {
                 { 15, 11, 7, 3 },
                 { 16, 12, 8, 4 }
             },
-            Arrays.rotate2DArray(generateArrayForSpiral(4))
+            rotate2DArray(generateArrayForSpiral(4))
         );
     }
 
     @Test
     void testReflect2DArrayHorizontal() {
-        assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayHorizontal(generateArrayForSpiral(1)));
+        assertArrayEquals(new Integer[][] { { 1 } }, reflect2DArrayHorizontal(generateArrayForSpiral(1)));
 
         assertArrayEquals(
                 new Integer[][] {
@@ -841,13 +843,13 @@ class ArraysTest {
                     {  6,  7,  8,  9, 10 },
                     {  1,  2,  3,  4,  5 }
                 },
-                Arrays.reflect2DArrayHorizontal(generateArrayForSpiral(5))
+                reflect2DArrayHorizontal(generateArrayForSpiral(5))
         );
     }
 
     @Test
     void testReflect2DArrayVertical() {
-        assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayVertical(generateArrayForSpiral(1)));
+        assertArrayEquals(new Integer[][] { { 1 } }, reflect2DArrayVertical(generateArrayForSpiral(1)));
 
         assertArrayEquals(
                 new Integer[][] {
@@ -857,13 +859,13 @@ class ArraysTest {
                     { 20, 19, 18, 17, 16 },
                     { 25, 24, 23, 22, 21 }
                 },
-                Arrays.reflect2DArrayVertical(generateArrayForSpiral(5))
+                reflect2DArrayVertical(generateArrayForSpiral(5))
         );
     }
 
     @Test
     void testReflect2DArrayDiagonalTopLeft() {
-        assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayDiagonalTopLeft(generateArrayForSpiral(1)));
+        assertArrayEquals(new Integer[][] { { 1 } }, reflect2DArrayDiagonalTopLeft(generateArrayForSpiral(1)));
 
         assertArrayEquals(
                 new Integer[][] {
@@ -873,13 +875,13 @@ class ArraysTest {
                         { 22, 17, 12,  7, 2 },
                         { 21, 16, 11,  6, 1 }
                 },
-                Arrays.reflect2DArrayDiagonalTopLeft(generateArrayForSpiral(5))
+                reflect2DArrayDiagonalTopLeft(generateArrayForSpiral(5))
         );
     }
 
     @Test
     void testReflect2DArrayDiagonalTopRight() {
-        assertArrayEquals(new Integer[][] { { 1 } }, Arrays.reflect2DArrayDiagonalTopRight(generateArrayForSpiral(1)));
+        assertArrayEquals(new Integer[][] { { 1 } }, reflect2DArrayDiagonalTopRight(generateArrayForSpiral(1)));
 
         assertArrayEquals(
                 new Integer[][] {
@@ -889,7 +891,7 @@ class ArraysTest {
                         { 4,  9, 14, 19, 24 },
                         { 5, 10, 15, 20, 25 }
                 },
-                Arrays.reflect2DArrayDiagonalTopRight(generateArrayForSpiral(5))
+                reflect2DArrayDiagonalTopRight(generateArrayForSpiral(5))
         );
     }
 
@@ -900,7 +902,7 @@ class ArraysTest {
      */
     @Test
     void testComputeRowsInPascalTriangle() {
-        assertArrayEquals(new int[][] { { 1 } }, Arrays.computeRowsInPascalTriangle(1));
+        assertArrayEquals(new int[][] { { 1 } }, computeRowsInPascalTriangle(1));
 
         assertArrayEquals(
                 new int[][] {
@@ -910,17 +912,17 @@ class ArraysTest {
                         { 1, 3, 3, 1 },
                         { 1, 4, 6, 4, 1 }
                     },
-                Arrays.computeRowsInPascalTriangle(5)
+                computeRowsInPascalTriangle(5)
         );
     }
 
 
     @Test
     void testComputeNthRowOfPascalTriangle() {
-        assertArrayEquals(new int[] { 1 }, Arrays.computeNthRowOfPascalTriangle(1));
-        assertArrayEquals(new int[] { 1, 1 }, Arrays.computeNthRowOfPascalTriangle(2));
-        assertArrayEquals(new int[] { 1, 2, 1 }, Arrays.computeNthRowOfPascalTriangle(3));
-        assertArrayEquals(new int[] { 1, 3, 3, 1 }, Arrays.computeNthRowOfPascalTriangle(4));
-        assertArrayEquals(new int[] { 1, 4, 6, 4, 1 }, Arrays.computeNthRowOfPascalTriangle(5));
+        assertArrayEquals(new int[] { 1 }, computeNthRowOfPascalTriangle(1));
+        assertArrayEquals(new int[] { 1, 1 }, computeNthRowOfPascalTriangle(2));
+        assertArrayEquals(new int[] { 1, 2, 1 }, computeNthRowOfPascalTriangle(3));
+        assertArrayEquals(new int[] { 1, 3, 3, 1 }, computeNthRowOfPascalTriangle(4));
+        assertArrayEquals(new int[] { 1, 4, 6, 4, 1 }, computeNthRowOfPascalTriangle(5));
     }
 }
