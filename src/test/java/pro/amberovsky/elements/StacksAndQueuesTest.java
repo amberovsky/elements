@@ -10,6 +10,8 @@ import java.util.function.UnaryOperator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import static pro.amberovsky.elements.StacksAndQueues.*;
+
 class StacksAndQueuesTest {
     /*
     IMPLEMENT A STACK WITH MAX API
@@ -48,22 +50,22 @@ class StacksAndQueuesTest {
      */
     @Test
     void testEvaluateRPNExpression() {
-        assertEquals(1, StacksAndQueues.evaluateRPNExpression("1"));
-        assertEquals(1, StacksAndQueues.evaluateRPNExpression("1,0,+"));
-        assertEquals(15, StacksAndQueues.evaluateRPNExpression("3,4,+,2,*,1,+"));
-        assertEquals(-4, StacksAndQueues.evaluateRPNExpression("1,1,+,-2,*"));
-        assertEquals(-3, StacksAndQueues.evaluateRPNExpression("-641,6,/,28,/"));
-        assertEquals(-119, StacksAndQueues.evaluateRPNExpression("1,2,3,4,5,*,*,*,-"));
+        assertEquals(1, evaluateRPNExpression("1"));
+        assertEquals(1, evaluateRPNExpression("1,0,+"));
+        assertEquals(15, evaluateRPNExpression("3,4,+,2,*,1,+"));
+        assertEquals(-4, evaluateRPNExpression("1,1,+,-2,*"));
+        assertEquals(-3, evaluateRPNExpression("-641,6,/,28,/"));
+        assertEquals(-119, evaluateRPNExpression("1,2,3,4,5,*,*,*,-"));
     }
 
     @Test
     void testEvaluateRPNExpression_Polish() {
-        assertEquals(1, StacksAndQueues.evaluateRPNExpression_Polish("1"));
-        assertEquals(1, StacksAndQueues.evaluateRPNExpression_Polish("+,1,0"));
-        assertEquals(15, StacksAndQueues.evaluateRPNExpression_Polish("+,1,*,2,+,3,4"));
-        assertEquals(-4, StacksAndQueues.evaluateRPNExpression_Polish("*,-2,+,1,1"));
-        assertEquals(-3, StacksAndQueues.evaluateRPNExpression_Polish("/,28,/,6,-641"));
-        assertEquals(-119, StacksAndQueues.evaluateRPNExpression_Polish("-,*,*,*,5,4,3,2,1"));
+        assertEquals(1, evaluateRPNExpression_Polish("1"));
+        assertEquals(1, evaluateRPNExpression_Polish("+,1,0"));
+        assertEquals(15, evaluateRPNExpression_Polish("+,1,*,2,+,3,4"));
+        assertEquals(-4, evaluateRPNExpression_Polish("*,-2,+,1,1"));
+        assertEquals(-3, evaluateRPNExpression_Polish("/,28,/,6,-641"));
+        assertEquals(-119, evaluateRPNExpression_Polish("-,*,*,*,5,4,3,2,1"));
     }
 
 
@@ -73,14 +75,14 @@ class StacksAndQueuesTest {
      */
     @Test
     void testCheckParenthesesParity() {
-        assertTrue(StacksAndQueues.checkParenthesesParity(""));
-        assertTrue(StacksAndQueues.checkParenthesesParity("()"));
-        assertTrue(StacksAndQueues.checkParenthesesParity("({})"));
-        assertTrue(StacksAndQueues.checkParenthesesParity("({}[()]){}"));
+        assertTrue(checkParenthesesParity(""));
+        assertTrue(checkParenthesesParity("()"));
+        assertTrue(checkParenthesesParity("({})"));
+        assertTrue(checkParenthesesParity("({}[()]){}"));
 
-        assertFalse(StacksAndQueues.checkParenthesesParity("{"));
-        assertFalse(StacksAndQueues.checkParenthesesParity("{)"));
-        assertFalse(StacksAndQueues.checkParenthesesParity("[()[]{()()"));
+        assertFalse(checkParenthesesParity("{"));
+        assertFalse(checkParenthesesParity("{)"));
+        assertFalse(checkParenthesesParity("[()[]{()()"));
     }
 
 
@@ -90,11 +92,11 @@ class StacksAndQueuesTest {
      */
     @Test
     void testNormalizePathname() {
-        assertEquals("qwe", StacksAndQueues.normalizePathname("qwe"));
-        assertEquals("/usr/bin/gcc", StacksAndQueues.normalizePathname("/usr/lib/../bin/gcc"));
-        assertEquals("/", StacksAndQueues.normalizePathname("/../"));
-        assertEquals("/", StacksAndQueues.normalizePathname("/../qwe/tre/../../../"));
-        assertEquals("scripts/awkscripts", StacksAndQueues.normalizePathname("scripts//./../scripts/awkscripts/././"));
+        assertEquals("qwe", normalizePathname("qwe"));
+        assertEquals("/usr/bin/gcc", normalizePathname("/usr/lib/../bin/gcc"));
+        assertEquals("/", normalizePathname("/../"));
+        assertEquals("/", normalizePathname("/../qwe/tre/../../../"));
+        assertEquals("scripts/awkscripts", normalizePathname("scripts//./../scripts/awkscripts/././"));
     }
 
 
@@ -128,18 +130,18 @@ class StacksAndQueuesTest {
      */
     @Test
     void testComputeBuildingsWithASunsetView() {
-        assertArrayEquals(new int[] { 1 }, StacksAndQueues.computeBuildingsWithASunsetView(new int[] { 1 }));
-        assertArrayEquals(new int[] { 1, 10 }, StacksAndQueues.computeBuildingsWithASunsetView(new int[] { 1, 10 }));
-        assertArrayEquals(new int[] { 10 }, StacksAndQueues.computeBuildingsWithASunsetView(new int[] { 10, 1 }));
-        assertArrayEquals(new int[] { 10, 100, 200 }, StacksAndQueues.computeBuildingsWithASunsetView(new int[] { 10, 1, 100, 200, 150, 100 }));
+        assertArrayEquals(new int[] { 1 }, computeBuildingsWithASunsetView(new int[] { 1 }));
+        assertArrayEquals(new int[] { 1, 10 }, computeBuildingsWithASunsetView(new int[] { 1, 10 }));
+        assertArrayEquals(new int[] { 10 }, computeBuildingsWithASunsetView(new int[] { 10, 1 }));
+        assertArrayEquals(new int[] { 10, 100, 200 }, computeBuildingsWithASunsetView(new int[] { 10, 1, 100, 200, 150, 100 }));
     }
 
     @Test
     void testComputeBuildingsWithASunsetView_WestToEast() {
-        assertArrayEquals(new Integer[] { 1 }, StacksAndQueues.computeBuildingsWithASunsetView_WestToEast(new int[] { 1 }));
-        assertArrayEquals(new Integer[] { 1, 10 }, StacksAndQueues.computeBuildingsWithASunsetView_WestToEast(new int[] { 1, 10 }));
-        assertArrayEquals(new Integer[] { 10 }, StacksAndQueues.computeBuildingsWithASunsetView_WestToEast(new int[] { 10, 1 }));
-        assertArrayEquals(new Integer[] { 10, 100, 200 }, StacksAndQueues.computeBuildingsWithASunsetView_WestToEast(new int[] { 10, 1, 100, 200, 150, 100 }));
+        assertArrayEquals(new Integer[] { 1 }, computeBuildingsWithASunsetView_WestToEast(new int[] { 1 }));
+        assertArrayEquals(new Integer[] { 1, 10 }, computeBuildingsWithASunsetView_WestToEast(new int[] { 1, 10 }));
+        assertArrayEquals(new Integer[] { 10 }, computeBuildingsWithASunsetView_WestToEast(new int[] { 10, 1 }));
+        assertArrayEquals(new Integer[] { 10, 100, 200 }, computeBuildingsWithASunsetView_WestToEast(new int[] { 10, 1, 100, 200, 150, 100 }));
     }
 
 
@@ -149,11 +151,11 @@ class StacksAndQueuesTest {
      */
     @Test
     void testBreadthFirstSearch() {
-        assertArrayEquals(new Integer[] { 1 }, StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth(new BinaryTreeNode<>(1)));
+        assertArrayEquals(new Integer[] { 1 }, computeBinaryTreeNodesInOrderOfIncreasingDepth(new BinaryTreeNode<>(1)));
 
         assertArrayEquals(
                 new Integer[] { 50, 4, 88, 44, 123 },
-                StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth(
+                computeBinaryTreeNodesInOrderOfIncreasingDepth(
                     new BinaryTreeNode<>(
                             50,
                             new BinaryTreeNode<>(4, null, new BinaryTreeNode<>(44)),
@@ -165,11 +167,11 @@ class StacksAndQueuesTest {
 
     @Test
     void testComputeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection() {
-        assertArrayEquals(new Integer[] { 1 }, StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(new BinaryTreeNode<>(1)));
+        assertArrayEquals(new Integer[] { 1 }, computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(new BinaryTreeNode<>(1)));
 
         assertArrayEquals(
                 new Integer[] { 50, 4, 88, 123, 44 },
-                StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(
+                computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(
                         new BinaryTreeNode<>(
                                 50,
                                 new BinaryTreeNode<>(4, null, new BinaryTreeNode<>(44)),
@@ -181,11 +183,11 @@ class StacksAndQueuesTest {
 
     @Test
     void testComputeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight() {
-        assertArrayEquals(new Integer[] { 1 }, StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(new BinaryTreeNode<>(1)));
+        assertArrayEquals(new Integer[] { 1 }, computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(new BinaryTreeNode<>(1)));
 
         assertArrayEquals(
                 new Integer[] { 44, 123, 4, 88, 50 },
-                StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(
+                computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(
                         new BinaryTreeNode<>(
                                 50,
                                 new BinaryTreeNode<>(4, null, new BinaryTreeNode<>(44)),
@@ -197,11 +199,11 @@ class StacksAndQueuesTest {
 
     @Test
     void testComputeBinaryTreeNodesInOrderOfIncreasingDepth_Average() {
-        assertArrayEquals(new Double[] { 1.0 }, StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(new BinaryTreeNode<>(1)));
+        assertArrayEquals(new Double[] { 1.0 }, computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(new BinaryTreeNode<>(1)));
 
         assertArrayEquals(
                 new Double[] { 50.0, 46.0, 83.5 },
-                StacksAndQueues.computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(
+                computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(
                         new BinaryTreeNode<>(
                                 50,
                                 new BinaryTreeNode<>(4, null, new BinaryTreeNode<>(44)),
