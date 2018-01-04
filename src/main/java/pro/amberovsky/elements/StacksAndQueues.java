@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Various tasks on stacks and queues
  */
-public class StacksAndQueues {
+class StacksAndQueues {
     /*
     STACKS
      */
@@ -29,7 +29,7 @@ public class StacksAndQueues {
      *
      * @return result
      */
-    public static int evaluateRPNExpression(String text) {
+    static int evaluateRPNExpression(String text) {
         Deque<Integer> stack = new ArrayDeque<>();
 
         StringBuilder token = null;
@@ -87,7 +87,7 @@ public class StacksAndQueues {
      *
      * @return result
      */
-    public static int evaluateRPNExpression_Polish(String text) {
+    static int evaluateRPNExpression_Polish(String text) {
         String[] tokens = text.split(",");
 
         Deque<Integer> stack = new ArrayDeque<>();
@@ -138,7 +138,7 @@ public class StacksAndQueues {
      *
      * @return true if string is well-formed, false otherwise
      */
-    public static boolean checkParenthesesParity(String string) {
+    static boolean checkParenthesesParity(String string) {
         Deque<Character> stack = new ArrayDeque<>();
 
         for (int i = 0; i < string.length(); i++) {
@@ -185,7 +185,7 @@ public class StacksAndQueues {
      *
      * @return normalized path
      */
-    public static String normalizePathname(String pathname) {
+    static String normalizePathname(String pathname) {
         if (pathname.isEmpty()) return pathname;
 
         boolean isAbsolute = pathname.startsWith("/");
@@ -232,7 +232,7 @@ public class StacksAndQueues {
      *
      * @return latest order
      */
-    public static <T> int jumpFirstOrderByRecursionHelper(JumpListNode<T> node, int order) {
+    static <T> int jumpFirstOrderByRecursionHelper(JumpListNode<T> node, int order) {
         if ((node != null) && (node.order == -1)) {
             node.order = order++;
 
@@ -254,7 +254,7 @@ public class StacksAndQueues {
      *
      * @return list with updated order
      */
-    public static <T> JumpListNode<T> jumpFirstOrderByRecursion(JumpListNode<T> list) {
+    static <T> JumpListNode<T> jumpFirstOrderByRecursion(JumpListNode<T> list) {
         jumpFirstOrderByRecursionHelper(list, 1);
         return list;
     }
@@ -270,7 +270,7 @@ public class StacksAndQueues {
      *
      * @return list with updated order
      */
-    public static <T> JumpListNode<T> jumpFirstOrderByIteration(JumpListNode<T> list) {
+    static <T> JumpListNode<T> jumpFirstOrderByIteration(JumpListNode<T> list) {
         Deque<JumpListNode<T>> stack = new ArrayDeque<>();
         int order = 1;
 
@@ -306,7 +306,7 @@ public class StacksAndQueues {
      *
      * @return list of buildings with a sunset view
      */
-    public static int[] computeBuildingsWithASunsetView(int[] buildings) {
+    static int[] computeBuildingsWithASunsetView(int[] buildings) {
         if (buildings.length < 1) return new int[0];
 
         Deque<Integer> stack = new ArrayDeque<>();
@@ -338,7 +338,7 @@ public class StacksAndQueues {
      *
      * @return list of buildings with a sunset view
      */
-    public static Integer[] computeBuildingsWithASunsetView_WestToEast(int[] buildings) {
+    static Integer[] computeBuildingsWithASunsetView_WestToEast(int[] buildings) {
         List<Integer> list = new ArrayList<>();
 
         int maximum = -1;
@@ -373,7 +373,7 @@ public class StacksAndQueues {
      *
      * @return array of nodes values
      */
-    public static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth(BinaryTreeNode<Integer> tree) {
+    static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth(BinaryTreeNode<Integer> tree) {
         Queue<BinaryTreeNode<Integer>> queue = new ArrayDeque<>();
         List<Integer> result = new ArrayList<>();
 
@@ -400,7 +400,7 @@ public class StacksAndQueues {
      *
      * @return array of nodes values
      */
-    public static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(BinaryTreeNode<Integer> tree) {
+    static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth_AlternatingDirection(BinaryTreeNode<Integer> tree) {
         List<Integer> result = new ArrayList<>();
 
         Queue<BinaryTreeNode<Integer>> currentQueue = new ArrayDeque<>();
@@ -443,7 +443,7 @@ public class StacksAndQueues {
      * @param tree binary tree
      * @return array of nodes values
      */
-    public static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(BinaryTreeNode<Integer> tree) {
+    static Integer[] computeBinaryTreeNodesInOrderOfIncreasingDepth_BottomUpLeftRight(BinaryTreeNode<Integer> tree) {
         Deque<Integer> result = new ArrayDeque<>();
 
         Queue<BinaryTreeNode<Integer>> currentQueue = new ArrayDeque<>();
@@ -471,7 +471,7 @@ public class StacksAndQueues {
      * @param tree binary tree
      * @return array with average values
      */
-    public static Double[] computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(BinaryTreeNode<Integer> tree) {
+    static Double[] computeBinaryTreeNodesInOrderOfIncreasingDepth_Average(BinaryTreeNode<Integer> tree) {
         List<Double> result = new ArrayList<>();
 
         Queue<BinaryTreeNode<Integer>> currentQueue = new ArrayDeque<>();

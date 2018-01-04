@@ -1,4 +1,4 @@
-## <a name="stacks-and-queues"></a>4. Stacks and Queues
+## <a name="stacks-and-queues"></a>5. Stacks and Queues
 #### Various tasks on stacks and queues
 
 **Class**: [StacksAndQueues](/src/main/java/pro/amberovsky/elements/StacksAndQueues.java)  
@@ -6,16 +6,16 @@
 
 1. [Implement a stack with max API](#implement-a-stack-with-max-api)
 2. [Evaluate RPN expression](#evaluate-rpn-expression)
-   * [Variant: Polish notation](#evaluate-rpn-expression-polish-notation)
+    * [Variant: Polish notation](#evaluate-rpn-expression-polish-notation)
 3. [Test a string over for well-formedness](#test-a-string-over-for-well-formedness)
 4. [Normalize pathnames](#normalize-pathnames)
 5. [Search a postings list](#search-a-postings-list)
 6. [Compute buildings with a sunset view](#compute-buildings-with-a-sunset-view)
-   * [Variant: west to east](#compute-buildings-with-a-sunset-view-west-to-east)
+    * [Variant: west to east](#compute-buildings-with-a-sunset-view-west-to-east)
 7. [Compute binary tree nodes in order of increasing depth](#compute-binary-tree-nodes-in-order-of-increasing-depth)
-   * [Variant: alternate direction on each level](#compute-binary-tree-nodes-in-order-of-increasing-depth-alternate-direction-on-each-level)
-   * [Variant: bottom-up left-right direction](#compute-binary-tree-nodes-in-order-of-increasing-depth-bottom-up-left-right-direction)
-   * [Variant: average at each level](#compute-binary-tree-nodes-in-order-of-increasing-depth-average-at-each-level)
+    * [Variant: alternate direction on each level](#compute-binary-tree-nodes-in-order-of-increasing-depth-alternate-direction-on-each-level)
+    * [Variant: bottom-up left-right direction](#compute-binary-tree-nodes-in-order-of-increasing-depth-bottom-up-left-right-direction)
+    * [Variant: average at each level](#compute-binary-tree-nodes-in-order-of-increasing-depth-average-at-each-level)
 8. [Implement a circular queue](#implement-a-ciruclar-queue)
 9. [Implement a queue using stacks](#implement-a-queue-using-stacks)
 10. [Implement a queue with max API](#implement-a-queue-with-max-api)

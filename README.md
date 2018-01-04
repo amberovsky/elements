@@ -11,7 +11,9 @@
 2. [Arrays](/docs/Arrays.md)
 3. [Strings](/docs/Strings.md)
 4. [Linked Lists](/docs/LinkedLists.md)
-4. [Stacks and Queues](/docs/StacksAndQueues.md)
+5. [Stacks and Queues](/docs/StacksAndQueues.md)
+6. [Binary Trees](/docs/BinaryTrees.md)
+17. [Honors Class](/docs/HonorsClass.md)
 <br>
 
 ## Disclaimer

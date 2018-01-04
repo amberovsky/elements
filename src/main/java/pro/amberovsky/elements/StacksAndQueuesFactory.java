@@ -7,18 +7,18 @@ import java.util.function.*;
 /**
  * Factories for StacksAndQueues class
  */
-public class StacksAndQueuesFactory {
+class StacksAndQueuesFactory {
     /**
      * Algorithms for SEARCH A POSTING LIST
      */
-    public enum SEARCH_A_POSTING_LIST { ITERATIVE, RECURSION }
+    enum SEARCH_A_POSTING_LIST { ITERATIVE, RECURSION }
 
     /**
      * @param algorithm which one for SEARCH A POSTING LIST
      *
      * @return operator to calculate jump-first order
      */
-    public static <T> UnaryOperator<JumpListNode<T>> getSearchAPostingList(SEARCH_A_POSTING_LIST algorithm) {
+    static <T> UnaryOperator<JumpListNode<T>> getSearchAPostingList(SEARCH_A_POSTING_LIST algorithm) {
         switch (algorithm) {
             case ITERATIVE:
                 return StacksAndQueues::jumpFirstOrderByIteration;

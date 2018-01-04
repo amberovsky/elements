@@ -6,7 +6,7 @@ import pro.amberovsky.elements.util.data.ListNode;
 /**
  * Various tasks on linked lists
  */
-public class LinkedLists {
+class LinkedLists {
     /*
     MERGE TWO SORTED LISTS
      */
@@ -21,7 +21,7 @@ public class LinkedLists {
      *
      * @return merged lists
      */
-    public static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> list1, ListNode<Integer> list2) {
+    static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> list1, ListNode<Integer> list2) {
         ListNode<Integer> result = new ListNode<>(0, null);
         ListNode<Integer> current = result;
 
@@ -52,7 +52,7 @@ public class LinkedLists {
      *
      * @return merged lists
      */
-    public static DoubleListNode<Integer> mergeTwoSortedLists_Double(
+    static DoubleListNode<Integer> mergeTwoSortedLists_Double(
             DoubleListNode<Integer> list1, DoubleListNode<Integer> list2
     ) {
         DoubleListNode<Integer> result = new DoubleListNode<>(0);
@@ -100,7 +100,7 @@ public class LinkedLists {
      *
      * @return list with reversed sublist
      */
-    public static <T> ListNode<T> reverseASingleSublist(ListNode<T> list, int index1, int index2) {
+    static <T> ListNode<T> reverseASingleSublist(ListNode<T> list, int index1, int index2) {
         ListNode<T> dummyNode = new ListNode<>(null, list);
 
         ListNode<T> prev = dummyNode;
@@ -130,7 +130,7 @@ public class LinkedLists {
      *
      * @return reversed single linked list
      */
-    public static <T> ListNode<T> reverseASingleSublist_List(ListNode<T> list) {
+    static <T> ListNode<T> reverseASingleSublist_List(ListNode<T> list) {
         ListNode<T> current = list;
 
         while (current.next != null) {
@@ -159,7 +159,7 @@ public class LinkedLists {
      *
      * @return null if there is no cycle, first node of the cycle otherwise
      */
-    public static <T> ListNode<T> detectCycleInASingleLinkedList(ListNode<T> list) {
+    static <T> ListNode<T> detectCycleInASingleLinkedList(ListNode<T> list) {
         ListNode<T> p1 = list;
         ListNode<T> p2 = list;
 
@@ -211,7 +211,7 @@ public class LinkedLists {
      *
      * @return common node, null otherwise
      */
-    public static <T> ListNode<T> isThereACommonNodeInCycleFreeLists(ListNode<T> list1, ListNode<T> list2) {
+    static <T> ListNode<T> isThereACommonNodeInCycleFreeLists(ListNode<T> list1, ListNode<T> list2) {
         int len1 = 0;
         ListNode<T> p;
 
@@ -264,7 +264,7 @@ public class LinkedLists {
      *
      * @return a common node, null otherwise
      */
-    public static <T> ListNode<T> isThereACommonNodeInListsWithCycles(ListNode<T> list1, ListNode<T> list2) {
+    static <T> ListNode<T> isThereACommonNodeInListsWithCycles(ListNode<T> list1, ListNode<T> list2) {
         // Check is there a cycle in each list
         ListNode<T> cycle1 = detectCycleInASingleLinkedList(list1);
         ListNode<T> cycle2 = detectCycleInASingleLinkedList(list2);
@@ -304,7 +304,7 @@ public class LinkedLists {
      * @param node node to delete
      * @param <T> type
      */
-    public static <T> void deleteANodeFromASingleLinkedList(ListNode<T> node) {
+    static <T> void deleteANodeFromASingleLinkedList(ListNode<T> node) {
         node.data = node.next.data;
         node.next = node.next.next;
     }
@@ -327,7 +327,7 @@ public class LinkedLists {
      *
      * @return list with removed node
      */
-    public static <T> ListNode<T> removeTheKthLastElementFromAList(ListNode<T> list, int k) {
+    static <T> ListNode<T> removeTheKthLastElementFromAList(ListNode<T> list, int k) {
         ListNode<T> dummyHead = new ListNode<>(null, list);
         ListNode<T> p2 = list;
 
@@ -362,7 +362,7 @@ public class LinkedLists {
      *
      * @return updated list
      */
-    public static <T> ListNode<T> removeDuplicatesFormASortedList(ListNode<T> list) {
+    static <T> ListNode<T> removeDuplicatesFormASortedList(ListNode<T> list) {
         ListNode<T> p = list;
 
         while (p != null) {
@@ -392,7 +392,7 @@ public class LinkedLists {
      *
      * @return updated list
      */
-    public static <T> ListNode<T> removeDuplicatesFormASortedList_M(ListNode<T> list, int m) {
+    static <T> ListNode<T> removeDuplicatesFormASortedList_M(ListNode<T> list, int m) {
         ListNode<T> p = list;
 
         while (p != null) {
@@ -431,7 +431,7 @@ public class LinkedLists {
      *
      * @return rotated list
      */
-    public static <T> ListNode<T> cycleRightShift(ListNode<T> list, int k) {
+    static <T> ListNode<T> cycleRightShift(ListNode<T> list, int k) {
         ListNode<T> last = list;
         int length = 1;
 
@@ -472,7 +472,7 @@ public class LinkedLists {
      *
      * @return reorganised list
      */
-    public static <T> ListNode<T> evenOddMerge(ListNode<T> list) {
+    static <T> ListNode<T> evenOddMerge(ListNode<T> list) {
         ListNode<T> tailOdd = null;
         ListNode<T> headOdd = null;
         ListNode<T> tailEven = null;
@@ -518,7 +518,7 @@ public class LinkedLists {
      *
      * @return bool if the list is palindromic, false otherwise
      */
-    public static <T> boolean testWhetherASingleLinkedListIsPalindromic(ListNode<T> list) {
+    static <T> boolean testWhetherASingleLinkedListIsPalindromic(ListNode<T> list) {
         int length = 1;
 
         ListNode<T> p = list;
@@ -560,7 +560,7 @@ public class LinkedLists {
      *
      * @return true if the list is palindromic, false otherwise
      */
-    public static <T> boolean testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode<T> list) {
+    static <T> boolean testWhetherASingleLinkedListIsPalindromic_Double(DoubleListNode<T> list) {
         DoubleListNode<T> p = list;
         int length = 1;
 
@@ -596,7 +596,7 @@ public class LinkedLists {
      *
      * @return reorganised list
      */
-    public static <T extends Comparable<T>> ListNode<T> listPivoting(ListNode<T> list, T pivot) {
+    static <T extends Comparable<T>> ListNode<T> listPivoting(ListNode<T> list, T pivot) {
         ListNode<T> headLess = new ListNode<>(null);
         ListNode<T> tailLess = headLess;
         ListNode<T> headEqual = new ListNode<>(null);
@@ -643,7 +643,7 @@ public class LinkedLists {
      *
      * @return sum
      */
-    public static ListNode<Integer> addListBasedIntegers(ListNode<Integer> number1, ListNode<Integer> number2) {
+    static ListNode<Integer> addListBasedIntegers(ListNode<Integer> number1, ListNode<Integer> number2) {
         ListNode<Integer> result = new ListNode<>(0);
         ListNode<Integer> resultTail = result;
 
@@ -686,7 +686,7 @@ public class LinkedLists {
      *
      * @return sum
      */
-    public static ListNode<Integer> addListBasedIntegers_MostSignificantDigitComesFirst(ListNode<Integer> number1, ListNode<Integer> number2) {
+    static ListNode<Integer> addListBasedIntegers_MostSignificantDigitComesFirst(ListNode<Integer> number1, ListNode<Integer> number2) {
         // Reverse number1
         ListNode<Integer> number1Head = number1;
 

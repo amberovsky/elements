@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class JumpListNodeTest {
+class JumpListNodeTest {
     @Test
-    public void testJumpListNodeConstructors() {
+    void testJumpListNodeConstructors() {
         JumpListNode<Integer> node = new JumpListNode<>(100);
         assertEquals(100, node.data.intValue());
         assertNull(node.next);

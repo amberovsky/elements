@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static pro.amberovsky.elements.util.data.ListNode.*;
 
-public class ListNodeTest {
+class ListNodeTest {
     @Test
-    public void testListNodeConstructors() {
+    void testListNodeConstructors() {
         ListNode<Integer> node = new ListNode<>(100);
         assertEquals(100, node.data.intValue());
         assertNull(node.next);
@@ -23,7 +23,7 @@ public class ListNodeTest {
     }
 
     @Test
-    public void testListNodeEquals() {
+    void testListNodeEquals() {
         assertFalse(new ListNode<>(100).equals(null));
         assertFalse(new ListNode<>(100).equals("qwe"));
         assertFalse(new ListNode<>(100).equals(new ListNode<>(200)));
@@ -33,7 +33,7 @@ public class ListNodeTest {
     }
 
     @Test
-    public void testToListNode() {
+    void testToListNode() {
         assertNull(toListNode());
 
         assertEquals(new ListNode<>(100), toListNode(100));
@@ -45,7 +45,7 @@ public class ListNodeTest {
     BOOT CAMP
     */
     @Test
-    public void testSearch() {
+    void testSearch() {
         assertNull(search(toListNode(), 10));
         assertNull(search(toListNode(20), 10));
 
@@ -60,7 +60,7 @@ public class ListNodeTest {
     }
 
     @Test
-    public void testInsertAfter() {
+    void testInsertAfter() {
         ListNode<Integer> node3 = new ListNode<>(300);
         ListNode<Integer> node2 = new ListNode<>(200);
 
@@ -70,7 +70,7 @@ public class ListNodeTest {
     }
 
     @Test
-    public void testDeleteAfter() {
+    void testDeleteAfter() {
         ListNode<Integer> node = toListNode(100, 200);
         deleteAfter(node);
         assertEquals(toListNode(100), node);

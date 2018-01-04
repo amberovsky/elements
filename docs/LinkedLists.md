@@ -4,24 +4,24 @@
 **Class**: [LinkedLists](/src/main/java/pro/amberovsky/elements/LinkedLists.java)  
 
 1. [Merge two sorted lists](#merge-two-sorted-lists)
-   * [Variant: double](#merge-two-sorted-lists-double)
+    * [Variant: double](#merge-two-sorted-lists-double)
 2. [Reverse a single sublist](#reverse-a-single-sublist)
-   * [Variant: list](#reverse-a-single-sublist-list)
-   * Variant: k nodes at a time
+    * [Variant: list](#reverse-a-single-sublist-list)
+    * Variant: k nodes at a time
 3. [Detect cycle in a single linked list](#detect-cycle-in-a-single-linked-list)
 4. [Is there a common node in cycle free lists](#is-there-a-common-node-in-cycle-free-lists)
 5. [Is there a common node in lists with cycles](#is-there-a-common-node-in-lists-with-cycles)
 6. [Delete a node from a single linked list](#delete-a-node-from-a-single-linked-list)
 7. [Remove the Kth last element from a list](#remove-the-kth-last-element-from-a-list)
 8. [Remove duplicates from a sorted single linked list](#remove-duplicates-from-a-sorted-single-linked-list)
-   * [Variant: M](#remove-duplicates-from-a-sorted-single-linked-list-m)
+    * [Variant: M](#remove-duplicates-from-a-sorted-single-linked-list-m)
 9. [Implement cyclic right shift for single linked list](#implement-cyclic-right-shift-for-single-linked-list)
 10. [Implement even-odd merge](#implement-even-odd-merge)
 11. [Test whether a single linked list is palindromic](#test-whether-a-single-linked-list-is-palindromic)
-   * [Variant: double](#test-whether-a-single-linked-list-is-palindromic-double)
+    * [Variant: double](#test-whether-a-single-linked-list-is-palindromic-double)
 12. [Implement list pivoting](#implement-list-pivoting)
 13. [Add list-based integers](#add-list-based-integers)
-   * [Variant: most significant digit comes first](#add-list-based-integers-most-significant-digit-comes-first)
+    * [Variant: most significant digit comes first](#add-list-based-integers-most-significant-digit-comes-first)
       
 <br>
 
@@ -128,6 +128,8 @@
 
 
 ### 11. <a name="test-whether-a-single-linked-list-is-palindromic"></a>Test whether a single linked list is palindromic
+**Task**: Test whether a single linked list is palindromic  
+
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
 | testWhetherASingleLinkedListIsPalindromic | Reverse the second half of the list | O(n) | O(1) |
@@ -156,7 +158,8 @@
 | addListBasedIntegers | | O(n + m) | O(max(n, m)) |
 
    * ### <a name="add-list-based-integers-most-significant-digit-comes-first"></a>Variant: most significant digit comes first  
-
+      **Task**: most significant digit comes first  
+      
       | Method | Algorithm | Time | Space |
       | :--- | :---: | :---: | :-- |
       | addListBasedIntegers_MostSignificantDigitComesFirst | | O(n + m) | O(max(n, m)) |

@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PrimitiveTypesTest {
+class PrimitiveTypesTest {
     /*
     ERASE LOWEST SET BIT
      */
     @Test
-    public void testEraseLowestSetBit_PositiveNumbers() {
+    void testEraseLowestSetBit_PositiveNumbers() {
         assertEquals(0, PrimitiveTypes.eraseLowestSetBit(0));
         assertEquals(0, PrimitiveTypes.eraseLowestSetBit(1));
         assertEquals(0, PrimitiveTypes.eraseLowestSetBit(2));
@@ -23,7 +23,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testEraseLowestSetBit_NegativeNumbers() {
+    void testEraseLowestSetBit_NegativeNumbers() {
         assertEquals(-2, PrimitiveTypes.eraseLowestSetBit(-1));
         assertEquals(-4, PrimitiveTypes.eraseLowestSetBit(-2));
         assertEquals(-8, PrimitiveTypes.eraseLowestSetBit(-7));
@@ -35,7 +35,7 @@ public class PrimitiveTypesTest {
     IS POWER OF TWO
      */
     @Test
-    public void testIsPowerOfTwoReturnsTrueOnPositivePowersOfTwo() {
+    void testIsPowerOfTwoReturnsTrueOnPositivePowersOfTwo() {
         assertTrue(PrimitiveTypes.isPowerOfTwo(1));
         assertTrue(PrimitiveTypes.isPowerOfTwo(2));
         assertTrue(PrimitiveTypes.isPowerOfTwo(4));
@@ -44,7 +44,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testIsPowerOfTwoReturnsFalseOnPositiveNonPowersOfTwo() {
+    void testIsPowerOfTwoReturnsFalseOnPositiveNonPowersOfTwo() {
         assertFalse(PrimitiveTypes.isPowerOfTwo(0));
         assertFalse(PrimitiveTypes.isPowerOfTwo(101));
         assertFalse(PrimitiveTypes.isPowerOfTwo(500));
@@ -53,7 +53,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testIsPowerOfTwoReturnsFalseOnNegativeNumbers() {
+    void testIsPowerOfTwoReturnsFalseOnNegativeNumbers() {
         assertFalse(PrimitiveTypes.isPowerOfTwo(-1));
         assertFalse(PrimitiveTypes.isPowerOfTwo(-2));
         assertFalse(PrimitiveTypes.isPowerOfTwo(-4));
@@ -66,7 +66,7 @@ public class PrimitiveTypesTest {
     COUNT BITS
      */
     @Test
-    public void testCountBitsByShifting_PositiveNumbers() {
+    void testCountBitsByShifting_PositiveNumbers() {
         assertEquals(1, PrimitiveTypes.countBitsByShifting(2));
         assertEquals(1, PrimitiveTypes.countBitsByShifting(256));
         assertEquals(2, PrimitiveTypes.countBitsByShifting(257));
@@ -74,14 +74,14 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testCountBitsByShifting_CornerCases() {
+    void testCountBitsByShifting_CornerCases() {
         assertEquals(0, PrimitiveTypes.countBitsByShifting(0));
         assertEquals(1, PrimitiveTypes.countBitsByShifting(1));
         assertEquals(Long.SIZE, PrimitiveTypes.countBitsByShifting(-1));
     }
 
     @Test
-    public void testCountBitsByShifting_NegativeNumber() {
+    void testCountBitsByShifting_NegativeNumber() {
         assertEquals(Long.SIZE - 1, PrimitiveTypes.countBitsByShifting(-2));
         assertEquals(Long.SIZE - 8 + 1, PrimitiveTypes.countBitsByShifting(-255));
         assertEquals(Long.SIZE - 8, PrimitiveTypes.countBitsByShifting(-256));
@@ -93,7 +93,7 @@ public class PrimitiveTypesTest {
     /*
     PARITY
      */
-    public void runGetParity_PositiveNumbers(final Function<Integer, Short> algorithm) {
+    void runGetParity_PositiveNumbers(final Function<Integer, Short> algorithm) {
         assertEquals(0, algorithm.apply(0).intValue());
         assertEquals(1, algorithm.apply(1).intValue());
         assertEquals(1, algorithm.apply(2).intValue());
@@ -101,7 +101,7 @@ public class PrimitiveTypesTest {
         assertEquals(1, algorithm.apply(Short.MAX_VALUE + 1).intValue());
     }
 
-    public void runGetParity_NegativeNumbers(final Function<Integer, Short> algorithm) {
+    void runGetParity_NegativeNumbers(final Function<Integer, Short> algorithm) {
         assertEquals(0, algorithm.apply(-1).intValue());
         assertEquals(1, algorithm.apply(-2).intValue());
         assertEquals(1, algorithm.apply(-3).intValue());
@@ -109,25 +109,25 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testGetParity_Bruteforce() {
+    void testGetParity_Bruteforce() {
         runGetParity_PositiveNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.BRUTEFORCE));
         runGetParity_NegativeNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.BRUTEFORCE));
     }
 
     @Test
-    public void testGetParity_EraseLowestSetBit() {
+    void testGetParity_EraseLowestSetBit() {
         runGetParity_PositiveNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.BRUTEFORCE));
         runGetParity_NegativeNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.BRUTEFORCE));
     }
 
     @Test
-    public void testGetParity_LookupTable() {
+    void testGetParity_LookupTable() {
         runGetParity_PositiveNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.LOOKUP));
         runGetParity_NegativeNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.LOOKUP));
     }
 
     @Test
-    public void testGetParity_XOR() {
+    void testGetParity_XOR() {
         runGetParity_PositiveNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.XOR));
         runGetParity_NegativeNumbers(PrimitiveTypesFactory.getParity(PrimitiveTypesFactory.PARITY.XOR));
     }
@@ -154,7 +154,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testSwap_Bruteforce() {
+    void testSwap_Bruteforce() {
         runSwap_PositiveNumbers(PrimitiveTypesFactory.getSwap(PrimitiveTypesFactory.SWAP.BRUTEFORCE));
         runSwap_NegativeNumbers(PrimitiveTypesFactory.getSwap(PrimitiveTypesFactory.SWAP.BRUTEFORCE));
     }
@@ -177,25 +177,25 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testReverseBits_Iteration() {
+    void testReverseBits_Iteration() {
         runReverseBits_PositiveNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.ITERATION));
         runReverseBits_NegativeNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.ITERATION));
     }
 
     @Test
-    public void testReverseBits_Mask() {
+    void testReverseBits_Mask() {
         runReverseBits_PositiveNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.MASK));
         runReverseBits_NegativeNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.MASK));
     }
 
     @Test
-    public void testReverseBits_Swap() {
+    void testReverseBits_Swap() {
         runReverseBits_PositiveNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.SWAP));
         runReverseBits_NegativeNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.SWAP));
     }
 
     @Test
-    public void testReverseBits_Lookup() {
+    void testReverseBits_Lookup() {
         runReverseBits_PositiveNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.LOOKUP));
         runReverseBits_NegativeNumbers(PrimitiveTypesFactory.getReverseBits(PrimitiveTypesFactory.REVERSE_BITS.LOOKUP));
     }
@@ -214,19 +214,19 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForClosestLongWithSameWeight")
-    public void testGetClosestLongWithSameWeight_throwsExceptionOnAllZero(LongUnaryOperator algorithm) {
+    void testGetClosestLongWithSameWeight_throwsExceptionOnAllZero(LongUnaryOperator algorithm) {
         assertThrows(IllegalArgumentException.class, () -> algorithm.applyAsLong(0L));
     }
 
     @ParameterizedTest
     @MethodSource("sourceForClosestLongWithSameWeight")
-    public void testGetClosestLongWithSameWeight_throwsExceptionOnAllOne(LongUnaryOperator algorithm) {
+    void testGetClosestLongWithSameWeight_throwsExceptionOnAllOne(LongUnaryOperator algorithm) {
         assertThrows(IllegalArgumentException.class, () -> algorithm.applyAsLong(-1L));
     }
 
     @ParameterizedTest
     @MethodSource("sourceForClosestLongWithSameWeight")
-    public void testGetClosestLongWithSameWeight(LongUnaryOperator algorithm) {
+    void testGetClosestLongWithSameWeight(LongUnaryOperator algorithm) {
         long[][] numbers = new long[][]{
                 {1, 2},
                 {100, 98},
@@ -267,7 +267,7 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForGetSumOfTwoNonNegativeLongs")
-    public void testGetSumOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
+    void testGetSumOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
         assertEquals(2, algorithm.applyAsLong(1, 1));
         assertEquals(1, algorithm.applyAsLong(1, 0));
         assertEquals(1, algorithm.applyAsLong(0, 1));
@@ -290,7 +290,7 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForGetProductOfTwoNonNegativeLongs")
-    public void testGetProductOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
+    void testGetProductOfTwoNonNegativeLongs(LongBinaryOperator algorithm) {
         assertEquals(1, algorithm.applyAsLong(1, 1));
         assertEquals(0, algorithm.applyAsLong(1, 0));
         assertEquals(0, algorithm.applyAsLong(0, 1));
@@ -314,7 +314,7 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForGetQuotientOfTwoPositiveLongs")
-    public void testGetQuotientOfTwoPositiveLongs(LongBinaryOperator algorithm) {
+    void testGetQuotientOfTwoPositiveLongs(LongBinaryOperator algorithm) {
         assertEquals(2, algorithm.applyAsLong(10, 5));
         assertEquals(1, algorithm.applyAsLong(10, 10));
         assertEquals(12438085, algorithm.applyAsLong(7912873491783L, 636181));
@@ -336,7 +336,7 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForGetPower")
-    public void testGetPower(ToDoubleBiFunction<Double, Integer> algorithm) {
+    void testGetPower(ToDoubleBiFunction<Double, Integer> algorithm) {
         assertEquals(1.0, algorithm.applyAsDouble(10.0, 0), 1.e-10);
         assertEquals(10.0, algorithm.applyAsDouble(10.0, 1), 1.e-10);
         assertEquals(100000.0, algorithm.applyAsDouble(10.0, 5), 1.e-10);
@@ -351,7 +351,7 @@ public class PrimitiveTypesTest {
     REVERSE DIGITS
     */
     @Test
-    public void testGetReverseDigits() {
+    void testGetReverseDigits() {
         assertEquals(0, PrimitiveTypes.reverseDigits(0));
         assertEquals(1, PrimitiveTypes.reverseDigits(1));
         assertEquals(-1, PrimitiveTypes.reverseDigits(-1));
@@ -374,7 +374,7 @@ public class PrimitiveTypesTest {
 
     @ParameterizedTest
     @MethodSource("sourceForIsPalindrome")
-    public void testIsPalindrome(LongPredicate algorithm) {
+    void testIsPalindrome(LongPredicate algorithm) {
         assertFalse(algorithm.test(-10));
         assertTrue(algorithm.test(0));
         assertTrue(algorithm.test(1));
@@ -391,7 +391,7 @@ public class PrimitiveTypesTest {
     UNIFORM RANDOM NUMBER
      */
     @Test
-    public void testGenerateUniformRandomNumber() {
+    void testGenerateUniformRandomNumber() {
         // Damn, randomness tests are quite complex, maybe later when I'll have more time
     }
 
@@ -401,7 +401,7 @@ public class PrimitiveTypesTest {
     CHECK INTERSECTION OF TWO RECTANGLES
      */
     @Test
-    public void testRectangleClass() {
+    void testRectangleClass() {
         PrimitiveTypes.Rectangle rectangle = new PrimitiveTypes.Rectangle(100, 300, 800, -999);
 
         assertEquals(100, rectangle.x);
@@ -411,7 +411,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testCheckTwoRectanglesHaveIntersectionReturnsNull() {
+    void testCheckTwoRectanglesHaveIntersectionReturnsNull() {
         assertNull(PrimitiveTypes.checkTwoRectanglesHaveIntersection(
                 new PrimitiveTypes.Rectangle(0, 0, 10, 20),
                 new PrimitiveTypes.Rectangle(100, 100, 40, 30)
@@ -419,7 +419,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testCheckTwoRectanglesHaveIntersectionReturnsRectangle() {
+    void testCheckTwoRectanglesHaveIntersectionReturnsRectangle() {
         assertEquals(
                 new PrimitiveTypes.Rectangle(10, 10, 4, 5),
                 PrimitiveTypes.checkTwoRectanglesHaveIntersection(
@@ -435,7 +435,7 @@ public class PrimitiveTypesTest {
     CHECK ARW FOUR POINTS FORM AN ALIGNED RECTANGLE ON A PLANE
      */
     @Test
-    public void testPointClass() {
+    void testPointClass() {
         PrimitiveTypes.Point point = new PrimitiveTypes.Point(100, 300);
 
         assertEquals(100, point.x);
@@ -443,7 +443,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testAreForPointsFormRectangleReturnsFalse() {
+    void testAreForPointsFormRectangleReturnsFalse() {
         assertFalse(PrimitiveTypes.DoFourPointsFormRectangle(
                 new PrimitiveTypes.Point(0, 0), new PrimitiveTypes.Point(1, 10),
                 new PrimitiveTypes.Point(1, 0), new PrimitiveTypes.Point(0, 1)
@@ -451,7 +451,7 @@ public class PrimitiveTypesTest {
     }
 
     @Test
-    public void testDoForPointsFormRectangleReturnsTrue() {
+    void testDoForPointsFormRectangleReturnsTrue() {
         assertTrue(PrimitiveTypes.DoFourPointsFormRectangle(
                 new PrimitiveTypes.Point(10, 10), new PrimitiveTypes.Point(0, 10),
                 new PrimitiveTypes.Point(10, 0), new PrimitiveTypes.Point(0, 0)

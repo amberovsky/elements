@@ -5,22 +5,22 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CircularQueueTest {
+class CircularQueueTest {
     CircularQueue<Integer> queue;
 
     @BeforeEach
-    public void initialize() {
+    void initialize() {
         queue = new CircularQueue<>();
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         assertEquals(0, queue.size());
         assertEquals(CircularQueue.MINIMUM_ELEMENTS, queue.data.length);
     }
 
     @Test
-    public void testCapacityGrowths() {
+    void testCapacityGrowths() {
         for (int i = 0 ; i < CircularQueue.MINIMUM_ELEMENTS; i++) {
             queue.enqueue(i);
         }
@@ -35,7 +35,7 @@ public class CircularQueueTest {
     }
 
     @Test
-    public void testCapacityDecreases() {
+    void testCapacityDecreases() {
         for (int i = 0 ; i < CircularQueue.MINIMUM_ELEMENTS + 1; i++) {
             queue.enqueue(i);
         }
@@ -47,13 +47,13 @@ public class CircularQueueTest {
     }
 
     @Test
-    public void testDequeue() {
+    void testDequeue() {
         queue.enqueue(10);
         assertEquals(10, queue.dequeue().intValue());
     }
 
     @Test
-    public void testDequeueWhenCapacityIsChanging() {
+    void testDequeueWhenCapacityIsChanging() {
         int count = CircularQueue.MINIMUM_ELEMENTS * 4;
         for (int i = 0; i < count; i++) {
             queue.enqueue(i);

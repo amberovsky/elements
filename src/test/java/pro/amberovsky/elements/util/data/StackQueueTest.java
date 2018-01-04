@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StackQueueTest {
+class StackQueueTest {
     StackQueue<Integer> queue;
 
     @BeforeEach
-    public void initialize() {
+    void initialize() {
         queue = new StackQueue<>();
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         assertEquals(0, queue.size());
     }
 
     @Test
-    public void testEnqueueAndDequeue() {
+    void testEnqueueAndDequeue() {
         final int count = 8;
 
         for (int i = 0; i < count; i++) queue.enqueue(i);

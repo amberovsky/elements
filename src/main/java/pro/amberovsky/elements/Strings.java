@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Various tasks on strings
  */
-public class Strings {
+class Strings {
     /*
     REVERSE
      */
@@ -22,7 +22,7 @@ public class Strings {
      *
      * @return array with a reversed subarray
      */
-    public static <T> T[] reverse(T[] array, int start, int end) {
+    static <T> T[] reverse(T[] array, int start, int end) {
         for (int i = 0; i < (end + 1 - start) / 2; i++) {
             T t = array[start + i];
             array[start + i] = array[end - i];
@@ -45,7 +45,7 @@ public class Strings {
      *
      * @return true if the string is a palindrome, false otherwise
      */
-    public static boolean isPalindrome(String s) {
+    static boolean isPalindrome(String s) {
         for (int i = 0; i < s.length() / 2; i++) {
             if (s.charAt(i) != s.charAt(s.length() - i - 1)) return false;
         }
@@ -66,7 +66,7 @@ public class Strings {
      *
      * @return int
      */
-    public static int atoi(String s) {
+    static int atoi(String s) {
         int result = 0;
         int sign = 1;
 
@@ -93,7 +93,7 @@ public class Strings {
      *
      * @return string
      */
-    public static String itoa(int v) {
+    static String itoa(int v) {
         StringBuilder string = new StringBuilder();
         String sign = v < 0 ? "-" : "";
 
@@ -127,7 +127,7 @@ public class Strings {
      *
      * @return the number in targetBase
      */
-    public static String convert(String number, int currentBase, int targetBase) {
+    static String convert(String number, int currentBase, int targetBase) {
         int value = 0;
 
         boolean isNegative = number.startsWith("-");
@@ -171,7 +171,7 @@ public class Strings {
      *
      * @return unique integer ID
      */
-    public static int computeTheSpreadsheetColumnEncoding(String column) {
+    static int computeTheSpreadsheetColumnEncoding(String column) {
         int result = 0;
 
         for (int i = 0; i < column.length(); i++) {
@@ -192,7 +192,7 @@ public class Strings {
      *
      * @return unique integer ID
      */
-    public static int computeTheSpreadsheetColumnEncoding_AEqualsTo0(String column) {
+    static int computeTheSpreadsheetColumnEncoding_AEqualsTo0(String column) {
         int result = 0;
 
         for (int i = 0; i < column.length(); i++) {
@@ -213,7 +213,7 @@ public class Strings {
      *
      * @return decoded column name
      */
-    public static String computeTheSpreadsheetColumnEncoding_Decode(int id) {
+    static String computeTheSpreadsheetColumnEncoding_Decode(int id) {
         StringBuilder result = new StringBuilder();
 
         while (id > 0) {
@@ -240,7 +240,7 @@ public class Strings {
      *
      * @return transformed array
      */
-    public static char[] replaceAndRemove(char[] array, int size) {
+    static char[] replaceAndRemove(char[] array, int size) {
         // Remove b's
         int curIndex = 0;
         int countOfA = 0;
@@ -272,7 +272,7 @@ public class Strings {
      *
      * @return merged array
      */
-    public static int[] replaceAmdRemove_MergeSortedArrays(int array1[], int array1Length, int array2[]) {
+    static int[] replaceAmdRemove_MergeSortedArrays(int array1[], int array1Length, int array2[]) {
         int array2Index = array2.length - 1;
         int resultIndex = array1.length - 1;
 
@@ -303,7 +303,7 @@ public class Strings {
      *
      * @return is palindromic
      */
-    public static boolean isPalindromic(String s) {
+    static boolean isPalindromic(String s) {
         int start = 0;
         int end = s.length() - 1;
 
@@ -344,7 +344,7 @@ public class Strings {
      *
      * @return reversed string
      */
-    public static Character[] reverseAllTheWordsInASentence(Character string[]) {
+    static Character[] reverseAllTheWordsInASentence(Character string[]) {
         // Reverse the whole string
         reverse(string, 0, string.length - 1);
 
@@ -411,7 +411,7 @@ public class Strings {
      *
      * @return all possible mnemonics
      */
-    public static List<String> computeAllMnemonicsForAPhoneNumber(String number) {
+    static List<String> computeAllMnemonicsForAPhoneNumber(String number) {
         return computeAllMnemonicsForAPhoneNumberHelper(
                 number,
                 0,
@@ -431,7 +431,7 @@ public class Strings {
      *
      * @return all possible mnemonics
      */
-    public static List<String> computeAllMnemonicsForAPhoneNumber_NonRecursive(String number) {
+    static List<String> computeAllMnemonicsForAPhoneNumber_NonRecursive(String number) {
         ArrayDeque<StringBuilder> queue = new ArrayDeque<>();
         queue.add(new StringBuilder());
 
@@ -472,7 +472,7 @@ public class Strings {
      *
      * @return generated number
      */
-    public static String theLookAndSay(int n) {
+    static String theLookAndSay(int n) {
         StringBuilder result = new StringBuilder("1");
 
         for (int i = 0; i < n; i++) {
@@ -516,7 +516,7 @@ public class Strings {
      *
      * @return array of possible IPs
      */
-    public static String[] computeAllValidIPAddresses(String address) {
+    static String[] computeAllValidIPAddresses(String address) {
         List<String> addresses = new ArrayList<>();
 
         for (int p1 = 1; (p1 < 4) && (p1 < address.length()); p1++) {
@@ -608,7 +608,7 @@ public class Strings {
      *
      * @return array of possible IPs
      */
-    public static String[] computeAllValidIPAddresses_Unbounded(String address, int k) {
+    static String[] computeAllValidIPAddresses_Unbounded(String address, int k) {
         return computeAllValidIPAddresses_UnboundedHelper(address, 0, 0, new int[k], new ArrayList<>())
                 .toArray(new String[0]);
     }
@@ -626,7 +626,7 @@ public class Strings {
      * @param s
      * @return
      */
-    public static String generateSnakestring(String s) {
+    static String generateSnakestring(String s) {
         StringBuilder top = new StringBuilder();
         StringBuilder middle = new StringBuilder();
         StringBuilder bottom = new StringBuilder();
@@ -659,7 +659,7 @@ public class Strings {
      *
      * @return encoded string
      */
-    public static String encodeRunLength(String s) {
+    static String encodeRunLength(String s) {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
@@ -689,7 +689,7 @@ public class Strings {
      *
      * @return decoded string
      */
-    public static String decodeRunLength(String s) {
+    static String decodeRunLength(String s) {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {
@@ -722,7 +722,7 @@ public class Strings {
      *
      * @return index of the first occurrence, -1 otherwise
      */
-    public static int findTheFirstOccurrenceOfASubstring(String text, String pattern) {
+    static int findTheFirstOccurrenceOfASubstring(String text, String pattern) {
         if (text.length() < pattern.length()) return -1;
 
         int hash = 0;
