@@ -1,9 +1,10 @@
 package pro.amberovsky.elements;
 
 import pro.amberovsky.elements.util.Utilities;
+import pro.amberovsky.elements.util.data.BinaryTreeNode;
+import pro.amberovsky.elements.util.data.ListNode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Difficult problems
@@ -330,6 +331,196 @@ class HonorsClass {
             }
 
             result.add(line.toString());
+        }
+
+        return result;
+    }
+
+
+
+    /*
+    IMPLEMENT LIST ZIPPING
+     */
+
+    /**
+     * Implement list zipping
+     *
+     * @Algorithm Reverse list
+     * @Complexity O(n), O(1) space
+     *
+     * @param list linked list
+     * @param <T> type
+     *
+     * @return zipped list
+     */
+    static <T> ListNode<T> listZipping(ListNode<T> list) {
+        int size = 1;
+
+        ListNode<T> current = list;
+        while (current.next != null) {
+            size++;
+            current = current.next;
+        }
+
+        if (size < 2) return list;
+
+        current = list;
+        for (int i = 0; i < (size - 1) / 2; i++) current = current.next;
+
+        ListNode<T> secondHalf = current.next;
+        current.next = null;
+
+        // reverse the second half
+        current = secondHalf;
+        while (current.next != null) {
+            ListNode<T> tmp = current.next;
+            current.next = tmp.next;
+            tmp.next = secondHalf;
+            secondHalf = tmp;
+        }
+
+        // merge
+        ListNode<T> firstHalf = list;
+        for (int i = 0; i < size / 2; i++) {
+            ListNode<T> firstHalfNext = firstHalf.next;
+            firstHalf.next = secondHalf;
+            ListNode<T> secondHalfNext = secondHalf.next;
+            secondHalf.next = firstHalfNext;
+
+            firstHalf = firstHalfNext;
+            secondHalf = secondHalfNext;
+        }
+
+
+        return list;
+    }
+
+
+
+    /*
+    COMPUTE THE MAXIMUM OF A SLIDING WINDOW
+     */
+
+    /**
+     * Helper class
+     */
+    static class TrafficElement {
+        /** timestamp when traffic arrived */
+        int timestamp;
+
+        /** amount of arrived traffic */
+        int volume;
+
+        /**
+         * Constr
+         *
+         * @param timestamp timestamp when traffic arrived
+         * @param volume amount of arrived traffic
+         */
+        public TrafficElement(int timestamp, int volume) {
+            this.timestamp = timestamp;
+            this.volume = volume;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if ((o == null) || !(o instanceof TrafficElement)) return false;
+
+            TrafficElement element = (TrafficElement) o;
+
+            return ((this.timestamp == element.timestamp) && (this.volume == element.volume));
+        }
+    }
+
+
+    /**
+     * Add elements to the max queue
+     *
+     * @param max queue with max elements
+     * @param elem element to add
+     */
+    private static void addToTheMax(Deque<TrafficElement> max, TrafficElement elem) {
+        while (!max.isEmpty() && (max.getLast().volume < elem.volume)) max.removeLast();
+
+        max.addLast(elem);
+    }
+
+    /**
+     * Compute the maximum of a sliding window
+     *
+     * @Algorithm Queue with MAX
+     * @Complexity O(n), O(w) space
+     *
+     *
+     * @param traffic traffic data
+     * @param w size of the sliding window
+     *
+     * @return maximum of a sliding window
+     */
+    static List<TrafficElement> computeTheMaximumOfASlidingWindow(TrafficElement traffic[], int w) {
+        List<TrafficElement> result = new ArrayList<>();
+
+        Deque<TrafficElement> queue = new ArrayDeque<>();
+        ArrayDeque<TrafficElement> max = new ArrayDeque<>();
+
+        for (int i = 0; i < traffic.length; i++) {
+            queue.addLast(traffic[i]);
+            addToTheMax(max, traffic[i]);
+
+            while (traffic[i].timestamp - queue.peek().timestamp > w) {
+                TrafficElement element = queue.removeFirst();
+                if (element == max.peek()) max.removeFirst();
+
+            }
+
+            result.add(new TrafficElement(traffic[i].timestamp, max.peek().volume));
+
+        }
+
+        return result;
+    }
+
+
+
+    /*
+    IMPLEMENT A POSTORDER TRAVERSAL WITHOUT RECURSION
+     */
+
+    /**
+     * Implement a postorder traversal without recursion
+     *
+     * @Algorithm Stack
+     * @Complexity O(n), O(h) space
+     *
+     * @param tree binary tree
+     * @param <T> type
+     *
+     * @return postorder traversal
+     */
+    static <T> List<T> implementAPostorderTraversalWithoutRecursion(BinaryTreeNode<T> tree) {
+        List<T> result = new ArrayList<>();
+        Deque<BinaryTreeNode<T>> stack = new ArrayDeque<>();
+        BinaryTreeNode<T> previous = tree;
+
+        stack.push(tree);
+
+        while (!stack.isEmpty()) {
+            BinaryTreeNode<T> node = stack.peek();
+
+            if ((node.left == null) && (node.right == null)) { // leaf
+                result.add(stack.pop().data);
+            } else {
+                if ((node.right != null) && (previous == node.right)) { // returning from right child
+                    result.add(stack.pop().data);
+                } else if ((node.right == null) && (previous == node.left)) { // returning from left when right is null
+                    result.add(stack.pop().data);
+                } else {
+                    if (node.right != null) stack.push(node.right);
+                    if (node.left != null) stack.push(node.left);
+                }
+            }
+
+            previous = node;
         }
 
         return result;

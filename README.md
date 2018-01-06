@@ -13,6 +13,7 @@
 4. [Linked Lists](/docs/LinkedLists.md)
 5. [Stacks and Queues](/docs/StacksAndQueues.md)
 6. [Binary Trees](/docs/BinaryTrees.md)
+7. [Heaps](/docs/Heaps.md)
 17. [Honors Class](/docs/HonorsClass.md)
 <br>
 
