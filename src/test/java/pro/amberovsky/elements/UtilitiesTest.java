@@ -29,4 +29,16 @@ class UtilitiesTest {
         assertArrayEquals(new Integer[] { 2, 1 }, swap(new Integer[] { 1, 2 }, 0, 1));
         assertArrayEquals(new Integer[] { 1, 3, 2, 4 }, swap(new Integer[] { 1, 2, 3, 4 }, 1, 2));
     }
+
+
+
+    /*
+    REVERSE
+     */
+    @Test
+    void testReverse() {
+        assertArrayEquals(new Integer[] { 1 }, reverse(new Integer[] { 1 }, 0, 0));
+
+        assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, reverse(new Integer[] { 1, 3, 2, 4 }, 1, 2));
+    }
 }

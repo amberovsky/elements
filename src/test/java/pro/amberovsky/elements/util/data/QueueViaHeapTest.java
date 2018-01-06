@@ -5,46 +5,46 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StackviaHeapTest {
-    StackViaHeap<Integer> stack;
+class QueueViaHeapTest {
+    QueueViaHeap<Integer> queue;
 
     @BeforeEach
     void initialize() {
-        stack = new StackViaHeap<>();
+        queue = new QueueViaHeap<>();
     }
 
     @Test
     void testConstructor() {
-        assertEquals(0, stack.size());
+        assertEquals(0, queue.size());
     }
 
     @Test
-    void testPush() {
-        stack.push(1);
-        assertEquals(1, stack.size());
+    void testEnqueue() {
+        queue.enqueue(1);
+        assertEquals(1, queue.size());
 
-        stack.push(2).push(1);
-        assertEquals(3, stack.size());
+        queue.enqueue(2).enqueue(1);
+        assertEquals(3, queue.size());
     }
 
     @Test
-    void testPop() {
-        stack.push(1).pop();
-        assertEquals(0, stack.size());
+    void testDequeue() {
+        queue.enqueue(1).dequeue();
+        assertEquals(0, queue.size());
 
-        stack.push(1).push(3).push(4).push(1);
-        assertEquals(4, stack.size());
+        queue.enqueue(1).enqueue(3).enqueue(4).enqueue(1);
+        assertEquals(4, queue.size());
     }
 
     @Test
-    void testPushAndPop() {
-        stack.push(1);
-        assertEquals(1, stack.pop().intValue());
+    void testEnqueueAndDequeue() {
+        queue.enqueue(1);
+        assertEquals(1, queue.dequeue().intValue());
 
-        stack.push(1).push(3).push(4).push(1);
-        assertEquals(1, stack.pop().intValue());
-        assertEquals(4, stack.pop().intValue());
-        assertEquals(3, stack.pop().intValue());
-        assertEquals(1, stack.pop().intValue());
+        queue.enqueue(1).enqueue(3).enqueue(4).enqueue(1);
+        assertEquals(1, queue.dequeue().intValue());
+        assertEquals(3, queue.dequeue().intValue());
+        assertEquals(4, queue.dequeue().intValue());
+        assertEquals(1, queue.dequeue().intValue());
     }
 }

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import pro.amberovsky.elements.util.data.BinaryTreeNode;
+import pro.amberovsky.elements.util.data.ListNode;
 
 import java.util.stream.Stream;
 
@@ -117,6 +119,87 @@ class HonorsClassTest {
                         new String[] { "The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dogs." },
                         11
                 )
+        );
+    }
+
+
+
+    /*
+    COMPUTE THE MAXIMUM OF A SLIDING WINDOW
+     */
+    @Test
+    void testComputeTheMaximumOfASlidingWindow() {
+        assertEquals(
+                java.util.Arrays.asList(
+                        new TrafficElement(0, 13),
+                        new TrafficElement(2, 25),
+                        new TrafficElement(3, 37),
+                        new TrafficElement(5, 37),
+                        new TrafficElement(6, 37),
+                        new TrafficElement(8, 26),
+                        new TrafficElement(9, 26),
+                        new TrafficElement(14, 17)
+                ),
+                computeTheMaximumOfASlidingWindow(new TrafficElement[] {
+                        new TrafficElement(0, 13),
+                        new TrafficElement(2, 25),
+                        new TrafficElement(3, 37),
+                        new TrafficElement(5, 14),
+                        new TrafficElement(6, 26),
+                        new TrafficElement(8, 22),
+                        new TrafficElement(9, 17),
+                        new TrafficElement(14, 17)
+                }, 3)
+        );
+    }
+
+
+
+    /*
+    IMPLEMENT A POSTORDER TRAVERSAL WITHOUT RECURSION
+     */
+    @Test
+    void testImplementAPostorderTraversalWithoutRecursion() {
+        BinaryTreeNode<Integer> tree = new BinaryTreeNode<>(1);
+        assertEquals(java.util.Arrays.asList(1), implementAPostorderTraversalWithoutRecursion(tree));
+
+        tree.left = new BinaryTreeNode<>(2);
+        assertEquals(java.util.Arrays.asList(2, 1), implementAPostorderTraversalWithoutRecursion(tree));
+
+        tree.right = new BinaryTreeNode<>(3);
+        assertEquals(java.util.Arrays.asList(2, 3, 1), implementAPostorderTraversalWithoutRecursion(tree));
+
+        tree.left.right = new BinaryTreeNode<>(4);
+        assertEquals(java.util.Arrays.asList(4, 2, 3, 1), implementAPostorderTraversalWithoutRecursion(tree));
+
+        tree.right.left = new BinaryTreeNode<>(5);
+        assertEquals(java.util.Arrays.asList(4, 2, 5, 3, 1), implementAPostorderTraversalWithoutRecursion(tree));
+
+        tree.left.right.right = new BinaryTreeNode<>(6);
+        assertEquals(java.util.Arrays.asList(6, 4, 2, 5, 3, 1), implementAPostorderTraversalWithoutRecursion(tree));
+    }
+
+
+
+    /*
+    IMPLEMENT LIST ZIPPING
+     */
+    @Test
+    void testListZipping() {
+        assertEquals(
+                ListNode.toListNode(1), listZipping(ListNode.toListNode(1))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2), listZipping(ListNode.toListNode(1, 2))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2, 3), listZipping(ListNode.toListNode(1, 3, 2))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2, 3, 4), listZipping(ListNode.toListNode(1, 3, 4, 2))
         );
     }
 }

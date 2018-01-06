@@ -1,225 +1,98 @@
-## <a name="binary-trees"></a>6. Binary Trees
-#### Various tasks on binary trees
+## <a name="heaps"></a>7. Heaps
+#### Various tasks on heaps
 
-**Class**: [BinaryTrees](/src/main/java/pro/amberovsky/elements/BinaryTrees.java)  
+**Class**: [Heaps](/src/main/java/pro/amberovsky/elements/Heaps.java)  
 
-1. [Test if a binary tree is height-balanced](#test-if-a-binary-tree-is-height-balanced)
-    * Variant: find size of a largest complete subtree
-    * Variant: k-balanced
-2. [Check if binary tree is symmetric](#check-if-binary-tree-is-symmetric)
-3. [Compute the lowest common ancestor](#compute-the-lowest-common-ancestor)
-4. [Compute the LCA when nodes have parent pointers](#compute-the-lca-when-nodes-have-parent-pointers)
-5. [Calculate sum the root to leaf paths in a binary tree](#calculate-sum-the-root-to-leaf-paths-in-a-binary-tree)
-6. [Find a root to leaf path with specified sum](#find-a-root-to-leaf-path-with-specified-sum)
-    * [Variant: return all such paths](#find-a-root-to-leaf-path-with-specified-sum-return-all-such-paths)
-7. [Implement an inorder traversal without recursion](#implement-an-inorder-traversal-without-recursion)
-8. [Implement a preorder traversal without recursion](#implement-a-preorder-traversal-without-recursion)
-9. [Compute the kth node in an inorder traversal](#compute-the-kth-node-in-an-inorder-traversal)
-10. [Compute the successor](#compute-the-successor)
-11. [Implement an inorder traversal with constant space](#implement-an-inorder-traversal-with-constant-space)
-    * [Variant: preorder](#implement-an-inorder-traversal-with-constant-space-preorder)
-    * [Variant: postorder](#implement-an-inorder-traversal-with-constant-space-postorder)
-12. [Reconstruct a binary tree from traversal data](#reconstruct-a-binary-tree-from-traversal-data)
-    * [Variant: postorder](#reconstruct-a-binary-tree-from-traversal-data-postorder)
-    * [Variant: maxtree](#reconstruct-a-binary-tree-from-traversal-data-maxtree)
-13. [Reconstruct a binary tree from a preorder traversal with markers](#reconstruct-a-binary-tree-from-a-preorder-traversal-with-markers)
-    * [Variant: postorder](#reconstruct-a-binary-tree-from-a-preorder-traversal-with-markers-postorder)
-14. [Form a linked list from the leaves of a binary tree](#form-a-linked-list-from-the-leaves-of-a-binary-tree)
-15. [Compute exterior of a binary tree](#compute-exterior-of-a-binary-tree)
-16. [Compute the right sibling tree](#compute-the-right-sibling-tree)
-    * Variant: use right
-    * [Variant: general tree](#compute-the-right-sibling-tree=general-tree)
-17. [Implement locking in a binary tree](#implement-locking-in-a-binary-tree)
+1. [Produce top k string with biggest length](#produce-top-k-string-with-biggest-length)
+2. [Merge sorted files](#merge-sorted-files)
+3. [Sort a k-increasing-decreasing array](#sort-a-k-increasing-decreasing-array)
+4. [Sort an almost sorted array](#sort-an-almost-sorted-array)
+5. [Compute the k closest stars](#compute-the-k-closest-stars)
+    * [Variant: output k-th largest integer from a sequence, starting from k-th element](#compute-the-k-closest-stars-output-k-th-largest-integer-from-a-sequence-starting-from-kth-element)
+6. [Compute the median of online data](#compute-the-median-of-online-data)
+7. [Compute the largest elements in a MaxHeap](#compute-the-largest-elements-in-a-maxheap)
+8. [Implement a stack API using a heap](#implement-a-stack-api-using-a-heap)
+    * [Variant: queue API](#implement-a-stack-api-using-a-heap-queue-api)
       
 <br>
 
-### 1. <a name="test-if-a-binary-tree-is-height-balanced"></a>Test if a binary tree is height-balanced
-**Task**: Test if a binary tree is height-balanced  
+### 1. <a name="produce-top-k-string-with-biggest-length"></a>Produce top k string with biggest length
+**Task**: Produce top k string with biggest length  
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| testIfABinaryTreeIsHeightBalanced | Recursion | O(n) | O(h) |
+| kLongestStrings | Min-heap | O(n * log k) | O(k) |
 <br>
 
-### 2. <a name="check-if-binary-tree-is-symmetric"></a>Check if binary tree is symmetric
-**Task**: Check if binary tree is symmetric  
+### 2. <a name="merge-sorted-files"></a>Merge sorted files
+**Task**: Merge sorted files  
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| isSymmetric | Recursion | O(n) | O(h) |
+| mergeSortedFiles | Min-heap | O(n * log k) | O(k) |
 <br>
 
-### 3. <a name="compute-the-lowest-common-ancestor"></a>Compute the lowest common ancestor
-**Task**:  Compute the lowest common ancestor  
+### 3. <a name="sort-a-k-increasing-decreasing-array"></a>Sort a k-increasing-decreasing array
+**Task**:  Sort a k-increasing-decreasing array 
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| computeTheLowestCommonAncestor | Recursion | O(n) | O(h) |
+| sortAnIncreasingDecreasingArray | Min-heap | O(n * log k) | O(n) |
 <br>
 
-### 4. <a name="compute-the-lca-when-nodes-have-parent-pointers"></a>Compute the LCA when nodes have parent pointers
-**Task**: Compute the LCA when nodes have parent pointers  
+### 4. <a name="sort-an-almost-sorted-array"></a>Sort an almost sorted array
+**Task**: Sort an almost sorted array  
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| LCAWithParents | Alight the heights | O(n) | O(1) |
+| sortAnAlmostSortedArray | Min-heap | O(n * log k) | O(n) |
 <br>
 
-### 5. <a name="calculate-sum-the-root-to-leaf-paths-in-a-binary-tree"></a>Calculate sum the root to leaf paths in a binary tree
-**Task**: Calculate sum the root to leaf paths in a binary tree    
-
+### 5. <a name="compute-the-k-closest-stars"></a>Compute the k closest stars
+**Task**: Compute the k closest stars  
+**Example**: \[3, 100, 9, 500, 10, 18, 5\], 3 -> \[9, 5, 3\]
+   
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| sumTheRootToLeafPathsInBinaryTree | Recursion | O(n) | O(h) |
-<br>
+| computeTheKClosestStars | Max-heap | O(n * long k) | O(k) |
 
-### 6. <a name="find-a-root-to-leaf-path-with-specified-sum"></a>Find a root to leaf path with specified sum
-**Task**: Find a root to leaf path with specified sum  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| findARootToLeafPathWithSpecifiedSum | Recursion | O(n) | O(h) |
-
-   * ### <a name="find-a-root-to-leaf-path-with-specified-sum-return-all-such-paths"></a>Variant: return all such paths
-      **Task**: Return all such paths 
-
+   * ### <a name="compute-the-k-closest-stars-output-k-th-largest-integer-from-a-sequence-starting-from-kth-element"></a>Variant: output k-th largest integer from a sequence, starting from k-th element
+      **Task**: output k-th largest integer from a sequence, starting from k-th element  
+      **Example**: \[100, 14, 18, 18, 500, 5\], 2 -> \[14, 18, 18, 100, 100\]
+      
       | Method | Algorithm | Time | Space |
       | :--- | :---: | :---: | :-- |
       | findARootToLeafPathWithSpecifiedSum_AllPaths | Recursion | O(n) | O(n) |
-
 <br>
 
-### 7. <a name="implement-an-inorder-traversal-without-recursion"></a>Implement an inorder traversal without recursion
-**Task**: Implement an inorder traversal without recursion  
+### 6. <a name="compute-the-median-of-online-data"></a>Compute the median of online data
+**Task**: Compute the median of online data  
+**Example**: \[1, 0, 3, 5, 2, 0, 1\] -> \[1.0, 0.5, 1.0, 2.0, 2.0, 1.5, 1.0\]
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| inorderTraversalWithoutRecursion | Stack | O(n) | O(h) |
+| computeTheMedianOfOnlineData | Max-heap & Min-heap | O(n * log n) | O(n) |
 <br>
 
-### 8. <a name="implement-a-preorder-traversal-without-recursion"></a>Implement a preorder traversal without recursion
-**Task**: Implement a preorder traversal without recursion  
+### 7. <a name="compute-the-largest-elements-in-a-maxheap"></a>Compute the largest elements in a MaxHeap
+**Task**: Compute the largest elements in a MaxHeap  
+**Example**: \[500, 100, 400, 50, 10, 300\], 3 -> \[500, 400, 300\]
 
 | Method | Algorithm | Time | Space |
 | :--- | :---: | :---: | :-- |
-| preorderTraversalWithoutRecursion | Stack | O(n) | O(h) |
+| computeTheLargestElementsInAMaxHeap | Array indices | O(k * log k) | O(k) |
 <br>
 
-### 9. <a name="compute-the-kth-node-in-an-inorder-traversal"></a>Compute the kth node in an inorder traversal
-**Task**: Compute the kth node in an inorder traversal  
+8. [Implement a stack API using a heap](#implement-a-stack-api-using-a-heap)
+    * [Variant: queue API](#implement-a-stack-api-using-a-heap-queue-api)
+### 8. <a name="implement-a-stack-api-using-a-heap"></a>Implement a stack API using a heap
+**Task**: Implement a stack API using a heap
+[StackViaHeap](/src/main/java/pro/amberovsky/elements/util/data/StackViaHeap.ava) 
 
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| computeTheKthNodeInAnInorderTraversal | Iteration | O(h) | O(1) |
+   * ### <a name="implement-a-stack-api-using-a-heap-queue-api"></a>Variant: queue API
+      **Task**: Implement a queue API using a heap
+      [QueueViaHeap](/src/main/java/pro/amberovsky/elements/util/data/QueueViaHeap.java)  
 <br>
 
-### 10. <a name="compute-the-successor"></a>Compute the successor
-**Task**: Compute the successor  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| computeTheSuccessor | Iteration | O(h) | O(1) |
-<br>
-
-### 11. <a name="implement-an-inorder-traversal-with-constant-space"></a>Implement an inorder traversal with constant space
-**Task**: Implement an inorder traversal with constant space  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| implementAnInorderTraversalWithConstantSpace | Remember previous | O(h) | O(1) |
-
-   * ### <a name="implement-an-inorder-traversal-with-constant-space-preorder"></a>Variant: preorder
-      **Task**: preorder traversal with constant space  
-
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | implementAnInorderTraversalWithConstantSpace_Preorder | Remember previous | O(h) | O(1) |
-      
-   * ### <a name="implement-an-inorder-traversal-with-constant-space-postorder"></a>Variant: postorder
-      **Task**: postorder traversal with constant space  
-
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | implementAnInorderTraversalWithConstantSpace_Postorder | Remember previous | O(h) | O(1) |
-<br>
-
-### 12. <a name="reconstruct-a-binary-tree-from-traversal-data"></a>Reconstruct a binary tree from traversal data
-**Task**: Reconstruct a binary tree from traversal data, all nodes are distinct  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| reconstructABinaryTreeFromTraversalData | HashMap + traversals properties | O(n) | O(n) |
-
-   * ### <a name="reconstruct-a-binary-tree-from-traversal-data-postorder"></a>Variant: postorder
-      **Task**: preorder traversal with constant space  
-
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | reconstructABinaryTreeFromTraversalData_Postorder | HashMap + traversals properties | O(n) | O(n) |
-      
-   * ### <a name="reconstruct-a-binary-tree-from-traversal-data-maxtree"></a>Variant: build max-tree binary tree  
-      **Task**: preorder traversal with constant space  
-     
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | reconstructABinaryTreeFromTraversalData_MaxTree | One iteration | O(n) | O(n) |
-<br>
-
-### 13. <a name="reconstruct-a-binary-tree-from-a-preorder-traversal-with-markers"></a>Reconstruct a binary tree from a preorder traversal with markers]
-**Task**: Reconstruct a binary tree from a preorder traversal with null markers  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| reconstructABinaryTreeFromAPreorderTraversalWithMarkers | Recursion | O(n) | O(n) |
-
-   * ### <a name="reconstruct-a-binary-tree-from-a-preorder-traversal-with-markers-postorder"></a>Variant: postorder  
-      **Task**: Reconstruct a binary tree from a postorder traversal with null markers  
-     
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | reconstructABinaryTreeFromAPreorderTraversalWithMarkers_Postorder | Recursion | O(n) | O(n) |
-<br>
-
-### 14. <a name="form-a-linked-list-from-the-leaves-of-a-binary-tree"></a>Form a linked list from the leaves of a binary tree
-**Task**: Form a linked list from the leaves of a binary tree in the left-right order  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| formALinkedListFromTheLeavesOfABinaryTree | Depth-first search | O(n) | O(n) |
-<br>
-
-### 15. <a name="compute-exterior-of-a-binary-tree"></a>Compute exterior of a binary tree
-**Task**: Compute exterior of a binary tree  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| exterior | Traverse | O(n) | O(n) |
-<br>
-
-### 16. <a name="compute-the-right-sibling-tree"></a>Compute the right sibling tree
-**Task**: Compute the right sibling tree for a perfect binary tree  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| computeTheRightSiblingTree | Level-by-level, left-to-right | O(n) | O(1) |
-
-   * ### <a name="compute-the-right-sibling-tree=general-tree"></a>Variant: general tree  
-      **Task**: Same problem for a general tree  
-     
-      | Method | Algorithm | Time | Space |
-      | :--- | :---: | :---: | :-- |
-      | computeTheRightSiblingTree_GeneralTree | Breadth-first search | O(n) | O(n) |
-<br>
-
-### 17. <a name="implement-locking-in-a-binary-tree"></a>Implement locking in a binary tree
-**Task**: Implement locking in a binary tree with parent links  
-
-| Method | Algorithm | Time | Space |
-| :--- | :---: | :---: | :-- |
-| isLocked | | O(1) | O(1) |
-| unlock | | O(h) | O(1) |
-| lock | | O(h) | O(1) |
-<br>
-
-[Go back to Binary Trees TOC](#binary-trees)  
+[Go back to Heaps TOC](#heaps)  
 [Go back](/README.md)

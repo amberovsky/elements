@@ -1,18 +1,17 @@
 package pro.amberovsky.elements.util.data;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * Implement a stack using heap
+ * Implement a queue using heap
  *
  * @param <T> type
  */
-public class StackViaHeap<T extends Comparable<T>> {
-    /** Element in the stack */
+public class QueueViaHeap<T extends Comparable<T>> {
+    /** Element in the queue */
     private class Entry {
-        /** current index in the stack */
+        /** current index in the queue */
         int index;
 
         /** value */
@@ -21,7 +20,7 @@ public class StackViaHeap<T extends Comparable<T>> {
         /**
          * Constr
          *
-         * @param index current index in the stack
+         * @param index current index in the queue
          * @param value value
          */
         private Entry(int index, T value) {
@@ -30,12 +29,14 @@ public class StackViaHeap<T extends Comparable<T>> {
         }
     }
 
-    /** max-heap */
-    private PriorityQueue<Entry> maxHeap =
-            new PriorityQueue<>(Collections.reverseOrder(Comparator.comparingInt(e -> e.index)));
+    /** min-heap */
+    private PriorityQueue<Entry> minHeap = new PriorityQueue<>(Comparator.comparingInt(e -> e.index));
+
+    /** last inserted id */
+    private int lastId = 0;
 
     /**
-     * Push on the top
+     * Enqueue element
      *
      * @Complexity O(log n)
      *
@@ -43,27 +44,29 @@ public class StackViaHeap<T extends Comparable<T>> {
      *
      * @return self
      */
-    public StackViaHeap<T> push(T elem) {
-        maxHeap.add(new Entry(maxHeap.size(), elem));
+    public QueueViaHeap<T> enqueue(T elem) {
+        minHeap.add(new Entry(lastId++, elem));
 
         return this;
     }
 
     /**
+     * Dequeue element
+     *
      * @Complexity O(log n)
      *
-     * @return element from the top
+     * @return next element
      */
-    public T pop() {
-        return maxHeap.remove().value;
+    public T dequeue() {
+        return minHeap.remove().value;
     }
 
     /**
      * @Complexity O(1)
      *
-     * @return size of the stack
+     * @return size of the queue
      */
     public int size() {
-        return maxHeap.size();
+        return minHeap.size();
     }
 }

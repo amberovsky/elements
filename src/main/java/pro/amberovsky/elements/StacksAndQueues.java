@@ -232,7 +232,7 @@ class StacksAndQueues {
      *
      * @return latest order
      */
-    static <T> int jumpFirstOrderByRecursionHelper(JumpListNode<T> node, int order) {
+    private static <T> int jumpFirstOrderByRecursionHelper(JumpListNode<T> node, int order) {
         if ((node != null) && (node.order == -1)) {
             node.order = order++;
 

@@ -13,6 +13,11 @@
 6. [Rotate an array](#rotate-an-array)
 7. [Identify positions attacked by rocks](#identify-positions-attacked-by-rocks)
 8. [Justify text](#justify-text)
+9. [Implement list zipping](#implement-list-zipping)
+10.
+11.
+12. [Compute the maximum of a sliding window](#compute-the-maximum-of-a-sliding-window)
+13. [Implement a postorder traversal without recursion](#implement-a-postorder-traversal-without-recursion)
          
 <br>
 
@@ -69,7 +74,7 @@
 | identifyPositionsAttackedByRooks | Use first row and column | O(nm) | O(1) |
 <br>
 
-### 7. <a name="justify-text"></a>Justify text
+### 8. <a name="justify-text"></a>Justify text
 **Task**: Justify text  
 
 | Method | Algorithm | Time | Space |
@@ -77,6 +82,35 @@
 | justifyText | Look ahead | O(n) | O(n) |
 <br>
 
+### 9. <a name="implement-list-zipping"></a>Implement list zipping
+**Task**: Implement list zipping  
+
+| Method | Algorithm | Time | Space |
+| :--- | :---: | :---: | :-- |
+| listZipping | Reverse list | O(n) | O(1) |
+<br>
+
+### 10.
+<br>
+
+### 11.
+<br>
+
+### 12. <a name="compute-the-maximum-of-a-sliding-window"></a>Compute the maximum of a sliding window
+**Task**: Compute the maximum of a sliding window  
+
+| Method | Algorithm | Time | Space |
+| :--- | :---: | :---: | :-- |
+| computeTheMaximumOfASlidingWindow | Queue with MAX | O(n) | O(w) |
+<br>
+
+### 13. <a name="implement-a-postorder-traversal-without-recursion"></a>Implement a postorder traversal without recursion
+**Task**: Implement a postorder traversal without recursion 
+
+| Method | Algorithm | Time | Space |
+| :--- | :---: | :---: | :-- |
+| implementAPostorderTraversalWithoutRecursion | Stack | O(n) | O(h) |
+<br>
 
 [Go back to Honors Class TOC](#honors-class)  
 [Go back](/README.md)

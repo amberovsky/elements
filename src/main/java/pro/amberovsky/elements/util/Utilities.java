@@ -51,10 +51,29 @@ public class Utilities {
      *
      * @return array with swapped elements
      */
-    public static <T> T[]swap(T[] array, final int from, final int to) {
+    public static <T> T[] swap(T[] array, final int from, final int to) {
         T t = array[to];
         array[to] = array[from];
         array[from] = t;
+
+        return array;
+    }
+
+
+    /**
+     * Reverse (sub)array
+     *
+     * @param array array
+     * @param from from index, inclusive
+     * @param to to index, inclusive
+     * @param <T> type
+     *
+     * @return array
+     */
+    public static <T> T[] reverse(T[] array, int from, int to) {
+        for (int i = from, j = to; i < j; i++, j--) {
+            swap(array, i, j);
+        }
 
         return array;
     }

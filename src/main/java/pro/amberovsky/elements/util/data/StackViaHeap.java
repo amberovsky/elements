@@ -1,47 +1,69 @@
 package pro.amberovsky.elements.util.data;
 
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
- * Implement a stack with max API
+ * Implement a stack using heap
  *
  * @param <T> type
  */
-public class StackWithMax<T extends Comparable<T>> {
-    /** stack implementation */
-    private LinkedList<T> list = new LinkedList<>();
+public class StackViaHeap<T extends Comparable<T>> {
+    /** Element in the stack */
+    private class Entry {
+        /** current index in the stack */
+        int index;
 
-    /** tracking of max element */
-    private LinkedList<T> max = new LinkedList<>();
+        /** value */
+        T value;
+
+        /**
+         * Constr
+         *
+         * @param index current index in the stack
+         * @param value value
+         */
+        private Entry(int index, T value) {
+            this.index = index;
+            this.value = value;
+        }
+    }
+
+    /** max-heap */
+    private PriorityQueue<Entry> maxHeap =
+            new PriorityQueue<>(Collections.reverseOrder(Comparator.comparingInt(e -> e.index)));
 
     /**
      * Push on the top
+     *
+     * @Complexity O(log n)
      *
      * @param elem element
      *
      * @return self
      */
-    public StackWithMax<T> push(T elem) {
-        list.push(elem);
-
-        if ((max.size() == 0) || (max.peek().compareTo(elem) <= 0)) max.push(elem);
-        else max.push(max.peek());
+    public StackViaHeap<T> push(T elem) {
+        maxHeap.add(new Entry(maxHeap.size(), elem));
 
         return this;
     }
 
     /**
+     * @Complexity O(log n)
+     *
      * @return element from the top
      */
     public T pop() {
-        max.pop();
-        return list.pop();
+        return maxHeap.remove().value;
     }
 
     /**
-     * @return current maximum value
+     * @Complexity O(1)
+     *
+     * @return size of the stack
      */
-    public T max() {
-        return max.peek();
+    public int size() {
+        return maxHeap.size();
     }
 }
