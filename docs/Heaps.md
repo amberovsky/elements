@@ -87,7 +87,7 @@
     * [Variant: queue API](#implement-a-stack-api-using-a-heap-queue-api)
 ### 8. <a name="implement-a-stack-api-using-a-heap"></a>Implement a stack API using a heap
 **Task**: Implement a stack API using a heap
-[StackViaHeap](/src/main/java/pro/amberovsky/elements/util/data/StackViaHeap.ava) 
+[StackViaHeap](/src/main/java/pro/amberovsky/elements/util/data/StackViaHeap.java) 
 
    * ### <a name="implement-a-stack-api-using-a-heap-queue-api"></a>Variant: queue API
       **Task**: Implement a queue API using a heap
