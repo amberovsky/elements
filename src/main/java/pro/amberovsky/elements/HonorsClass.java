@@ -2,6 +2,7 @@ package pro.amberovsky.elements;
 
 import pro.amberovsky.elements.util.Utilities;
 import pro.amberovsky.elements.util.data.BinaryTreeNode;
+import pro.amberovsky.elements.util.data.JumpListNode;
 import pro.amberovsky.elements.util.data.ListNode;
 
 import java.util.*;
@@ -393,6 +394,97 @@ class HonorsClass {
 
 
         return list;
+    }
+
+
+
+    /*
+    COPY A POSTINGS LIST
+     */
+
+    /**
+     * Copy a posting list (with jump nodes)
+     *
+     * @Algorithm In-place
+     * @Complexity O(n), O(1) space
+     *
+     * @param list posting list
+     * @param <T> type
+     *
+     * @return copy
+     */
+    static <T> JumpListNode<T> copyAPostingList(JumpListNode<T> list) {
+        JumpListNode<T> pointer = list;
+
+        // Copy/change next links
+        while (pointer != null) {
+            JumpListNode<T>  pointerCopy = new JumpListNode<>(pointer.data);
+            pointerCopy.next = pointer.next;
+
+            pointer.next = pointerCopy;
+            pointer = pointerCopy.next;
+        }
+
+
+        // Set jump nodes
+        pointer = list;
+        while (pointer != null) {
+            if (pointer.jump != null) pointer.next.jump = pointer.jump.next;
+            pointer = pointer.next.next;
+        }
+
+        // Restore values
+        JumpListNode<T> copy = list.next;
+        pointer = list;
+        while (pointer != null) {
+            JumpListNode<T> copyNode = pointer.next;
+            pointer.next = copyNode.next;
+
+            if (copyNode.next != null) copyNode.next = copyNode.next.next;
+
+            pointer = pointer.next;
+        }
+
+        return copy;
+    }
+
+
+
+    /*
+    COMPUTE THE LONGEST SUBSTRING WITH MATCHING PARENS
+     */
+
+    /**
+     * Compute the longest substring with matching parens
+     *
+     * @Algorithm Stack
+     * @Complexity O(n), O(n) space
+     *
+     * @param string string with parens
+     *
+     * @return length of the longest substring
+     */
+    static int computeTheLongestSubstringWithMatchingParens(String string) {
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        int length = 0;
+        int endIndex = -1;
+
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == '(') stack.push(i);
+            else {
+                if (stack.isEmpty()) {
+                    endIndex = i;
+                } else {
+                    stack.pop();
+
+                    int start = stack.isEmpty() ? endIndex : stack.peek();
+                    length = Math.max(length, i - start);
+                }
+            }
+        }
+
+        return length;
     }
 
 

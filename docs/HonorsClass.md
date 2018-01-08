@@ -14,8 +14,8 @@
 7. [Identify positions attacked by rocks](#identify-positions-attacked-by-rocks)
 8. [Justify text](#justify-text)
 9. [Implement list zipping](#implement-list-zipping)
-10.
-11.
+10. [Copy a posting list](#copy-a-posting-list)
+11. [Compute the longest substring with matching parens](#compute-the-longest-substring-with-matching-parens)
 12. [Compute the maximum of a sliding window](#compute-the-maximum-of-a-sliding-window)
 13. [Implement a postorder traversal without recursion](#implement-a-postorder-traversal-without-recursion)
          
@@ -90,10 +90,21 @@
 | listZipping | Reverse list | O(n) | O(1) |
 <br>
 
-### 10.
+### 10. <a name="copy-a-posting-list"></a>Copy a posting list
+**Task**: Copy a posting list 
+
+| Method | Algorithm | Time | Space |
+| :--- | :---: | :---: | :-- |
+| copyAPostingList | In-place | O(n) | O(1) |
 <br>
 
-### 11.
+### 11. <a name="compute-the-longest-substring-with-matching-parens"></a>Compute the longest substring with matching parens
+**Task**: Compute the longest substring with matching parens
+**Example**: "((())()(()(" -> 6  
+
+| Method | Algorithm | Time | Space |
+| :--- | :---: | :---: | :-- |
+| computeTheLongestSubstringWithMatchingParens | Stack | O(n) | O(n) |
 <br>
 
 ### 12. <a name="compute-the-maximum-of-a-sliding-window"></a>Compute the maximum of a sliding window

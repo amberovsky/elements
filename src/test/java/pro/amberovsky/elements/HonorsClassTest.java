@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pro.amberovsky.elements.util.data.BinaryTreeNode;
+import pro.amberovsky.elements.util.data.JumpListNode;
 import pro.amberovsky.elements.util.data.ListNode;
 
 import java.util.stream.Stream;
@@ -125,6 +126,63 @@ class HonorsClassTest {
 
 
     /*
+    IMPLEMENT LIST ZIPPING
+     */
+    @Test
+    void testListZipping() {
+        assertEquals(
+                ListNode.toListNode(1), listZipping(ListNode.toListNode(1))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2), listZipping(ListNode.toListNode(1, 2))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2, 3), listZipping(ListNode.toListNode(1, 3, 2))
+        );
+
+        assertEquals(
+                ListNode.toListNode(1, 2, 3, 4), listZipping(ListNode.toListNode(1, 3, 4, 2))
+        );
+    }
+
+
+
+    /*
+    COPY A POSTINGS LIST
+     */
+    @Test
+    void testCopyAPostingList() {
+        JumpListNode<Integer> list = new JumpListNode<>(1);
+        list.next = new JumpListNode<>(2);
+        list.next.next = new JumpListNode<>(3);
+        list.next.jump = list.next.next;
+        list.next.next.jump = list;
+
+        JumpListNode<Integer> copy = copyAPostingList(list);
+
+        assertEquals(copy.data, list.data);
+        assertEquals(copy.next.data, list.next.data);
+        assertEquals(copy.next.next.data, list.next.next.data);
+        assertEquals(copy.next.jump.data, list.next.jump.data);
+        assertEquals(copy.next.next.jump.data, list.next.next.jump.data);
+    }
+
+
+
+    /*
+    COMPUTE THE LONGEST SUBSTRING WITH MATCHING PARENS
+     */
+    @Test
+    void testComputeTheLongestSubstringWithMatchingParens() {
+        assertEquals(2, computeTheLongestSubstringWithMatchingParens("()"));
+        assertEquals(6, computeTheLongestSubstringWithMatchingParens("((())()(()("));
+    }
+
+
+
+    /*
     COMPUTE THE MAXIMUM OF A SLIDING WINDOW
      */
     @Test
@@ -177,29 +235,5 @@ class HonorsClassTest {
 
         tree.left.right.right = new BinaryTreeNode<>(6);
         assertEquals(java.util.Arrays.asList(6, 4, 2, 5, 3, 1), implementAPostorderTraversalWithoutRecursion(tree));
-    }
-
-
-
-    /*
-    IMPLEMENT LIST ZIPPING
-     */
-    @Test
-    void testListZipping() {
-        assertEquals(
-                ListNode.toListNode(1), listZipping(ListNode.toListNode(1))
-        );
-
-        assertEquals(
-                ListNode.toListNode(1, 2), listZipping(ListNode.toListNode(1, 2))
-        );
-
-        assertEquals(
-                ListNode.toListNode(1, 2, 3), listZipping(ListNode.toListNode(1, 3, 2))
-        );
-
-        assertEquals(
-                ListNode.toListNode(1, 2, 3, 4), listZipping(ListNode.toListNode(1, 3, 4, 2))
-        );
     }
 }
