@@ -83,8 +83,6 @@
 | computeTheLargestElementsInAMaxHeap | Array indices | O(k * log k) | O(k) |
 <br>
 
-8. [Implement a stack API using a heap](#implement-a-stack-api-using-a-heap)
-    * [Variant: queue API](#implement-a-stack-api-using-a-heap-queue-api)
 ### 8. <a name="implement-a-stack-api-using-a-heap"></a>Implement a stack API using a heap
 **Task**: Implement a stack API using a heap
 [StackViaHeap](/src/main/java/pro/amberovsky/elements/util/data/StackViaHeap.java) 
